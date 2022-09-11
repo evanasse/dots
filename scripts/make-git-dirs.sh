@@ -1,29 +1,31 @@
 #!/bin/bash
 
-set -e
+source "$(dirname "$BASH_SOURCE[0]")/bash-utils/echoes.sh"
+source "$(dirname "$BASH_SOURCE[0]")/bash-utils/user-exists.sh"
+source "$(dirname "$BASH_SOURCE[0]")/bash-utils/read-username.sh"
 
-echo "~> Creating git folders..."
+echo_code $? "Creating Git folders..."
 
 if [[ -z $1 ]]; then
-    echo -n "Enter username: "
-    read username
+    read_username
 else
     username=$1
 fi
 
-if ! id "$username" &> /dev/null; then
-    echo "<~ User \'$username\' does not exist."
-    exit 1
-else
+if user_exists $username; then
     user_home="/home/$username"
-    mkdir $user_home/git
-    mkdir $user_home/sys-git
-    echo "~> Created 'git' and 'sys-git' folders in \'$username\' home."
+    mkdir -p $user_home/git
+    mkdir -p $user_home/sys-git
+    echo_code $? "Created 'git' and 'sys-git' folders in '$username' home."
+else
+    exit $? 
 fi
 
-echo "~> Cloning 'dots' repo..."
+echo_code $? "Cloning 'dots' repo..."
 
 repo_name="dots"
 git clone https://github.com/evanasse/$repo_name $user_home/git/$repo_name
 
-echo "~> Cloned 'dots' repo in \'$username\' home."
+if [[ $? -eq 0 ]]; then
+    echo_code $? "Cloned 'dots' repo in '$username' home."
+fi
