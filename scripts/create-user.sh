@@ -4,6 +4,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/bash-utils/echoes.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/bash-utils/user-exists.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/bash-utils/read-username.sh"
 
+echo_code $? "Creating new user..."
+
 if [[ -z $1 ]]; then
     read_username
 else
@@ -15,12 +17,11 @@ if user_exists $username; then
     echo_code $exit_code "User '$username' already exists. Nothing to do."
 else
     exit_code=$?
-    echo_code $? "Creating new user..."
 
     useradd -m -G users,wheel $username
     passwd $username
 
-    # Roll back user creation
+    # Roll back user creation in case of error
     exit_code=$?
     if [[ $exit_code -ne 0 ]]; then
         echo_code $exit_code "Error during user creation. Rolling back changes."
