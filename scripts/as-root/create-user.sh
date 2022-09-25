@@ -7,7 +7,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/bash-utils/read-username.sh"
 echo_code $? "Creating new user..."
 
 if [[ -z $1 ]]; then
-    read_username
+    username=read_username
 else
     username=$1
 fi
@@ -31,4 +31,6 @@ else
     fi
 
     echo_code $exit_code "User '$username' created."
+
+    echo $username
 fi
