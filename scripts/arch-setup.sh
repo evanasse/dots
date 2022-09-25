@@ -76,7 +76,7 @@ if [[ $start_point -eq 2 ]]; then
     echo "//// Installing 'sudo'..."
     echo ""
 
-    pacman -Sy sudo
+    pacman -Sy --noconfirm sudo
 
     sed -i "s/#wheel ALL=(ALL) NOPASS/wheel ALL=(ALL) NOPASS/" /etc/sudoers
 
