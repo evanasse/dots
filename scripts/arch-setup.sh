@@ -131,8 +131,8 @@ if [[ $start_point -eq 4 ]]; then
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | as_user sh -s -- -y
 
-    as_user source $HOME/.cargo/env; rustup toolchain install beta
-    as_user source $HOME/.cargo/env; rustup default beta
+    as_user source \$HOME/.cargo/env; rustup toolchain install beta
+    as_user source \$HOME/.cargo/env; rustup default beta
 
     echo "Rust installed."
     
