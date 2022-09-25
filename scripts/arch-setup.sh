@@ -82,7 +82,7 @@ if [[ $start_point -eq 2 ]]; then
 
     pacman -Sy --noconfirm sudo
 
-    sed -i "s/#wheel ALL=(ALL) NOPASS/wheel ALL=(ALL) NOPASS/" /etc/sudoers
+    sed -i "s/# %wheel ALL=(ALL:ALL) NOPASS/wheel ALL=(ALL:ALL) NOPASS/" /etc/sudoers
 
     echo "'sudo' installed."
     
