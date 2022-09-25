@@ -2,29 +2,47 @@
 
 set -e
 
+echo "Starting points:"
+echo "[0] Create user"
+echo "[1] Install 'sudo'"
+echo "[2] Make Git directories"
+echo "[3] Install Rust"
+echo -n "Select starting point:"
+read start_point
+
+increment_start_point(){
+    start_point=$start_point+1
+}
+
 #######################################
 #
 # CREATE USER
 #
 #######################################
-echo "Creating user..."
+if [[ $start_point -eq 0 ]]; then
+    echo ""
+    echo "//// Creating user..."
+    echo ""
 
-echo -n "Enter target username: "
-read username
+    echo -n "Enter target username: "
+    read username
 
-useradd -m -G users,wheel $username
-passwd $username
+    useradd -m -G users,wheel $username
+    passwd $username
 
-# Roll back user creation in case of error
-exit_code=$?
-if [[ $exit_code -ne 0 ]]; then
-    echo "Error during user creation. Rolling back changes."
-    userdel -r $username
+    # Roll back user creation in case of error
+    exit_code=$?
+    if [[ $exit_code -ne 0 ]]; then
+        echo "Error during user creation. Rolling back changes."
+        userdel -r $username
 
-    exit $exit_code
+        exit $exit_code
+    fi
+
+    echo "User '$username' created."
+
+    increment_start_point
 fi
-
-echo "User '$username' created."
 
 
 #######################################
@@ -32,35 +50,51 @@ echo "User '$username' created."
 # INSTALL SUDO
 #
 #######################################
-pacman -Sy sudo
+if [[ $start_point -eq 1 ]]; then
+    echo ""
+    echo "//// Installing 'sudo'..."
+    echo ""
 
-sed -i "s/#wheel ALL=(ALL) NOPASS/wheel ALL=(ALL) NOPASS/" /etc/sudoers
+    pacman -Sy sudo
 
-as_user(){
-    sudo --shell --set-home --user $username $@
-}
+    sed -i "s/#wheel ALL=(ALL) NOPASS/wheel ALL=(ALL) NOPASS/" /etc/sudoers
+
+    as_user(){
+        sudo --shell --set-home --user $username $@
+    }
+
+    echo "'sudo' installed."
+    
+    increment_start_point
+fi
 
 #######################################
 #
 # MAKE GIT DIRECTORIES
 #
 #######################################
-echo "Creating Git folders..."
+if [[ $start_point -eq 2 ]]; then
+    echo ""
+    echo "//// Creating Git folders..."
+    echo ""
 
-user_home="/home/$username"
+    user_home="/home/$username"
 
-as_user mkdir -p $user_home/git
-as_user mkdir -p $user_home/sys-git
+    as_user mkdir -p $user_home/git
+    as_user mkdir -p $user_home/sys-git
 
-echo "Created 'git' and 'sys-git' folders in '$username' home."
+    echo "Created 'git' and 'sys-git' folders in '$username' home."
 
-repo_name="dots"
-echo "Cloning '$repo_name' repo..."
+    repo_name="dots"
+    echo "Cloning '$repo_name' repo..."
 
-as_user git clone https://github.com/evanasse/$repo_name $user_home/git/$repo_name
+    as_user git clone https://github.com/evanasse/$repo_name $user_home/git/$repo_name
 
-if [[ $? -eq 0 ]]; then
-    echo "Cloned '$repo_name' repo in '$username' home."
+    if [[ $? -eq 0 ]]; then
+        echo "Cloned '$repo_name' repo in '$username' home."
+    fi
+
+    increment_start_point
 fi
 
 
@@ -69,11 +103,19 @@ fi
 # INSTALL RUST
 #
 #######################################
-echo "Install Rust tools..."
+if [[ $start_point -eq 3 ]]; then
+    echo ""
+    echo "//// Installing Rust..."
+    echo ""
 
-as_user curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | as_user sh -s -- -y
 
-as_user source $HOME/.cargo/env
+    as_user source $HOME/.cargo/env
 
-as_user rustup toolchain install beta
-as_user rustup default beta
+    as_user rustup toolchain install beta
+    as_user rustup default beta
+
+    echo "Rust installed."
+    
+    increment_start_point
+fi
