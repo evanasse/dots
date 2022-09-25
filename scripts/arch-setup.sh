@@ -3,23 +3,44 @@
 set -e
 
 echo "Starting points:"
-echo "[0] Create user"
-echo "[1] Install 'sudo'"
-echo "[2] Make Git directories"
-echo "[3] Install Rust"
-echo -n "Select starting point:"
+echo "[0] Upgrade system packages"
+echo "[1] Create user"
+echo "[2] Install 'sudo'"
+echo "[3] Make Git directories"
+echo "[4] Install Rust"
+echo -n "Select starting point: "
 read start_point
 
 increment_start_point(){
     start_point=$start_point+1
 }
 
+if [[ $start_point -gt 1 ]]; then
+    echo -n "Enter target username: "
+    read username
+fi
+
+#######################################
+#
+# UPGRADE SYSTEM PACKAGES
+#
+#######################################
+if [[ $start_point -eq 0 ]]; then
+    echo ""
+    echo "//// Upgrading system packages..."
+    echo ""
+
+    pacman -Syu --noconfirm
+
+    increment_start_point
+fi
+
 #######################################
 #
 # CREATE USER
 #
 #######################################
-if [[ $start_point -eq 0 ]]; then
+if [[ $start_point -eq 1 ]]; then
     echo ""
     echo "//// Creating user..."
     echo ""
@@ -50,7 +71,7 @@ fi
 # INSTALL SUDO
 #
 #######################################
-if [[ $start_point -eq 1 ]]; then
+if [[ $start_point -eq 2 ]]; then
     echo ""
     echo "//// Installing 'sudo'..."
     echo ""
@@ -73,7 +94,7 @@ fi
 # MAKE GIT DIRECTORIES
 #
 #######################################
-if [[ $start_point -eq 2 ]]; then
+if [[ $start_point -eq 3 ]]; then
     echo ""
     echo "//// Creating Git folders..."
     echo ""
@@ -103,7 +124,7 @@ fi
 # INSTALL RUST
 #
 #######################################
-if [[ $start_point -eq 3 ]]; then
+if [[ $start_point -eq 4 ]]; then
     echo ""
     echo "//// Installing Rust..."
     echo ""
