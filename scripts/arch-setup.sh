@@ -15,6 +15,10 @@ increment_start_point(){
     start_point=$start_point+1
 }
 
+as_user(){
+    sudo --shell --set-home --user $username $@
+}
+
 if [[ $start_point -gt 1 ]]; then
     echo -n "Enter target username: "
     read username
@@ -80,10 +84,6 @@ if [[ $start_point -eq 2 ]]; then
 
     sed -i "s/#wheel ALL=(ALL) NOPASS/wheel ALL=(ALL) NOPASS/" /etc/sudoers
 
-    as_user(){
-        sudo --shell --set-home --user $username $@
-    }
-
     echo "'sudo' installed."
     
     increment_start_point
@@ -131,10 +131,8 @@ if [[ $start_point -eq 4 ]]; then
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | as_user sh -s -- -y
 
-    as_user source $HOME/.cargo/env
-
-    as_user rustup toolchain install beta
-    as_user rustup default beta
+    as_user source $HOME/.cargo/env; rustup toolchain install beta
+    as_user source $HOME/.cargo/env; rustup default beta
 
     echo "Rust installed."
     
