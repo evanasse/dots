@@ -8,8 +8,18 @@ echo "[1] Create user"
 echo "[2] Install 'sudo'"
 echo "[3] Make Git directories"
 echo "[4] Install Rust"
-echo -n "Select starting point: "
-read start_point
+echo "[5] Install Paru"
+echo "[6] Install window manager stuff"
+read -p "Select starting point [0]: " start_point
+read -p "Select ending point [6]: " end_point
+
+if [[ -z $start_point ]]; then
+    $start_point = 0
+fi
+if [[ -z $end_point ]]; then
+    $end_point = 6
+fi
+
 
 increment_start_point(){
     start_point=$start_point+1
@@ -19,20 +29,21 @@ as_user(){
     sudo --shell --set-home --user $username $@
 }
 
-if [[ $start_point -gt 1 ]]; then
-    echo -n "Enter target username: "
-    read username
-fi
+installation_header(){
+    echo ""
+    echo "//// Installing $1..."
+    echo ""
+}
+
+read -p "Enter target username: " username
 
 #######################################
 #
 # UPGRADE SYSTEM PACKAGES
 #
 #######################################
-if [[ $start_point -eq 0 ]]; then
-    echo ""
-    echo "//// Upgrading system packages..."
-    echo ""
+if [[ $start_point -eq 0 && $start_point -le $end_point ]]; then
+    installation_header "Upgrading system packages"
 
     pacman -Syu --noconfirm
 
@@ -44,13 +55,8 @@ fi
 # CREATE USER
 #
 #######################################
-if [[ $start_point -eq 1 ]]; then
-    echo ""
-    echo "//// Creating user..."
-    echo ""
-
-    echo -n "Enter target username: "
-    read username
+if [[ $start_point -eq 1 && $start_point -le $end_point ]]; then
+    installation_header "Creating user"
 
     useradd -m -G users,wheel $username
     passwd $username
@@ -75,10 +81,8 @@ fi
 # INSTALL SUDO
 #
 #######################################
-if [[ $start_point -eq 2 ]]; then
-    echo ""
-    echo "//// Installing 'sudo'..."
-    echo ""
+if [[ $start_point -eq 2 && $start_point -le $end_point ]]; then
+    installation_header "Installing 'sudo'"
 
     pacman -Sy --noconfirm sudo
 
@@ -94,10 +98,8 @@ fi
 # MAKE GIT DIRECTORIES
 #
 #######################################
-if [[ $start_point -eq 3 ]]; then
-    echo ""
-    echo "//// Creating Git folders..."
-    echo ""
+if [[ $start_point -eq 3 && $start_point -le $end_point ]]; then
+    installation_header "Creating Git folders"
 
     user_home="/home/$username"
 
@@ -124,10 +126,8 @@ fi
 # INSTALL RUST
 #
 #######################################
-if [[ $start_point -eq 4 ]]; then
-    echo ""
-    echo "//// Installing Rust..."
-    echo ""
+if [[ $start_point -eq 4 && $start_point -le $end_point ]]; then
+    installation_header "Installing Rust"
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | as_user sh -s -- -y
 
@@ -137,4 +137,54 @@ if [[ $start_point -eq 4 ]]; then
     echo "Rust installed."
     
     increment_start_point
+fi
+
+
+#######################################
+#
+# INSTALL PARU
+#
+#######################################
+if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
+    installation_header "Installing Paru"
+
+    as_user sudo pacman -S --needed base-devel
+
+    as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru
+
+    cd /home/$username/sys-git/paru
+
+    as_user makepkg -si
+
+    echo "Paru installed."
+    
+    increment_start_point
+fi
+
+
+#######################################
+#
+# INSTALL WINDOW MANAGER STUFF
+#
+#######################################
+if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
+    installation_header "Installing window manager stuff"
+
+    as_user paru -Syu feh picom leftwm
+
+    echo "Window manager stuff installed."
+fi
+
+
+#######################################
+#
+# INSTALL TERMINAL STUFF
+#
+#######################################
+if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
+    installation_header "Installing window manager stuff"
+
+    as_user paru -Syu alacritty
+
+    echo "Window manager stuff installed."
 fi
