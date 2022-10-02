@@ -10,6 +10,7 @@ echo "[3] Make Git directories"
 echo "[4] Install Rust"
 echo "[5] Install Paru"
 echo "[6] Install window manager stuff"
+echo "[7] Install various system packages"
 read -p "Select starting point [0]: " start_point
 read -p "Select ending point [6]: " end_point
 
@@ -182,9 +183,23 @@ fi
 #
 #######################################
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
-    installation_header "Installing window manager stuff"
+    installation_header "Installing Alacritty"
 
     as_user paru -Sy --noconfirm alacritty
 
-    echo "Window manager stuff installed."
+    echo "Alacritty installed."
+fi
+
+
+#######################################
+#
+# INSTALL SYSTEM PACKAGES
+#
+#######################################
+if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
+    installation_header "Installing various system packages"
+
+    as_user paru -Sy --noconfirm mandb
+
+    echo "Various system packages installed."
 fi
