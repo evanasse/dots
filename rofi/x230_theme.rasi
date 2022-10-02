@@ -1,0 +1,31 @@
+* {
+    background: #2e3440;
+    foreground: #81a1c1;
+
+    background-color: @background;
+    text-color: @foreground;
+    line-style: "none";
+}
+window {
+    padding: 380;
+    width: 1366px;
+}
+mainbox {
+    spacing: 16;
+}
+inputbar {
+    spacing: 182;
+}
+prompt {
+    enabled: true;
+    text-color: @background;
+}
+entry {
+    vertical-align: 1;
+}
+case-indicator {
+    enabled: false;
+}
+list-view {
+    enabled: false;
+}

@@ -1,0 +1,5 @@
+require("custom.globals")
+require("custom.settings")
+require("custom.packer")
+require("custom.keymaps")
+require("custom.lsp")
