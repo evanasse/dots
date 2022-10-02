@@ -22,3 +22,4 @@ tmux:
 
 X:
 	ln -s ~/git/dots/X/.xinitrc ~/.xinitrc
+	ln -s ~/git/dots/X/.Xresources ~/.Xresources
