@@ -152,7 +152,9 @@ if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
 
     as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
 
-    as_user bash -c "cd /home/$username/sys-git/paru && makepkg -si"
+    cd /home/$username/sys-git/paru 
+
+    as_user makepkg -si
 
     echo "Paru installed."
     
