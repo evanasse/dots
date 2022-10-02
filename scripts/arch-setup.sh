@@ -148,7 +148,7 @@ fi
 if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
     installation_header "Installing Paru"
 
-    as_user sudo pacman -S --needed base-devel
+    as_user sudo pacman -Syu --needed base-devel
 
     as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru
 
