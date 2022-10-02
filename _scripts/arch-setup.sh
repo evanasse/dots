@@ -190,7 +190,9 @@ fi
 if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     installation_header "Installing terminal stuff"
 
-    as_user paru -Sy --noconfirm alacritty tmux
+    as_user paru -Sy --noconfirm alacritty tmux starship nushell
+
+    usermod vanasse -s /usr/bin/nu
 
     echo "Terminal stuff installed."
 

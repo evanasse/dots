@@ -1,0 +1,46 @@
+format = "$time$username[@](blue)$hostname$directory$git_branch$git_status$git_state$character"
+
+add_newline = false
+
+[time]
+format = "[\\[$time\\]]($style) "
+style = "purple"
+disabled = false
+
+[username]
+format = "[$user]($style)"
+style_user = "blue"
+style_root = "bold red"
+show_always = true
+disabled = false
+
+[hostname]
+format = "[$hostname]($style) "
+style = "blue"
+ssh_only = false
+disabled = false
+
+[directory]
+format = "[$path]($style) "
+style = "cyan"
+truncate_to_repo = false
+disabled = false
+
+[git_branch]
+format = "[\\($branch\\)]($style) "
+disabled = false
+
+[git_status]
+format = "[$ahead_behind]($style) "
+style = "yellow"
+diverged = "⇡⇣"
+disabled = false
+
+[git_state]
+disabled = false
+
+[character]
+format = "$symbol "
+success_symbol = "[](bold white)"
+error_symbol = "[](bold white)"
+disabled = false

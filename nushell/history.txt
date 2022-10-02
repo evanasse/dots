@@ -1,0 +1,56 @@
+nvim $nu.env-path
+nvim $nu.config-path
+vim ~/.config/starship.toml
+nvim ~/.config/starship.toml
+nvim $nu.config-path
+nu
+nu
+nvim $nu.env-path
+ls
+cd git/dots/
+nvim $nu.env-path
+ls
+tree
+ls
+nvim $nu.config-path
+ls
+nu
+ls
+nvim $nu.config-path
+ls
+nu
+nvim $nu.config-path
+ls
+nu
+nvim $nu.config-path
+ls
+exi
+nu
+nvim $nu.config-path
+ls
+exi
+nu
+nvim $nu.config-path
+ls
+nu
+ls
+nvim $nu.config-path
+ls
+ls -la
+nu
+nvim $nu.config-path
+ls
+nu
+nvim $nu.config-path
+ls
+ls -la
+ls | where size == dir
+ls | where size == "dir"
+ls | where type == dir
+ls | where type == dir | sort size
+ls | where type == dir | sort
+ls | where type == dir | sort-by size
+ls | where type == dir | sort-by modified
+ls | where type == dir | sort-by modified | reverse 
+echo $nu.config-path
+echo $nu.env-path
