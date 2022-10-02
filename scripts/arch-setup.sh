@@ -14,10 +14,10 @@ read -p "Select starting point [0]: " start_point
 read -p "Select ending point [6]: " end_point
 
 if [[ -z $start_point ]]; then
-    $start_point=0
+    start_point=0
 fi
 if [[ -z $end_point ]]; then
-    $end_point=6
+    end_point=6
 fi
 
 
