@@ -129,10 +129,10 @@ fi
 if [[ $start_point -eq 4 && $start_point -le $end_point ]]; then
     installation_header "Installing Rust"
 
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | as_user sh -s -- -y
+    pacman -Syu rustup
 
-    as_user /home/$username/.cargo/bin/rustup toolchain install beta
-    as_user /home/$username/.cargo/bin/rustup default beta
+    as_user rustup toolchain install beta
+    as_user rustup default beta
 
     echo "Rust installed."
     
@@ -152,9 +152,7 @@ if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
 
     as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
 
-    cd /home/$username/sys-git/paru
-
-    as_user makepkg -si
+    as_user bash -c "cd /home/$username/sys-git/paru && makepkg -si"
 
     echo "Paru installed."
     
