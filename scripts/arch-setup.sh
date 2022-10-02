@@ -31,7 +31,7 @@ as_user(){
 
 installation_header(){
     echo ""
-    echo "//// Installing $1..."
+    echo "//// $1..."
     echo ""
 }
 
