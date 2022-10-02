@@ -174,7 +174,7 @@ fi
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     installation_header "Installing desktop environment stuff"
 
-    as_user paru -Sy --noconfirm feh picom leftwm rofi nerd-fonts-ubuntu-mono
+    as_user paru -Sy --noconfirm feh picom leftwm rofi nerd-fonts-ubuntu-mono xorg-xinit
 
     echo "Desktop environment stuff installed."
 
