@@ -1,20 +1,20 @@
 all: alacritty leftwm nvim rofi tmux X
 
 alacritty:
-	ln -s alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+	ln -s ~/git/dots/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 leftwm:
-	ln -s leftwm ~/.config/leftwm
-	ln -s leftwm/themes/nord ~/.config/leftwm/themes/current
+	ln -s ~/git/dots/leftwm ~/.config/leftwm
+	ln -s ~/git/dots/leftwm/themes/nord ~/.config/leftwm/themes/current
 
 nvim:
-	ln -s nvim ~/.config/nvim
+	ln -s ~/git/dots/nvim ~/.config/nvim
 
 rofi:
-	ln -s rofi ~/.config/rofi
+	ln -s ~/git/dots/rofi ~/.config/rofi
 
 tmux:
-	ln -s tmux/.tmux.conf ~/.tmux.conf
+	ln -s ~/git/dots/tmux/.tmux.conf ~/.tmux.conf
 
 X:
-	ln -s X/.xinitrc ~/.xinitrc
+	ln -s ~/git/dots/X/.xinitrc ~/.xinitrc
