@@ -9,18 +9,19 @@ echo "[2] Install 'sudo'"
 echo "[3] Make Git directories"
 echo "[4] Install Rust"
 echo "[5] Install Paru"
-echo "[6] Install window manager stuff"
-echo "[7] Install various system packages"
-echo "[8] Install Neovim"
-echo "[9] Install extra apps"
+echo "[6] Install desktop environment stuff"
+echo "[7] Install terminal stuff"
+echo "[8] Install various system packages"
+echo "[9] Install Neovim"
+echo "[10] Install extra apps"
 read -p "Select starting point [0]: " start_point
-read -p "Select ending point [9]: " end_point
+read -p "Select ending point [10]: " end_point
 
 if [[ -z $start_point ]]; then
     start_point=0
 fi
 if [[ -z $end_point ]]; then
-    end_point=9
+    end_point=10
 fi
 
 
@@ -184,7 +185,7 @@ fi
 # INSTALL TERMINAL STUFF
 #
 #######################################
-if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
+if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     installation_header "Installing terminal stuff"
 
     as_user paru -Sy --noconfirm alacritty tmux
@@ -198,7 +199,7 @@ fi
 # INSTALL SYSTEM PACKAGES
 #
 #######################################
-if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
+if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
     installation_header "Installing various system packages"
 
     as_user paru -Sy --noconfirm mandb
@@ -212,7 +213,7 @@ fi
 # INSTALL NEOVIM
 #
 #######################################
-if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
+if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
     installation_header "Installing Neovim"
 
     as_user paru -Sy --noconfirm cmake unzip ninja tree-sitter curl
@@ -234,7 +235,7 @@ fi
 # INSTALL EXTRA APPS
 #
 #######################################
-if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
+if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
     installation_header "Installing extra apps"
 
     as_user paru -Sy --noconfirm librewolf
