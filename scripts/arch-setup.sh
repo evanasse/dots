@@ -129,7 +129,7 @@ fi
 if [[ $start_point -eq 4 && $start_point -le $end_point ]]; then
     installation_header "Installing Rust"
 
-    pacman -Syu rustup
+    pacman -Sy --noconfirm rustup
 
     as_user rustup toolchain install beta
     as_user rustup default beta
@@ -148,7 +148,7 @@ fi
 if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
     installation_header "Installing Paru"
 
-    as_user sudo pacman -Syu --needed base-devel
+    as_user sudo pacman -Sy --noconfirm --needed base-devel
 
     as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
 
@@ -168,7 +168,7 @@ fi
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     installation_header "Installing window manager stuff"
 
-    as_user paru -Syu feh picom leftwm
+    as_user paru -Sy --noconfirm feh picom leftwm
 
     echo "Window manager stuff installed."
 fi
@@ -182,7 +182,7 @@ fi
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     installation_header "Installing window manager stuff"
 
-    as_user paru -Syu alacritty
+    as_user paru -Sy --noconfirm alacritty
 
     echo "Window manager stuff installed."
 fi
