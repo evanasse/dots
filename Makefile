@@ -29,4 +29,3 @@ tmux:
 
 X:
 	ln -sf ~/git/dots/X/.xinitrc ~/.xinitrc
-	ln -sf ~/git/dots/X/.Xresources ~/.Xresources
