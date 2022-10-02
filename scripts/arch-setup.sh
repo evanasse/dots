@@ -154,7 +154,7 @@ if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
 
     cd /home/$username/sys-git/paru 
 
-    as_user makepkg -si
+    as_user makepkg -si --noconfirm
 
     echo "Paru installed."
     
