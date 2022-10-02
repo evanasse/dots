@@ -206,7 +206,7 @@ fi
 if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
     installation_header "Installing various system packages"
 
-    as_user paru -Sy --noconfirm man
+    as_user paru -Sy --noconfirm man ripgrep fd
 
     echo "Various system packages installed."
 
