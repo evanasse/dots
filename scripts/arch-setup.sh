@@ -150,7 +150,7 @@ if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
 
     as_user sudo pacman -Syu --needed base-devel
 
-    as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru
+    as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
 
     cd /home/$username/sys-git/paru
 
