@@ -177,6 +177,8 @@ if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     as_user paru -Sy --noconfirm feh picom leftwm rofi
 
     echo "Desktop environment stuff installed."
+
+    increment_start_point
 fi
 
 
@@ -191,6 +193,8 @@ if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     as_user paru -Sy --noconfirm alacritty tmux
 
     echo "Terminal stuff installed."
+
+    increment_start_point
 fi
 
 
@@ -205,6 +209,8 @@ if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
     as_user paru -Sy --noconfirm mandb
 
     echo "Various system packages installed."
+
+    increment_start_point
 fi
 
 
@@ -227,6 +233,8 @@ if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
     as_user make install
 
     echo "Neovim installed."
+
+    increment_start_point
 fi
 
 
@@ -241,4 +249,6 @@ if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
     as_user paru -Sy --noconfirm librewolf
 
     echo "Extra apps installed."
+
+    increment_start_point
 fi
