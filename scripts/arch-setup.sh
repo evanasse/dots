@@ -11,14 +11,16 @@ echo "[4] Install Rust"
 echo "[5] Install Paru"
 echo "[6] Install window manager stuff"
 echo "[7] Install various system packages"
+echo "[8] Install Neovim"
+echo "[9] Install extra apps"
 read -p "Select starting point [0]: " start_point
-read -p "Select ending point [6]: " end_point
+read -p "Select ending point [9]: " end_point
 
 if [[ -z $start_point ]]; then
     start_point=0
 fi
 if [[ -z $end_point ]]; then
-    end_point=6
+    end_point=9
 fi
 
 
@@ -165,15 +167,15 @@ fi
 
 #######################################
 #
-# INSTALL WINDOW MANAGER STUFF
+# INSTALL DESKTOP ENVIRONMENT STUFF
 #
 #######################################
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
-    installation_header "Installing window manager stuff"
+    installation_header "Installing desktop environment stuff"
 
-    as_user paru -Sy --noconfirm feh picom leftwm
+    as_user paru -Sy --noconfirm feh picom leftwm rofi
 
-    echo "Window manager stuff installed."
+    echo "Desktop environment stuff installed."
 fi
 
 
@@ -183,11 +185,11 @@ fi
 #
 #######################################
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
-    installation_header "Installing Alacritty"
+    installation_header "Installing terminal stuff"
 
-    as_user paru -Sy --noconfirm alacritty
+    as_user paru -Sy --noconfirm alacritty tmux
 
-    echo "Alacritty installed."
+    echo "Terminal stuff installed."
 fi
 
 
@@ -202,4 +204,40 @@ if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     as_user paru -Sy --noconfirm mandb
 
     echo "Various system packages installed."
+fi
+
+
+#######################################
+#
+# INSTALL NEOVIM
+#
+#######################################
+if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
+    installation_header "Installing Neovim"
+
+    as_user paru -Sy --noconfirm cmake unzip ninja tree-sitter curl
+
+    as_user git clone https://github.com/neovim/neovim /home/$username/sys-git/neovim
+
+    cd /home/$username/sys-git/neovim 
+
+    as_user make CMAKE_BUILD_TYPE=Release
+
+    as_user make install
+
+    echo "Neovim installed."
+fi
+
+
+#######################################
+#
+# INSTALL EXTRA APPS
+#
+#######################################
+if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
+    installation_header "Installing extra apps"
+
+    as_user paru -Sy --noconfirm librewolf
+
+    echo "Extra apps installed."
 fi
