@@ -230,7 +230,7 @@ if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
 
     as_user make CMAKE_BUILD_TYPE=Release
 
-    as_user make install
+    as_user sudo make install
 
     echo "Neovim installed."
 
