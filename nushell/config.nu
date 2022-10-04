@@ -509,14 +509,14 @@ let-env config = {
       event: { send: menu name: commands_with_description }
     }
     {
-      name: up-arrow
+      name: up_arrow
       modifier: alt
       keycode: char_k
       mode: emacs
       event: { send: Up }
     }
     {
-      name: down-arrow
+      name: down_arrow
       modifier: alt
       keycode: char_j
       mode: emacs
