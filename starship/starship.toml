@@ -31,7 +31,7 @@ format = "[\\($branch\\)]($style) "
 disabled = false
 
 [git_status]
-format = "[$ahead_behind]($style) "
+format = "([$ahead_behind]($style) )"
 style = "yellow"
 diverged = "⇡⇣"
 disabled = false
