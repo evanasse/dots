@@ -137,7 +137,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10
+  size: 8
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -172,6 +172,55 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # COLORS
+
+farout: &farout
+  primary:
+    background: '#0F0908'
+    foreground: '#E0CCAE'
+    dim_foreground: '#A4896F'
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  # vi_mode_cursor:
+  #   text: '#2e3440'
+  #   cursor: '#d8dee9'
+  selection:
+    text: CellBackground
+    background: CellForeground
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
+  normal:
+    black: '#1F1311'
+    red: '#DF674C'
+    green: '#C4A98F'
+    yellow: '#FFC786'
+    blue: '#F49D69'
+    magenta: '#AA6B73'
+    cyan: '#C69478'
+    white: '#F2DDBC'
+  # bright:
+  #   black: '#4c566a'
+  #   red: '#bf616a'
+  #   green: '#a3be8c'
+  #   yellow: '#ebcb8b'
+  #   blue: '#81a1c1'
+  #   magenta: '#b48ead'
+  #   cyan: '#8fbcbb'
+  #   white: '#eceff4'
+  dim:
+    black: '#0F0908'
+    red: '#BF472C'
+    green: '#A4896F'
+    yellow: '#F2A766'
+    blue: '#D47D49'
+    magenta: '#8A4B53'
+    cyan: '#A67458'
+    white: '#E0CCAE'
 
 nord: &nord
   primary:
@@ -222,7 +271,7 @@ nord: &nord
     cyan: '#6d96a5'
     white: '#aeb3bb'
 
-colors: *nord
+colors: *farout
 
 # Visual Bell
 #
