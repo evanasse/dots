@@ -1,8 +1,12 @@
-all: alacritty leftwm nvim rofi tmux X
+all: alacritty eww leftwm nvim rofi tmux X
 
 alacritty:
 	mkdir -p ~/.config
 	ln -sf ~/git/dots/alacritty ~/.config/alacritty
+
+eww:
+	mkdir -p ~/.config
+	ln -sf ~/git/dots/leftwm/theme/eww-bar ~/.config/eww
 
 leftwm:
 	mkdir -p ~/.config

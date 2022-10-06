@@ -526,3 +526,6 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
+
+alias vim = nvim
+alias vi = vim
