@@ -529,3 +529,4 @@ source ~/.cache/starship/init.nu
 
 alias vim = nvim
 alias vi = vim
+alias dots = cd ~/git/dots
