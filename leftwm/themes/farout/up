@@ -24,6 +24,12 @@ elif [ -x "$(command -v compton)" ]; then
   compton &> /dev/null &
 fi
 
+# Set Keymap
+setxkbmap -rules evdev -model evdev -layout us -variant intl
+
+# Set brightness
+xbacklight =50
+
 # Set the theme.toml config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
 

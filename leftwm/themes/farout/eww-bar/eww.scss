@@ -4,65 +4,48 @@
 
 //Global Styles
 .bar0 {
-  background-color: #3a3a3a;
-  color: #b0b4bc;
+  background-color: #1F1311;
+  color: #E0CCAE;
   padding: 10px;
+  font-family: "Ubuntu Mono Nerd Font";
+  font-size: medium;
 }
 
 // Styles on classes (see eww.yuck for more information)
 
-.sidestuff slider {
-  all: unset;
-  color: #ffd5cd;
-}
+// .sidestuff slider {
+//   all: unset;
+//   color: #ffd5cd;
+// }
 
-.metric scale trough highlight {
-  all: unset;
-  background-color: #D35D6E;
-  color: #000000;
-  border-radius: 10px;
-}
 .metric scale trough {
   all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
+  background-color: #0F0908;
+  border-radius: 10px;
+  min-height: 5px;
   min-width: 50px;
   margin-left: 10px;
   margin-right: 20px;
 }
 .metric scale trough highlight {
   all: unset;
-  background-color: #D35D6E;
-  color: #000000;
+  background-color: #BF472C;
   border-radius: 10px;
 }
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-.label-ram {
-  font-size: large;
-}
-.workspaces button:hover {
-  color: #D35D6E;
+.ws {
+  margin-top: 2px;
 }
 .ws-button-mine {
-  color: #4e4e4e;
-  background-color: #ffd5ca;
+  color: #BF472C;
 }
 .ws-button-visible {
-  color: #D35D6E;
-  background-color: #4e4e4e;
+  color: #BF472C;
 }
 .ws-button-busy {
-  color: #D35D6E;
+  color: #A67458;
 }
 .ws-button {
-  color: #b0b4bc;
+  color: #A67458;
+  margin-left: 2px;
+  margin-right: 2px;
 }
