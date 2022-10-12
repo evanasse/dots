@@ -41,7 +41,7 @@ let-env NU_PLUGIN_DIRS = [
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+let-env PATH = ($env.PATH | split row (char esep) | prepend '~/sys-git/eww/target/release/')
 
 let-env LS_COLORS = (dircolors -b ~/.config/nushell/.dir_colors | lines | get 0 | str substring '10,')
 
