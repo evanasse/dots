@@ -1,6 +1,7 @@
 format = "$time$username[@](blue)$hostname$directory$git_branch$git_status$git_state$character"
 
 add_newline = false
+command_timeout = 800
 
 [time]
 format = "[\\[$time\\]]($style) "
