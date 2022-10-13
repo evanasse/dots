@@ -531,3 +531,7 @@ alias vim = nvim
 alias vi = vim
 alias dots = cd ~/git/dots
 alias tmux = tmux -u
+
+if (^which tmux) != "" && $env.TERM !~ "screen" && $env.TERM !~ "tmux" && $env.TERM !~ "linux" && "TMUX" not-in (env).name && "XDG_CURRENT_DESKTOP" in (env).name {
+  tmux
+}
