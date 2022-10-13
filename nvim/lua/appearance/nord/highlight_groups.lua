@@ -4,7 +4,7 @@ end
 
 local augroup = "lsp_custom_hl_augroup"
 
-local colors = require("nord.named_colors")
+local colors = require("appearance.farout.named_colors")
 
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
@@ -80,5 +80,29 @@ vim.api.nvim_create_autocmd(
       group = augroup,
       pattern = { "*" },
       command = "hi! link CursorLine Search",
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "LineNr", tostring(colors.red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "LineNrAbove", tostring(colors.blue))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = "hi! link LineNrBelow LineNrAbove"
     }
 )

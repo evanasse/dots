@@ -1,5 +1,5 @@
-farout: alacritty-farout eww-farout leftwm-farout nushell-farout nvim rofi-farout tmux X
-nord: alacritty-nord eww-nord leftwm-nord nushell-nord nvim rofi-nord tmux X
+farout: alacritty-farout eww-farout leftwm-farout nushell-farout nvim-farout rofi-farout tmux X-farout
+nord: alacritty-nord eww-nord leftwm-nord nushell-nord nvim-nord rofi-nord tmux X-nord
 
 alacritty-farout:
 	mkdir -p ~/.config/alacritty
@@ -37,9 +37,14 @@ nushell-nord:
 	ln -sf ~/git/dots/nushell/config.nu ~/.config/nushell/config.nu
 	ln -sf ~/git/dots/nushell/.dir_colors_nord ~/.config/nushell/.dir_colors
 
-nvim:
-	mkdir -p ~/.config
-	ln -sf ~/git/dots/nvim ~/.config/nvim
+nvim-farout:
+	mkdir -p ~/.config/nvim
+	ln -sf ~/git/dots/nvim/* --target-directory ~/.config/nvim
+	sed -i -r --follow-symlink 's/(require("appearance.).*/\1farout")/' ~/.config/nvim/after/plugin/appearance/colorscheme.lua
+nvim-nord:
+	mkdir -p ~/.config/nvim
+	ln -sf ~/git/dots/nvim/* --target-directory ~/.config/nvim
+	sed -i -r --follow-symlink 's/(require("appearance.).*/\nord")/' ~/.config/nvim/after/plugin/appearance/colorscheme.lua
 
 rofi-farout:
 	mkdir -p ~/.config/rofi
@@ -57,5 +62,9 @@ starship:
 tmux:
 	ln -sf ~/git/dots/tmux/.tmux.conf ~/.tmux.conf
 
-X:
+X-farout:
 	ln -sf ~/git/dots/X/.xinitrc ~/.xinitrc
+	ln -sf ~/git/dots/X/farout-Xresources ~/.Xresources
+X-nord:
+	ln -sf ~/git/dots/X/.xinitrc ~/.xinitrc
+	ln -sf ~/git/dots/X/nord-Xresources ~/.Xresources

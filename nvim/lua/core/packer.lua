@@ -24,10 +24,12 @@ return require('packer').startup(function(use)
 
   -- Appearance
   use 'shaunsingh/nord.nvim'
+  use 'fcpg/vim-farout'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+  use 'xiyaowong/nvim-transparent'
 
   -- Active utilities
   use {

@@ -1,5 +1,3 @@
-vim.cmd("colorscheme nord")
-
 local colors = require("nord.named_colors")
 
 -- Statusline
@@ -162,7 +160,7 @@ require('lualine').setup {
           component = '',
           progress = '',
         },
-        spinner_symbols = require("custom.spinner").half_spinner_rev(),
+        spinner_symbols = require("core.spinner").half_spinner_rev(),
         timer = {spinner=50}
       }
     },
