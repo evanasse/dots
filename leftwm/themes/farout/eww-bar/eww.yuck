@@ -49,7 +49,7 @@
 (defwidget icon_text [label value text_style]
   (box :orientation "h"
        :space-evenly false
-    (label :text label :style "margin-right: 3px")
+    (label :class "label" :text label )
     (label :text value :style text_style)))
 
 (defpoll volume_label_poll :interval "0.1s"
@@ -75,9 +75,9 @@
   :monitor 0
   :windowtype "dock"
   :geometry (geometry :x "0%"
-                      :y "5px"
-                      :width "1358px"
-                      :height "14px"
+                      :y "1%"
+                      :width "99%"
+                      ;:height "14px"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
+  :reserve (struts :side "top" :distance "5%")
   (bar))
