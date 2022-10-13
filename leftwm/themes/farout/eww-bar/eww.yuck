@@ -52,9 +52,9 @@
     (label :class "label" :text label )
     (label :text value :style text_style)))
 
-(defpoll volume_label_poll :interval "0.1s"
+(defpoll volume_label_poll :interval "1s"
   "scripts/volume label")
-(defpoll volume_value_poll :interval "0.1s"
+(defpoll volume_value_poll :interval "0.3s"
   "scripts/volume value")
 
 (defpoll time_poll :interval "10s"

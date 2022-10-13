@@ -6,7 +6,6 @@
 .bar0 {
   background-color: #1F1311;
   color: #E0CCAE;
-  padding: 4em;
   font-family: "Ubuntu Mono Nerd Font";
   font-size: medium;
 }
@@ -36,8 +35,9 @@
 
 // Sidestuff
 .label {
-    font-size: large;
-    margin-right: 0.5em;
+  font-size: large;
+  margin-right: 0.5em;
+  color: #A67458;
 }
 
 .metric scale trough {
@@ -47,7 +47,7 @@
   min-height: 0.3em;
   min-width: 3em;
   margin-left: 0.5em;
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 .metric scale trough highlight {
