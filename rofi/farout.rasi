@@ -1,0 +1,16 @@
+* {
+    background: #1F1311;
+    foreground: #E0CCAE;
+
+    background-color: @background;
+    text-color: @foreground;
+    line-style: "none";
+}
+window {
+    fullscreen: true;
+    children: [entry];
+}
+entry {
+    vertical-align: 0.5;
+    margin: 0% 0% 0% 45%;
+}
