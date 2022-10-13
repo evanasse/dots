@@ -3,19 +3,19 @@ local colors = require("appearance.farout.named_colors")
 local farout = {}
 
 farout.normal = {
-	a = { fg = colors.dark_black, bg = colors.dark_red },
+	a = { fg = colors.dark_black, bg = colors.dark_magenta },
 	b = { fg = colors.dark_white, bg = nil },
 	c = { fg = colors.white, bg = nil },
 }
 
 farout.insert = {
-	a = { fg = colors.dark_black, bg = colors.green },
+	a = { fg = colors.dark_black, bg = colors.blue },
 	b = { fg = colors.dark_white, bg = nil },
 	c = {  fg = colors.white, bg = nil },
 }
 
 farout.visual = {
-	a = { fg = colors.dark_black, bg = colors.magenta },
+	a = { fg = colors.dark_black, bg = colors.dark_red },
 	b = { fg = colors.dark_white, bg = nil },
 	c = {  fg = colors.white, bg = nil },
 }
@@ -132,7 +132,7 @@ require('lualine').setup {
         icons_enabled = false,
         buffers_color = {
           -- Same values as the general color option can be used here.
-          active = { fg = colors.black, bg = colors.dark_red },     -- Color for active buffer.
+          active = { fg = colors.black, bg = colors.dark_magenta },     -- Color for active buffer.
           inactive = { fg = colors.dark_cyan, bg = "none" }, -- Color for inactive buffer.
         },
         symbols = {

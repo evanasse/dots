@@ -2,7 +2,7 @@ local function set_highlight_command(hl_group, fg_string)
   return string.format("hi! %s guifg='%s'", hl_group, fg_string)
 end
 
-local augroup = "lsp_custom_hl_augroup"
+local augroup = "custom_hl_augroup"
 
 local colors = require("appearance.farout.named_colors")
 
@@ -82,6 +82,9 @@ vim.api.nvim_create_autocmd(
       command = "hi! link CursorLine Search",
     }
 )
+-- ==============
+--  Line numbers
+-- ==============
 vim.api.nvim_create_autocmd(
     { "VimEnter" },
     {
@@ -104,5 +107,92 @@ vim.api.nvim_create_autocmd(
       group = augroup,
       pattern = { "*" },
       command = "hi! link LineNrBelow LineNrAbove"
+    }
+)
+
+-- ===========
+--  Selection
+-- ===========
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg='%s'", "Search", tostring(colors.dark_black), tostring(colors.dark_green))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg='%s'", "IncSearch", tostring(colors.dark_black), tostring(colors.dark_yellow))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg='%s'", "Visual", tostring(colors.dark_black), tostring(colors.dark_red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg='%s'", "CursorLine", tostring(colors.dark_black), tostring(colors.blue))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg='%s'", "TelescopeSelection", tostring(colors.dark_black), tostring(colors.dark_magenta))
+    }
+)
+-- ============
+--  Completion
+-- ============
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemAbbrDefault", tostring(colors.dark_white))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemAbbrDeprecatedDefault", tostring(colors.red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemAbbrMatchDefault", tostring(colors.dark_red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemAbbrMatchFuzzyDefault", tostring(colors.dark_red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemKindDefault", tostring(colors.magenta))
     }
 )
