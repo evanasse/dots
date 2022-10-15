@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Filetype
-  use "nathom/filetype.nvim"
+  use "elkowar/yuck.vim"
 
   -- Appearance
   use 'shaunsingh/nord.nvim'
@@ -41,7 +41,6 @@ return require('packer').startup(function(use)
   }
   use "tpope/vim-unimpaired"
   use "tpope/vim-commentary"
-  use "jiangmiao/auto-pairs"
   use {
     "kylechui/nvim-surround",
     config = function()
