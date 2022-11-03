@@ -150,7 +150,7 @@ let dark_theme = {
     record: white
     list: white
     block: white
-    hints: dark_gray
+    hints: { attr: h }
 
     # shapes are used to change the cli syntax highlighting
     shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
@@ -201,7 +201,7 @@ let light_theme = {
     record: white
     list: white
     block: white
-    hints: dark_gray
+    hints: { attr: h }
 
     # shapes are used to change the cli syntax highlighting
     shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
@@ -248,7 +248,7 @@ let-env config = {
   use_grid_icons: true
   footer_mode: "auto" # always, never, number_of_rows, auto
   quick_completions: true  # set this to false to prevent auto-selecting completions when only one remains
-  partial_completions: true  # set this to false to prevent partial filling of the prompt
+  partial_completions: false  # set this to false to prevent partial filling of the prompt
   completion_algorithm: "prefix"  # prefix, fuzzy
   float_precision: 2
   # buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
@@ -259,11 +259,11 @@ let-env config = {
   sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
   history_file_format: "plaintext" # "sqlite" or "plaintext"
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
-  disable_table_indexes: false # set to true to remove the index column from tables
+  #disable_table_indexes: false # set to true to remove the index column from tables
   cd_with_abbreviations: false # set to true to allow you to do things like cd s/o/f and nushell expand it to cd some/other/folder
   case_sensitive_completions: false # set to true to enable case-sensitive completions
   enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
-  max_external_completion_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
+  max_external_completion_results: 64 # setting it lower can improve completion performance at the cost of omitting some options
   # A strategy of managing table view in case of limited space.
   table_trim: {
     methodology: wrapping, # truncating
@@ -294,7 +294,7 @@ let-env config = {
       {
         name: completion_menu
         only_buffer_difference: false
-        marker: "| "
+        marker: ""
         type: {
             layout: columnar
             columns: 4
@@ -522,10 +522,41 @@ let-env config = {
       mode: emacs
       event: { send: Down }
     }
+    {
+      name: insert_last_token
+      modifier: alt
+      keycode: char_.
+      mode: emacs
+      event:
+      [
+        { edit: InsertString, value: " !$" }
+        { send: Enter }
+      ]
+    }
   ]
 }
 
-source ~/.cache/starship/init.nu
+#### STARTSHIP SETUP
+let-env STARSHIP_SHELL = "nu"
+let-env STARSHIP_SESSION_KEY = (random chars -l 16)
+let-env PROMPT_MULTILINE_INDICATOR = (^/usr/bin/starship prompt --continuation)
+
+# Does not play well with default character module.
+# TODO: Also Use starship vi mode indicators?
+let-env PROMPT_INDICATOR = ""
+
+let-env PROMPT_COMMAND = {
+    # jobs are not supported
+    let width = ((term size).columns | into string)
+    ^/usr/bin/starship prompt $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
+}
+
+# Not well-suited for `starship prompt --right`.
+# Built-in right prompt is equivalent to $fill$right_format in the first prompt line.
+# Thus does not play well with default `add_newline = True`.
+let-env PROMPT_COMMAND_RIGHT = {''}
+
+####
 
 alias vim = nvim
 alias vi = vim
@@ -535,3 +566,12 @@ alias tmux = tmux -u
 if (^which tmux) != "" && $env.TERM !~ "screen" && $env.TERM !~ "tmux" && $env.TERM !~ "linux" && "TMUX" not-in (env).name && "XDG_CURRENT_DESKTOP" in (env).name {
   tmux
 }
+
+def-env br_cmd [] {
+  let cmd_file = (^mktemp | str trim);
+  ^broot --outcmd $cmd_file;
+  let-env cmd = ((open $cmd_file) | str trim);
+  ^rm $cmd_file;
+}
+# Broot file manager
+alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
