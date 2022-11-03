@@ -60,6 +60,7 @@ require('rust-tools').setup({
         end
       })
     end,
+    cmd = { 'rust-analyzer' },
     settings = {
       standalone = false,
       ["rust-analyzer"] = {
