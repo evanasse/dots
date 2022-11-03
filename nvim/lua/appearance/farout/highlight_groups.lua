@@ -196,3 +196,46 @@ vim.api.nvim_create_autocmd(
       command = string.format("hi! %s guifg='%s' guibg=NONE", "CmpItemKindDefault", tostring(colors.magenta))
     }
 )
+-- ============
+--    Syntax
+-- ============
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "Type", tostring(colors.green))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticError", tostring(colors.red))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticWarn", tostring(colors.yellow))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticInfo", tostring(colors.cyan))
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimEnter" },
+    {
+      group = augroup,
+      pattern = { "*" },
+      command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticInfo", tostring(colors.dark_white))
+    }
+)
