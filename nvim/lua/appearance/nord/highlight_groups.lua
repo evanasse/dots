@@ -4,7 +4,7 @@ end
 
 local augroup = "lsp_custom_hl_augroup"
 
-local colors = require("appearance.farout.named_colors")
+local colors = require("nord.named_colors")
 
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
