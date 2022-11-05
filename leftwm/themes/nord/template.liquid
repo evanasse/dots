@@ -1,20 +1,19 @@
+{% assign mine_open = ' (button :class "ws-button-mine ws" :onclick "leftwm-command \"SendWorkspaceToTag ' %}
+{% assign visible_open = ' (button :class "ws-button-visible ws" :onclick "leftwm-command \"SendWorkspaceToTag ' %}
+{% assign busy_open = ' (button :class "ws-button-busy ws" :onclick "leftwm-command \"SendWorkspaceToTag ' %}
+{% assign close = '`)' %}
+{% assign unoccupied = ' (button :class "ws-button ws" :onclick "leftwm-command \"SendWorkspaceToTag ' %}
+
+{{'(box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 10'}}
 {% for tag in workspace.tags %}
 {% if tag.mine %}
-%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{F#3b4252}%{B#81a1c1}  {{tag.name}}  %{B-}%{F-}
-%{A}
+{{mine_open}}{{workspace.index | append: ' ' | append: tag.index | append: '\"" `'}}{{ "" }}{{close}}
 {% elsif tag.visible  %}
-%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{F#000000}%{B#d8dee9}  {{tag.name}}  %{B-}%{F-}
-%{A}
-{% elsif tag.busy %}
-%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{F#81a1c1}  {{tag.name}}  %{F-}
-%{A}
+{{visible_open}}{{workspace.index | append: ' ' | append: tag.index | append: '\"" `'}}{{ "" }}{{close}}
+{% elsif tag.busy  %}
+{{busy_open}}{{workspace.index | append: ' ' | append: tag.index | append: '\"" `'}}{{ "" }}{{close}}
 {% else %}
-%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{F#d8dee9}  {{tag.name}}  %{F-}
-%{A}
+{{unoccupied}}{{workspace.index | append: ' ' | append: tag.index | append: '\"" `'}}{{ "" }}{{close}}
 {% endif %}
 {% endfor %}
-%{c}
+{{")"}}

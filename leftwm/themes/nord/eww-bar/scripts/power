@@ -1,0 +1,65 @@
+#!/bin/sh
+
+battery_path="/sys/class/power_supply/BAT0/"
+capacity="$(cat "$battery_path/capacity")"
+
+battery_icon() {
+    if [[ $1 -gt "90" ]]; then
+        icon=""
+    elif [[ $1 -gt "80" ]]; then
+        icon=""
+    elif [[ $1 -gt "70" ]]; then
+        icon=""
+    elif [[ $1 -gt "60" ]]; then
+        icon=""
+    elif [[ $1 -gt "50" ]]; then
+        icon=""
+    elif [[ $1 -gt "40" ]]; then
+        icon=""
+    elif [[ $1 -gt "30" ]]; then
+        icon=""
+    elif [[ $1 -gt "20" ]]; then
+        icon=""
+    elif [[ $1 -gt "10" ]]; then
+        icon=""
+    elif [[ $1 -gt "0" ]]; then
+        icon=""
+    else
+        icon=""
+    fi
+
+    echo $icon
+}
+
+label() {
+    if [[ -z battery_path ]]; then
+        label="ﮣ"
+    else
+        status=$(cat "$battery_path/status")
+        if [[ $status == "Charging" ]]; then
+            label=""
+        elif [[ $status == "Discharging" ]]; then
+            label=$(battery_icon $capacity)
+        elif [[ $status == "Full" ]]; then
+            label=""
+        else
+            label=""
+        fi
+    fi
+
+    echo $label
+}
+
+value() {
+    if [[ -z capacity ]]; then
+        echo "100"
+    else
+        echo $capacity
+    fi
+}
+
+if [[ $1 == "label" ]]; then
+   label
+elif [[ $1 == "value" ]]; then
+   value
+fi
