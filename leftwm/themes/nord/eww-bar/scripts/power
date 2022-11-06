@@ -36,7 +36,7 @@ label() {
         label="ﮣ"
     else
         status=$(cat "$battery_path/status")
-        if [[ $status == "Charging" ]]; then
+        if [[ $status == "Charging" || $status == "Not charging" ]]; then
             label=""
         elif [[ $status == "Discharging" ]]; then
             label=$(battery_icon $capacity)
