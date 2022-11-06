@@ -17,7 +17,7 @@ eww-nord:
 	mkdir -p ~/.config
 	ln -snf ~/git/dots/leftwm/themes/nord/eww-bar ~/.config/eww
 eww-reload:
-	# Do it a few times because sometime it fails
+	# Do it a few times because sometimes it fails
 	nu -c "ps | where name =~ eww | get pid | each { |it| kill \$$it }" || true
 	nu -c "ps | where name =~ eww | get pid | each { |it| kill \$$it }" || true
 	nu -c "ps | where name =~ eww | get pid | each { |it| kill \$$it }" || true
