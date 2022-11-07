@@ -22,3 +22,5 @@ tags
 
 # Persistent undo
 [._]*.un~
+
+history.txt
