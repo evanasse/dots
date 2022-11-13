@@ -174,7 +174,7 @@ fi
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     installation_header "Installing desktop environment stuff"
 
-    as_user paru -Sy --noconfirm feh picom rofi nerd-fonts-ubuntu-mono xorg-server xorg-xinit gtk3 gtk-layer-shell pango gdk-pixbuf2 cairo glib2 gcc-libs glibc
+    as_user paru -Sy --noconfirm feh picom rofi ttf-ubuntumono-nerd xorg-server xorg-xinit gtk3 gtk-layer-shell pango gdk-pixbuf2 cairo glib2 gcc-libs glibc
     as_user cargo install leftwm
 
     as_user git clone https://github.com/elkowar/eww /home/$username/sys-git/eww
