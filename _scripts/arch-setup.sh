@@ -201,7 +201,7 @@ if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
 
     as_user paru -Sy --noconfirm alacritty tmux starship nushell
 
-    usermod vanasse -s /usr/bin/nu
+    usermod $username -s /usr/bin/nu
 
     echo "Terminal stuff installed."
 
