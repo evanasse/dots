@@ -257,7 +257,7 @@ fi
 if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
     installation_header "Installing extra apps"
 
-    as_user paru -Sy --noconfirm librewolf
+    as_user paru -Sy --noconfirm librewolf-bin
 
     echo "Extra apps installed."
 
