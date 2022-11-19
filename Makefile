@@ -1,3 +1,5 @@
+is_4k=$$(xrandr | grep "current 3840")
+
 farout: alacritty-farout leftwm-farout eww-farout nushell-farout nvim-farout rofi-farout tmux X-farout starship eww-reload
 nord: alacritty-nord leftwm-nord eww-nord nushell-nord nvim-nord rofi-nord tmux X-nord starship eww-reload
 
@@ -5,17 +7,35 @@ alacritty-farout:
 	mkdir -p ~/.config/alacritty
 	ln -snf ~/git/dots/alacritty/* --target-directory ~/.config/alacritty
 	sed -i -r --follow-symlink 's/(colors:).*/\1 *farout/' ~/.config/alacritty/alacritty.yml
+	@if [[ $is_4k ]]; then\
+		sed -i -r --follow-symlink 's/(size:).*/\1 *size_4k/' ~/.config/alacritty/alacritty.yml;\
+	else\
+		sed -i -r --follow-symlink 's/(size:).*/\1 *size_regular/' ~/.config/alacritty/alacritty.yml;\
+	fi
 alacritty-nord:
 	mkdir -p ~/.config/alacritty
 	ln -snf ~/git/dots/alacritty/* --target-directory ~/.config/alacritty
 	sed -i -r --follow-symlink 's/(colors:).*/\1 *nord/' ~/.config/alacritty/alacritty.yml
+	@if [[ $is_4k ]]; then\
+		sed -i -r --follow-symlink 's/(size:).*/\1 *size_4k/' ~/.config/alacritty/alacritty.yml;\
+	else\
+		sed -i -r --follow-symlink 's/(size:).*/\1 *size_regular/' ~/.config/alacritty/alacritty.yml;\
+	fi
 
 eww-farout:
 	mkdir -p ~/.config
-	ln -snf ~/git/dots/leftwm/themes/farout/eww-bar ~/.config/eww
+	@if [[ $is_4k ]]; then\
+		ln -snf ~/git/dots/leftwm/themes/4k/farout/eww-bar ~/.config/eww;\
+	else\
+		ln -snf ~/git/dots/leftwm/themes/farout/eww-bar ~/.config/eww;\
+	fi
 eww-nord:
 	mkdir -p ~/.config
-	ln -snf ~/git/dots/leftwm/themes/nord/eww-bar ~/.config/eww
+	@if [[ $is_4k ]]; then\
+		ln -snf ~/git/dots/leftwm/themes/4k/nord/eww-bar ~/.config/eww;\
+	else\
+		ln -snf ~/git/dots/leftwm/themes/nord/eww-bar ~/.config/eww;\
+	fi
 eww-reload:
 	# Do it a few times because sometimes it fails
 	nu -c "ps | where name =~ eww | get pid | each { |it| kill \$$it }" || true
@@ -27,12 +47,21 @@ eww-reload:
 leftwm-farout:
 	mkdir -p ~/.config/leftwm
 	ln -snf ~/git/dots/leftwm/* --target-directory ~/.config/leftwm
-	ln -snf ~/git/dots/leftwm/themes/farout ~/.config/leftwm/themes/current
+	@if [[ $is_4k ]]; then\
+		echo "allo";\
+		ln -snf ~/git/dots/leftwm/themes/4k/farout ~/.config/leftwm/themes/current;\
+	else\
+		ln -snf ~/git/dots/leftwm/themes/farout ~/.config/leftwm/themes/current;\
+	fi
 	leftwm-command SoftReload
 leftwm-nord:
 	mkdir -p ~/.config/leftwm
 	ln -snf ~/git/dots/leftwm ~/.config/leftwm
-	ln -snf ~/git/dots/leftwm/themes/nord ~/.config/leftwm/themes/current
+	@if [[ $is_4k ]]; then\
+		ln -snf ~/git/dots/leftwm/themes/4k/nord ~/.config/leftwm/themes/current;\
+	else\
+		ln -snf ~/git/dots/leftwm/themes/nord ~/.config/leftwm/themes/current;\
+	fi
 	leftwm-command SoftReload
 
 nushell-farout:

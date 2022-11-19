@@ -1,0 +1,59 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar0 {
+  background-color: #1F1311;
+  color: #E0CCAE;
+  font-family: "Ubuntu Mono Nerd Font";
+  font-size: 2.0em;
+  border-radius: 0.7em;
+  opacity: 0.96;
+}
+
+// Workspaces
+.ws {
+  margin: 0.5em;
+}
+
+.ws-button-mine {
+  color: #BF472C;
+}
+
+.ws-button-visible {
+  color: #A67458;
+}
+
+.ws-button-busy {
+  color: #A67458;
+}
+
+.ws-button {
+  color: #A67458;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+// Sidestuff
+.label {
+  font-size: 1.0em;
+  margin-right: 0.5em;
+  color: #A67458;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: #0F0908;
+  border-radius: 1em;
+  min-height: 0.3em;
+  min-width: 3em;
+  margin-left: 0.5em;
+  margin-right: 1em;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #BF472C;
+  border-radius: 1em;
+}
