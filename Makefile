@@ -7,7 +7,7 @@ alacritty-farout:
 	mkdir -p ~/.config/alacritty
 	ln -snf ~/git/dots/alacritty/* --target-directory ~/.config/alacritty
 	sed -i -r --follow-symlink 's/(colors:).*/\1 *farout/' ~/.config/alacritty/alacritty.yml
-	@if [[ $is_4k ]]; then\
+	@if [[ $(is_4k) ]]; then\
 		sed -i -r --follow-symlink 's/(size:).*/\1 *size_4k/' ~/.config/alacritty/alacritty.yml;\
 	else\
 		sed -i -r --follow-symlink 's/(size:).*/\1 *size_regular/' ~/.config/alacritty/alacritty.yml;\
@@ -16,7 +16,7 @@ alacritty-nord:
 	mkdir -p ~/.config/alacritty
 	ln -snf ~/git/dots/alacritty/* --target-directory ~/.config/alacritty
 	sed -i -r --follow-symlink 's/(colors:).*/\1 *nord/' ~/.config/alacritty/alacritty.yml
-	@if [[ $is_4k ]]; then\
+	@if [[ $(is_4k) ]]; then\
 		sed -i -r --follow-symlink 's/(size:).*/\1 *size_4k/' ~/.config/alacritty/alacritty.yml;\
 	else\
 		sed -i -r --follow-symlink 's/(size:).*/\1 *size_regular/' ~/.config/alacritty/alacritty.yml;\
@@ -24,14 +24,14 @@ alacritty-nord:
 
 eww-farout:
 	mkdir -p ~/.config
-	@if [[ $is_4k ]]; then\
+	@if [[ $(is_4k) ]]; then\
 		ln -snf ~/git/dots/leftwm/themes/4k/farout/eww-bar ~/.config/eww;\
 	else\
 		ln -snf ~/git/dots/leftwm/themes/farout/eww-bar ~/.config/eww;\
 	fi
 eww-nord:
 	mkdir -p ~/.config
-	@if [[ $is_4k ]]; then\
+	@if [[ $(is_4k) ]]; then\
 		ln -snf ~/git/dots/leftwm/themes/4k/nord/eww-bar ~/.config/eww;\
 	else\
 		ln -snf ~/git/dots/leftwm/themes/nord/eww-bar ~/.config/eww;\
@@ -47,8 +47,7 @@ eww-reload:
 leftwm-farout:
 	mkdir -p ~/.config/leftwm
 	ln -snf ~/git/dots/leftwm/* --target-directory ~/.config/leftwm
-	@if [[ $is_4k ]]; then\
-		echo "allo";\
+	@if [[ $(is_4k) ]]; then\
 		ln -snf ~/git/dots/leftwm/themes/4k/farout ~/.config/leftwm/themes/current;\
 	else\
 		ln -snf ~/git/dots/leftwm/themes/farout ~/.config/leftwm/themes/current;\
@@ -57,7 +56,7 @@ leftwm-farout:
 leftwm-nord:
 	mkdir -p ~/.config/leftwm
 	ln -snf ~/git/dots/leftwm ~/.config/leftwm
-	@if [[ $is_4k ]]; then\
+	@if [[ $(is_4k) ]]; then\
 		ln -snf ~/git/dots/leftwm/themes/4k/nord ~/.config/leftwm/themes/current;\
 	else\
 		ln -snf ~/git/dots/leftwm/themes/nord ~/.config/leftwm/themes/current;\

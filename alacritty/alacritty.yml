@@ -139,7 +139,7 @@ font:
   # Point size
   size_4k: &size_4k 12
   size_regular: &size_regular 8
-  size: *size_4k
+  size: *size_regular
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
