@@ -1,5 +1,5 @@
-farout: alacritty-farout leftwm-farout eww-farout nushell-farout nvim-farout rofi-farout tmux X-farout eww-reload
-nord: alacritty-nord leftwm-nord eww-nord nushell-nord nvim-nord rofi-nord tmux X-nord eww-reload
+farout: alacritty-farout leftwm-farout eww-farout nushell-farout nvim-farout rofi-farout tmux X-farout starship eww-reload
+nord: alacritty-nord leftwm-nord eww-nord nushell-nord nvim-nord rofi-nord tmux X-nord starship eww-reload
 
 alacritty-farout:
 	mkdir -p ~/.config/alacritty
