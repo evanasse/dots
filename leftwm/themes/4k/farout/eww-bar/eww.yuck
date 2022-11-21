@@ -33,7 +33,6 @@
        :orientation "h"
        :space-evenly false
        :halign "start"
-       ;:spacing 4
     (label :text "")
     (literal :content {wm-tags})))
 
@@ -86,5 +85,5 @@
                       :y "1%"
                       :width "99%"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "5%")
+  :reserve (struts :side "top" :distance "4%")
   (bar))
