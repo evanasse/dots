@@ -87,10 +87,20 @@ rofi-farout:
 	mkdir -p ~/.config/rofi
 	ln -snf ~/git/dots/rofi/* --target-directory ~/.config/rofi/
 	sed -i -r --follow-symlink 's/(@theme).*/\1 "farout"/' ~/.config/rofi/config.rasi
+	@if [[ $(is_4k) ]]; then\
+		sed -i -r --follow-symlink 's/(font: "UbuntuMono Nerd Font).*/\1 28";/' ~/.config/rofi/config.rasi;\
+	else\
+		sed -i -r --follow-symlink 's/(font: "UbuntuMono Nerd Font).*/\1 12";/' ~/.config/rofi/config.rasi;\
+	fi
 rofi-nord:
 	mkdir -p ~/.config
 	ln -snf ~/git/dots/rofi/* --target-directory ~/.config/rofi/
 	sed -i -r --follow-symlink 's/(@theme).*/\1 "nord"/' ~/.config/rofi/config.rasi
+	@if [[ $(is_4k) ]]; then\
+		sed -i -r --follow-symlink 's/\(font: UbuntuMono Nerd Font"\).*/\1 28";/' ~/.config/rofi/config.rasi;\
+	else\
+		sed -i -r --follow-symlink 's/\(font: UbuntuMono Nerd Font"\).*/\1 12";/' ~/.config/rofi/config.rasi;\
+	fi
 
 starship:
 	mkdir -p ~/.config
