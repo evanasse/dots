@@ -6,20 +6,14 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label volume_label_poll
-            :value volume_value_poll
-            :onchange "")
+    ; (metric :label volume_label_poll
+    ;         :value volume_value_poll
+    ;         :onchange "")
     (metric :label ""
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
-    (metric :label power_label_poll
-            :value power_value_poll
-            :onchange "")
     (metric :label ""
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
-    (metric :label "ﯧ"
-            :value backlight_value_poll
             :onchange "")
     (icon_text :label network_label_poll
                :value network_value_poll
@@ -33,7 +27,6 @@
        :orientation "h"
        :space-evenly false
        :halign "start"
-       ;:spacing 4
     (label :text "")
     (literal :content {wm-tags})))
 
@@ -86,5 +79,5 @@
                       :y "1%"
                       :width "99%"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "5%")
+  :reserve (struts :side "top" :distance "4%")
   (bar))
