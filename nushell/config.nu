@@ -558,8 +558,15 @@ let-env PROMPT_COMMAND_RIGHT = {''}
 
 ####
 
-alias vim = nvim
-alias vi = vim
+def nvim_alias [...args: string] {
+    if ($args | length) > 0 {
+        nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
+    } else {
+        nvim .
+    }
+}
+
+alias vim = nvim_alias
 alias dots = cd ~/git/dots
 alias tmux = tmux -u
 
