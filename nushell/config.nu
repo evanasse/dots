@@ -582,3 +582,8 @@ def-env br_cmd [] {
 }
 # Broot file manager
 alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
+
+def ide [...args] {
+    clear
+    tmux split-window -h -l 64% nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
+}
