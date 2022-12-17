@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all alacritty leftwm eww nushell nvim rofi tmux X starship eww-reload
+.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship
 
 farout: THEME = farout
 farout: all
@@ -38,9 +38,7 @@ eww: leftwm
 	else\
 		ln -snf ~/git/dots/leftwm/themes/$(THEME)/eww-bar ~/.config/eww;\
 	fi
-	if [[ $$(ps | grep eww) ]]; then\
-		pkill eww;\
-	fi
+	pkill eww || true
 	eww daemon
 	eww open bar0
 
