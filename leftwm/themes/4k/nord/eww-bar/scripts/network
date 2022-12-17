@@ -6,7 +6,6 @@ label() {
     if [[ -z $network_name ]]; then
         label=""
     else
-
         label=""
     fi
 
