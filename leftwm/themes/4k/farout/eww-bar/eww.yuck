@@ -1,0 +1,83 @@
+(defwidget bar []
+  (box :orientation "h"
+             :spacing 10
+    (workspaces)
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    ; (metric :label volume_label_poll
+    ;         :value volume_value_poll
+    ;         :onchange "")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label ""
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    (icon_text :label network_label_poll
+               :value network_value_poll
+               :text_style "margin-right: 1em; margin-left: 0.5em")
+    (icon_text :label ""
+               :value time_poll
+               :text_style "margin-right: 0.5em; margin-left: 0.5em")))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    (label :text "")
+    (literal :content {wm-tags})))
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (label :class "label" :text label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget icon_text [label value text_style]
+  (box :orientation "h"
+       :space-evenly false
+    (label :class "label" :text label )
+    (label :text value :style text_style)))
+
+(defpoll volume_label_poll :interval "1s"
+  "scripts/volume label")
+(defpoll volume_value_poll :interval "0.3s"
+  "scripts/volume value")
+
+(defpoll time_poll :interval "10s"
+  "date '+%d %b %Y %H:%M'")
+
+(defpoll network_label_poll :interval "5s"
+  "scripts/network label")
+(defpoll network_value_poll :interval "5s"
+  "scripts/network value")
+
+(defpoll backlight_value_poll :interval "0.3s"
+  "scripts/backlight value")
+
+(defpoll power_label_poll :interval "1s"
+  "scripts/power label")
+(defpoll power_value_poll :interval "1s"
+  "scripts/power value")
+
+(deflisten wm-tags
+  "leftwm-state -w 0 -t ~/.config/leftwm/themes/current/template.liquid")
+
+(defwindow bar0
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "1%"
+                      :width "99%"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (bar))

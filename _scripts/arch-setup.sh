@@ -257,7 +257,10 @@ fi
 if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
     installation_header "Installing extra apps"
 
-    as_user paru -Sy --noconfirm librewolf-bin
+    as_user paru -Sy --noconfirm librewolf-bin networkmanager
+
+    systemctl enable NetworkManager
+    systemctl start NetworkManager
 
     echo "Extra apps installed."
 
