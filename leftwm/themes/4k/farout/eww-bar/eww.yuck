@@ -12,15 +12,9 @@
     (metric :label ""
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
-    ; (metric :label power_label_poll
-    ;         :value power_value_poll
-    ;         :onchange "")
     (metric :label ""
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
-    ; (metric :label "ﯧ"
-    ;         :value backlight_value_poll
-    ;         :onchange "")
     (icon_text :label network_label_poll
                :value network_value_poll
                :text_style "margin-right: 1em; margin-left: 0.5em")
