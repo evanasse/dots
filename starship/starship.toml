@@ -1,4 +1,6 @@
-format = "$time$username[@](blue)$hostname$directory$git_branch$git_status$git_state$character"
+format = """
+$time$username[@](blue)$hostname$directory$git_branch$git_status$git_state$cmd_duration
+$character"""
 
 add_newline = false
 command_timeout = 800
@@ -47,4 +49,10 @@ disabled = false
 format = "$symbol "
 success_symbol = "[](bold white)"
 error_symbol = "[](bold white)"
+disabled = false
+
+[cmd_duration]
+min_time = 0
+format = "[$duration]($style)"
+style = "red"
 disabled = false
