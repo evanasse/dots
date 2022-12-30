@@ -24,12 +24,14 @@ ssh_only = false
 disabled = false
 
 [directory]
-format = "[$path]($style) "
+format = "[$path]($style) [$read_only]($read_only_style)"
 style = "cyan"
 truncate_to_repo = false
 truncation_symbol = ""
 truncation_length = 4
 fish_style_pwd_dir_length = 1
+read_only = " "
+read_only_style = "cyan"
 disabled = false
 
 [git_branch]
