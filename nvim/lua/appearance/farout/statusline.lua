@@ -44,9 +44,9 @@ local function lsp_client_names()
 		table.insert(client_names, client.name)
 	end
 
-  names = table.concat(client_names, ",")
+  local names = table.concat(client_names, ",")
   if names ~= "" then
-    names = "[" .. names .. "]" 
+    names = "[" .. names .. "]"
   end
 
 	return names
@@ -93,7 +93,7 @@ require('lualine').setup {
       },
     },
     lualine_c = {
-      '%=', 
+      '%=',
       {
         'filename',
         file_status = true,
@@ -152,7 +152,7 @@ require('lualine').setup {
           component = '',
           progress = '',
         },
-        spinner_symbols = require("core.spinner").half_spinner_rev(),
+        spinner_symbols = require("etiole.spinner").half_spinner_rev(),
         timer = {spinner=50}
       }
     },

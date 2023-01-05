@@ -9,7 +9,7 @@ module completions {
     def "nu-complete git branches" [] {
         ^git branch | lines | each { |line| $line | str replace '[\*\+] ' '' | str trim }
     }
-  
+
     def "nu-complete git remotes" [] {
         ^git remote | lines | each { |line| $line | str trim }
     }
@@ -237,7 +237,7 @@ let light_theme = {
 }
 
 # External completer example
-# let carapace_completer = {|spans| 
+# let carapace_completer = {|spans|
 #     carapace $spans.0 nushell $spans | from json
 # }
 
@@ -292,7 +292,7 @@ let light_theme = {
         metric: false
     }
     show_banner: false # true or false to enable or disable the banner
-  
+
     hooks: {
         pre_prompt: [{
             $nothing  # replace with source code to run before the prompt is shown
@@ -445,15 +445,15 @@ let light_theme = {
                 history
                 | last 8
                 | reverse
-                | each { |it| 
-                    { 
+                | each { |it|
+                    {
                         value: (
-                            $it.command 
+                            $it.command
                             | split column " "
                             | transpose
                             | last
                             | get column1
-                        ) 
+                        )
                         span: {
                             start: $position
                             end: $position
@@ -627,8 +627,8 @@ alias vim = nvim_alias
 alias dots = cd ~/git/dots
 alias tmux = tmux -u
 
-if (^which tmux) != "" && $env.TERM !~ "screen" && $env.TERM !~ "tmux" && $env.TERM !~ "linux" && "TMUX" not-in (env).name && "XDG_CURRENT_DESKTOP" in (env).name {
-    tmux
+if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in (env).name and "XDG_CURRENT_DESKTOP" in (env).name {
+  tmux
 }
 
 def-env br_cmd [] {

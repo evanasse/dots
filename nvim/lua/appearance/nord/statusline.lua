@@ -160,7 +160,7 @@ require('lualine').setup {
           component = '',
           progress = '',
         },
-        spinner_symbols = require("core.spinner").half_spinner_rev(),
+        spinner_symbols = require("etiole.spinner").half_spinner_rev(),
         timer = {spinner=50}
       }
     },

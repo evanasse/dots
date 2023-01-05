@@ -33,6 +33,7 @@ cmp.setup({
     })
   },
 
+
   -- Installed sources
   sources = {
     { name = 'nvim_lsp' },

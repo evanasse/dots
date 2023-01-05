@@ -1,4 +1,7 @@
-opt = vim.opt
+local opt = vim.opt
+
+-- Disable mouse
+opt.mouse = ""
 
 -- Show (partial) command in status line.
 opt.showcmd = true
@@ -19,8 +22,12 @@ opt.hidden = true
 opt.path = opt.path + { "**" }
 -- Display all matching files when we tab complete
 opt.wildmenu = true
+
 -- Create undofile
 opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.swapfile = false
+opt.backup = false
 
 -- Show line numbers
 opt.number = true
@@ -48,6 +55,5 @@ opt.splitright = true
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
--- Copy paste between vim and everything else
-opt.clipboard = "unnamedplus"
-
+-- Gutter space
+vim.opt.signcolumn = 'yes'
