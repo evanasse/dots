@@ -1,5 +1,0 @@
-require("core.globals")
-require("core.settings")
-require("core.packer")
-require("core.keymaps")
-require("core.lsp")

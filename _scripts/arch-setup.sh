@@ -93,7 +93,7 @@ if [[ $start_point -eq 2 && $start_point -le $end_point ]]; then
     sed -i "s/# %wheel ALL=(ALL:ALL) NOPASS/%wheel ALL=(ALL:ALL) NOPASS/" /etc/sudoers
 
     echo "'sudo' installed."
-    
+
     increment_start_point
 fi
 
@@ -139,7 +139,7 @@ if [[ $start_point -eq 4 && $start_point -le $end_point ]]; then
     as_user rustup default beta
 
     echo "Rust installed."
-    
+
     increment_start_point
 fi
 
@@ -156,12 +156,12 @@ if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
 
     as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
 
-    cd /home/$username/sys-git/paru 
+    cd /home/$username/sys-git/paru
 
     as_user makepkg -si --noconfirm
 
     echo "Paru installed."
-    
+
     increment_start_point
 fi
 
@@ -233,11 +233,11 @@ fi
 if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
     installation_header "Installing Neovim"
 
-    as_user paru -Sy --noconfirm cmake unzip ninja tree-sitter curl
+    as_user paru -Sy --noconfirm cmake unzip ninja tree-sitter curl npm
 
     as_user git clone https://github.com/neovim/neovim /home/$username/sys-git/neovim
 
-    cd /home/$username/sys-git/neovim 
+    cd /home/$username/sys-git/neovim
 
     as_user make CMAKE_BUILD_TYPE=Release
 
@@ -248,13 +248,29 @@ if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
     increment_start_point
 fi
 
+#######################################
+#
+# INSTALL AUDIO STUFF
+#
+#######################################
+if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
+    installation_header "Installing audio stuff"
+
+    as_user paru -Sy --noconfirm pipewire pipewire-pulse pipewire-jack pipewire-alsa wireplumber qpwgraph
+
+    usermod -aG audio $username
+
+    echo "Audio stuff installed."
+
+    increment_start_point
+fi
 
 #######################################
 #
 # INSTALL EXTRA APPS
 #
 #######################################
-if [[ $start_point -eq 10 && $start_point -le $end_point ]]; then
+if [[ $start_point -eq 11 && $start_point -le $end_point ]]; then
     installation_header "Installing extra apps"
 
     as_user paru -Sy --noconfirm librewolf-bin networkmanager

@@ -232,7 +232,7 @@ let light_theme = {
 }
 
 # External completer example
-# let carapace_completer = {|spans| 
+# let carapace_completer = {|spans|
 #     carapace $spans.0 nushell $spans | from json
 # }
 
@@ -583,7 +583,7 @@ alias vim = nvim_alias
 alias dots = cd ~/git/dots
 alias tmux = tmux -u
 
-if (^which tmux) != "" && $env.TERM !~ "screen" && $env.TERM !~ "tmux" && $env.TERM !~ "linux" && "TMUX" not-in (env).name && "XDG_CURRENT_DESKTOP" in (env).name {
+if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in (env).name and "XDG_CURRENT_DESKTOP" in (env).name {
   tmux
 }
 
