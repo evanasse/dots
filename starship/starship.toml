@@ -53,7 +53,7 @@ style = "bold red"
 disabled = false
 
 [custom.time]
-command = "date format %H:%M:%S"
+command = "date now | date format %H:%M:%S"
 when = "$env.CMD_DURATION_MS | into int | if $in > 2 { ^true } else { ^false }"
 format = "[(\\[$output\\])]($style) "
 style = "bold purple"
