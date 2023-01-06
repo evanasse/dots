@@ -133,7 +133,7 @@ let dark_theme = {
     # color for nushell primitives
     separator: white
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-    header: green_bold
+    header: cyan_bold
     empty: blue
     bool: white
     int: white
@@ -146,7 +146,7 @@ let dark_theme = {
     nothing: white
     binary: white
     cellpath: white
-    row_index: green_bold
+    row_index: cyan_bold
     record: white
     list: white
     block: white
@@ -161,11 +161,11 @@ let dark_theme = {
     shape_range: yellow_bold
     shape_internalcall: cyan_bold
     shape_external: cyan
-    shape_externalarg: green_bold
+    shape_externalarg: cyan_bold
     shape_literal: blue
     shape_operator: yellow
-    shape_signature: green_bold
-    shape_string: green
+    shape_signature: cyan_bold
+    shape_string: cyan
     shape_string_interpolation: cyan_bold
     shape_datetime: cyan_bold
     shape_list: cyan_bold
@@ -176,7 +176,7 @@ let dark_theme = {
     shape_globpattern: cyan_bold
     shape_variable: purple
     shape_flag: blue_bold
-    shape_custom: green
+    shape_custom: cyan
     shape_nothing: light_cyan
 }
 
@@ -184,7 +184,7 @@ let light_theme = {
     # color for nushell primitives
     separator: dark_gray
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-    header: green_bold
+    header: cyan_bold
     empty: blue
     bool: dark_gray
     int: dark_gray
@@ -197,7 +197,7 @@ let light_theme = {
     nothing: dark_gray
     binary: dark_gray
     cellpath: dark_gray
-    row_index: green_bold
+    row_index: cyan_bold
     record: white
     list: white
     block: white
@@ -212,11 +212,11 @@ let light_theme = {
     shape_range: yellow_bold
     shape_internalcall: cyan_bold
     shape_external: cyan
-    shape_externalarg: green_bold
+    shape_externalarg: cyan_bold
     shape_literal: blue
     shape_operator: yellow
-    shape_signature: green_bold
-    shape_string: green
+    shape_signature: cyan_bold
+    shape_string: cyan
     shape_string_interpolation: cyan_bold
     shape_datetime: cyan_bold
     shape_list: cyan_bold
@@ -227,7 +227,7 @@ let light_theme = {
     shape_globpattern: cyan_bold
     shape_variable: purple
     shape_flag: blue_bold
-    shape_custom: green
+    shape_custom: cyan
     shape_nothing: light_cyan
 }
 
@@ -315,8 +315,8 @@ let-env config = {
             col_padding: 2
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
       }
@@ -329,8 +329,8 @@ let-env config = {
             page_size: 10
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
       }
@@ -347,8 +347,8 @@ let-env config = {
             description_rows: 10
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
       }
@@ -366,8 +366,8 @@ let-env config = {
             col_padding: 2
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
         source: { |buffer, position|
@@ -385,8 +385,8 @@ let-env config = {
             page_size: 10
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
         source: { |buffer, position|
@@ -409,8 +409,8 @@ let-env config = {
             description_rows: 10
         }
         style: {
-            text: green
-            selected_text: green_reverse
+            text: cyan
+            selected_text: cyan_reverse
             description_text: yellow
         }
         source: { |buffer, position|

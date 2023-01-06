@@ -1,42 +1,39 @@
-format = "$time$username[@](blue)$hostname$directory$git_branch$git_status$git_state$character"
+format = """(none)${custom.time}$cmd_duration$username$hostname $directory$git_branch$git_status$git_state$character"""
 
 add_newline = false
 command_timeout = 800
 
-[time]
-format = "[\\[$time\\]]($style) "
-style = "dimmed purple"
-disabled = false
-
 [username]
 format = "[$user]($style)"
-style_user = "blue"
-style_root = "bold red"
+style_user = "bold cyan"
 show_always = true
 disabled = false
 
 [hostname]
-format = "[$hostname]($style) "
-style = "blue"
+format = "[@$hostname]($style)"
+style = "bold cyan"
 ssh_only = false
 disabled = false
 
 [directory]
-format = "[$path]($style) "
-style = "cyan"
+format = "[$path]($style) [$read_only]($read_only_style)"
+style = "bold blue"
 truncate_to_repo = false
 truncation_symbol = ""
 truncation_length = 4
 fish_style_pwd_dir_length = 1
+read_only = " "
+read_only_style = "red"
 disabled = false
 
 [git_branch]
 format = "[\\($branch\\)]($style) "
+style = "bold dimmed purple"
 disabled = false
 
 [git_status]
 format = "([$ahead_behind]($style) )"
-style = "yellow"
+style = "none"
 diverged = "⇡⇣"
 disabled = false
 
@@ -45,6 +42,19 @@ disabled = false
 
 [character]
 format = "$symbol "
-success_symbol = "[](bold white)"
-error_symbol = "[](bold white)"
+success_symbol = "[](dimmed cyan)"
+error_symbol = "[](dimmed cyan)"
+disabled = false
+
+[cmd_duration]
+min_time = 2
+format = "[(\\($duration\\)\n\n)]($style)"
+style = "bold red"
+disabled = false
+
+[custom.time]
+command = "date format %H:%M:%S"
+when = "$env.CMD_DURATION_MS | into int | if $in > 2 { ^true } else { ^false }"
+format = "[(\\[$output\\])]($style) "
+style = "bold purple"
 disabled = false
