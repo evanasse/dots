@@ -205,7 +205,7 @@ farout: &farout
   bright:
     black: '#1F1311'
     red: '#DF674C'
-    green: '#C4A98F'
+    green: '#DBE4C3'
     yellow: '#FFC786'
     blue: '#F49D69'
     magenta: '#AA6B73'
@@ -214,7 +214,7 @@ farout: &farout
   dim:
     black: '#0F0908'
     red: '#BF472C'
-    green: '#026835'
+    green: '#616655'
     yellow: '#F2A766'
     blue: '#D47D49'
     magenta: '#8A4B53'
