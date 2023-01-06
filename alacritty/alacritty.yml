@@ -139,7 +139,7 @@ font:
   # Point size
   size_4k: &size_4k 12
   size_regular: &size_regular 8
-  size: *size_4k
+  size: *size_regular
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -196,7 +196,7 @@ farout: &farout
   normal:
     black: '#1F1311'
     red: '#DF674C'
-    green: '#C4A98F'
+    green: '#8E947D'
     yellow: '#FFC786'
     blue: '#F49D69'
     magenta: '#AA6B73'
@@ -214,7 +214,7 @@ farout: &farout
   dim:
     black: '#0F0908'
     red: '#BF472C'
-    green: '#A4896F'
+    green: '#026835'
     yellow: '#F2A766'
     blue: '#D47D49'
     magenta: '#8A4B53'
