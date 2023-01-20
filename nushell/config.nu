@@ -419,6 +419,43 @@ let-env config = {
             | each { |it| {value: $it.command description: $it.usage} }
         }
       }
+      {
+        name: previous_last_tokens
+        only_buffer_difference: false
+        marker: ""
+        type: {
+            layout: list
+            columns: 4
+            col_width: 20
+            col_padding: 2
+            selection_rows: 4
+            description_rows: 10
+        }
+        style: {
+            text: cyan
+            selected_text: cyan_reverse
+            description_text: yellow
+        }
+        source: { |buffer, position|
+            history
+            | last 8
+            | each { |it| 
+                { 
+                    value: (
+                        $it.command 
+                        | split column " "
+                        | transpose
+                        | last
+                        | get column1
+                    ) 
+                    span: {
+                        start: $position
+                        end: $position
+                    }
+                }
+            }
+        }
+      }
   ]
   keybindings: [
     {
@@ -540,11 +577,12 @@ let-env config = {
       modifier: alt
       keycode: char_.
       mode: emacs
-      event:
-      [
-        { edit: InsertString, value: " !$" }
-        { send: Enter }
-      ]
+      event: {
+        until: [
+          { send: menu name: previous_last_tokens }
+          { send: menunext }
+        ]
+      }
     }
   ]
 }
