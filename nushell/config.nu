@@ -439,6 +439,7 @@ let light_theme = {
             source: { |buffer, position|
                 history
                 | last 8
+                | reverse
                 | each { |it| 
                     { 
                         value: (
