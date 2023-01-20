@@ -90,6 +90,11 @@ module completions {
         -l                                              # create reflog for new branch
         --help                                          # Display this help message
     ]
+    export extern "git switch" [
+        ...targets: string@"nu-complete git branches"   # name of the branch or files to checkout
+        --create(-c): string                            # create and checkout a new branch
+        --help                                          # Display this help message
+    ]
 
   # Push changes
     export extern "git push" [
@@ -439,6 +444,7 @@ let light_theme = {
             source: { |buffer, position|
                 history
                 | last 8
+                | reverse
                 | each { |it| 
                     { 
                         value: (
