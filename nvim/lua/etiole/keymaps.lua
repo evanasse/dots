@@ -34,7 +34,7 @@ Vmap("<space>", "<nop>")
 -- Disable highlight search
 Nmap("<leader>h", "<cmd>nohlsearch<cr>")
 
--- Close Vim window
+-- Close Vim window (and save if modified)
 Nmap("<leader>q", "<cmd>x<cr>")
 Nmap("<leader>Q", "<cmd>xa<cr>")
 
@@ -51,6 +51,9 @@ Nmap("N", "Nzzzv")
 -- Center cursor when half-page scrolling
 Nmap("<c-d>", "<c-d>zz")
 Nmap("<c-u>", "<c-u>zz")
+-- Center cursor when travelling the jumplist
+Nmap("<c-o>", "<c-o>zz")
+Nmap("<c-i>", "<c-i>zz")
 
 -- Don't overwrite register when pasting on selected text
 Xmap("<leader>p", [["_dP]])
