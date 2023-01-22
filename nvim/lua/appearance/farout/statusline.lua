@@ -11,25 +11,25 @@ farout.normal = {
 farout.insert = {
 	a = { fg = colors.dark_black, bg = colors.blue },
 	b = { fg = colors.dark_white, bg = nil },
-	c = {  fg = colors.white, bg = nil },
+	c = { fg = colors.white, bg = nil },
 }
 
 farout.visual = {
 	a = { fg = colors.dark_black, bg = colors.dark_red },
 	b = { fg = colors.dark_white, bg = nil },
-	c = {  fg = colors.white, bg = nil },
+	c = { fg = colors.white, bg = nil },
 }
 
 farout.replace = {
 	a = { fg = colors.dark_black, bg = colors.red },
 	b = { fg = colors.dark_white, bg = nil },
-	c = {  fg = colors.white, bg = nil },
+	c = { fg = colors.white, bg = nil },
 }
 
 farout.command = {
 	a = { fg = colors.black, bg = colors.dark_green },
 	b = { fg = colors.dark_white, bg = nil },
-	c = {  fg = colors.white, bg = nil },
+	c = { fg = colors.white, bg = nil },
 }
 
 farout.inactive = {
@@ -39,17 +39,17 @@ farout.inactive = {
 }
 
 local function lsp_client_names()
-	local client_names = {}
-	for _, client in ipairs(vim.lsp.get_active_clients()) do
-		table.insert(client_names, client.name)
-	end
+  local client_names = {}
+  for _, client in ipairs(vim.lsp.get_active_clients()) do
+    table.insert(client_names, client.name)
+  end
 
   local names = table.concat(client_names, ",")
   if names ~= "" then
     names = "[" .. names .. "]"
   end
 
-	return names
+  return names
 end
 
 require('lualine').setup {
@@ -127,8 +127,8 @@ require('lualine').setup {
     lualine_c = {
       '%=',
       {
-        'buffers',
-        mode = 2,
+        require("etiole.lualine.custom_components.harpoon_buffers"),
+        mode = 0,
         icons_enabled = false,
         buffers_color = {
           -- Same values as the general color option can be used here.

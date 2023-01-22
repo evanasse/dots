@@ -31,6 +31,10 @@ require('packer').startup(function(use)
     }
     use "numToStr/Comment.nvim"
     use "kylechui/nvim-surround"
+    use {
+        "ThePrimeagen/harpoon",
+        requires = { "nvim-lua/plenary.nvim" }
+    }
 
     -- Passive utilities
     use "ethanholz/nvim-lastplace"
