@@ -1,4 +1,4 @@
-format = """(none)${custom.time}$cmd_duration$username$hostname $directory$git_branch$git_status$git_state$character"""
+format = """${custom.time}$cmd_duration$username$hostname $directory$git_branch$git_status$git_state$character"""
 
 add_newline = false
 command_timeout = 800
