@@ -2,16 +2,16 @@ local function harpoon_files()
   local mark = require("harpoon.mark")
   local files = {}
   for idx = 1, mark.get_length() do
-      local file = mark.get_marked_file_name(idx)
-      if file ~= "" then
-        table.insert(files, file)
-      end
+    local file = mark.get_marked_file_name(idx)
+    if file ~= "" then
+      table.insert(files, file)
+    end
   end
   return files
 end
 
 local function is_harpooned_file(buf_name)
-  for _,v in pairs(harpoon_files()) do
+  for _, v in pairs(harpoon_files()) do
     if v == buf_name then
       return 1
     end

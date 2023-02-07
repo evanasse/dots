@@ -35,6 +35,7 @@ require('packer').startup(function(use)
         "ThePrimeagen/harpoon",
         requires = { "nvim-lua/plenary.nvim" }
     }
+    use "m4xshen/autoclose.nvim"
 
     -- Passive utilities
     use "ethanholz/nvim-lastplace"

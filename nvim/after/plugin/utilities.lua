@@ -12,3 +12,6 @@ require("Comment").setup()
 
 -- nvim-surround
 require("nvim-surround").setup()
+
+-- autoclose.nvim
+require("autoclose").setup({})
