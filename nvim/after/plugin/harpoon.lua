@@ -1,7 +1,5 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-local harpoon = require("harpoon")
-local log = require("harpoon.dev").log
 
 vim.keymap.set("n", "<leader>M", mark.add_file)
 vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu)

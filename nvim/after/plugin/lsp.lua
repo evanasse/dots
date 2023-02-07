@@ -11,15 +11,15 @@ lsp.preset("lsp-compe")
 local augroup = "lsp_custom_augroup"
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
-vim.api.nvim_create_autocmd("CursorHold", { command = "lua vim.diagnostic.open_float()"})
-vim.api.nvim_create_autocmd("BufWritePre", { command = "lua vim.lsp.buf.format({async = true})"})
+vim.api.nvim_create_autocmd("CursorHold", { command = "lua vim.diagnostic.open_float()" })
+vim.api.nvim_create_autocmd("BufWritePre", { command = "lua vim.lsp.buf.format({async = false})" })
 
 -- Set updatetime for CursorHold
 -- 1000ms of no cursor movement to trigger CursorHold
 vim.opt.updatetime = 1000
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -46,5 +46,5 @@ lsp.set_preferences({
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+  virtual_text = true,
 })

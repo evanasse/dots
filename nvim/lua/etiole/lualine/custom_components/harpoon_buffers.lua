@@ -1,5 +1,7 @@
+local harpoon_utils = require("harpoon.utils")
+local mark = require("harpoon.mark")
+
 local function harpoon_files()
-  local mark = require("harpoon.mark")
   local files = {}
   for idx = 1, mark.get_length() do
     local file = mark.get_marked_file_name(idx)
@@ -13,10 +15,10 @@ end
 local function is_harpooned_file(buf_name)
   for _, v in pairs(harpoon_files()) do
     if v == buf_name then
-      return 1
+      return true
     end
   end
-  return 0
+  return false
 end
 
 M = require("lualine.components.buffers"):extend()
@@ -34,9 +36,17 @@ function M:buffers()
   M.bufpos2nr = {}
 
   for b = 1, vim.fn.bufnr("$") do
-    if vim.fn.buflisted(b) ~= 0 and is_harpooned_file(vim.api.nvim_buf_get_name(b)) then
-      buffers[#buffers + 1] = self:new_buffer(b, #buffers + 1)
-      M.bufpos2nr[#buffers] = b
+    local valid_buf_id, buf_name = pcall(vim.api.nvim_buf_get_name, b)
+
+    if valid_buf_id and buf_name ~= "" then
+      local norm_buf_name = harpoon_utils.normalize_path(buf_name)
+
+      if is_harpooned_file(norm_buf_name) then
+        local harpoon_idx = mark.get_index_of(norm_buf_name)
+
+        buffers[harpoon_idx] = self:new_buffer(b, harpoon_idx)
+        M.bufpos2nr[harpoon_idx] = b
+      end
     end
   end
 
