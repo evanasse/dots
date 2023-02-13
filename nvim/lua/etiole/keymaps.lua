@@ -32,7 +32,7 @@ Nmap("<space>", "<nop>")
 Vmap("<space>", "<nop>")
 
 -- Disable highlight search
-Nmap("<leader>h", "<cmd>nohlsearch<cr>")
+Nmap("<leader>h", "<cmd>set invhlsearch<cr>")
 
 -- Close Vim window (and save if modified)
 Nmap("<leader>q", "<cmd>x<cr>")
