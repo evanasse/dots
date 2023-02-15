@@ -1,7 +1,7 @@
 local farout = {
   black = "#1F1311",
   red = "#DF674C",
-  green = "#C4A98F",
+  green = "#8E947D",
   yellow = "#FFC786",
   blue = "#F49D69",
   magenta = "#AA6B73",
@@ -9,7 +9,7 @@ local farout = {
   white = "#F2DDBC",
   dark_black = "#0F0908",
   dark_red = "#BF472C",
-  dark_green = "#A4896F",
+  dark_green = "#616655",
   dark_yellow = "#F2A766",
   dark_blue = "#D47D49",
   dark_magenta = "#8A4B53",

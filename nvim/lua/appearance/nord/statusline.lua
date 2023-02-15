@@ -47,7 +47,7 @@ local function lsp_client_names()
 
   names = table.concat(client_names, ",")
   if names ~= "" then
-    names = "[" .. names .. "]" 
+    names = "[" .. names .. "]"
   end
 
 	return names
@@ -94,7 +94,7 @@ require('lualine').setup {
       },
     },
     lualine_c = {
-      '%=', 
+      '%=',
       -- {
       --   'filetype',
       --   colored = false,
@@ -105,7 +105,6 @@ require('lualine').setup {
         'filename',
         file_status = true,
         path = 3,
-        -- shorting_path = 40,
         symbols = {
           modified = '*',
           readonly = ' ',
@@ -135,20 +134,20 @@ require('lualine').setup {
     lualine_c = {
       '%=',
       {
-        'buffers',
-        mode = 2,
+        require("etiole.lualine.custom_components.harpoon_buffers"),
+        mode = 0,
         icons_enabled = false,
         buffers_color = {
           -- Same values as the general color option can be used here.
           active = { fg = colors.black, bg = colors.teal },     -- Color for active buffer.
-          inactive = { fg = colors.light_gray_bright, bg = colors.dark_gray }, -- Color for inactive buffer.
+          inactive = { fg = colors.light_gray_bright, bg = "none" }, -- Color for inactive buffer.
         },
         symbols = {
           modified = '*',      -- Text to show when the buffer is modified
           alternate_file = '', -- Text to show to identify the alternate file
           directory =  '',     -- Text to show when the buffer is a directory
         },
-        color = {bg='nocolor'}
+        color = {bg='none'}
       },
     },
     lualine_x = {
@@ -160,7 +159,7 @@ require('lualine').setup {
           component = '',
           progress = '',
         },
-        spinner_symbols = require("core.spinner").half_spinner_rev(),
+        spinner_symbols = require("etiole.spinner").half_spinner_rev(),
         timer = {spinner=50}
       }
     },

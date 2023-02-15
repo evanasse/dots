@@ -3,7 +3,7 @@
 -- menuone: popup even when there's only one match
 -- noinsert: Do not insert text until a selection is made
 -- noselect: Do not select, force user to select one from the menu
-vim.opt.completeopt="noselect,noinsert,menuone"
+vim.opt.completeopt = "noselect,noinsert,menuone"
 
 -- Avoid showing extra messages when using completion
 -- vim.opt.shortmess = vim.opt.shortmess + { "c" }
@@ -16,12 +16,14 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
     ['<A-k>'] = cmp.mapping.select_prev_item(),
+    ['<up>'] = cmp.mapping.select_prev_item(),
     ['<A-j>'] = cmp.mapping.select_next_item(),
+    ['<down>'] = cmp.mapping.select_next_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -33,10 +35,11 @@ cmp.setup({
     })
   },
 
+
   -- Installed sources
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
   },
