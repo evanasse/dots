@@ -1,8 +1,6 @@
 require("etiole.globals")
 require("etiole.settings")
-require("etiole.packer")
 require("etiole.keymaps")
-require("etiole.lsp")
 
 vim.g.netrw_banner = 0
 
@@ -11,7 +9,7 @@ local EtioleGroup = augroup('EtioleGroup', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = EtioleGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
