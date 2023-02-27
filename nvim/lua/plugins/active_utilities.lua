@@ -1,13 +1,23 @@
 return {
-    "numToStr/Comment.nvim",
-    "kylechui/nvim-surround",
+    {
+        "kylechui/nvim-surround",
+        config = true,
+    },
+    {
+        "numToStr/Comment.nvim",
+        config = true,
+    },
     {
         "evanasse/alterego.nvim",
         dependencies = { "tpope/vim-repeat" },
+        config = function()
+            require("alterego").setup()
+        end
     },
     {
         "ThePrimeagen/harpoon",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = true,
     },
     {
         "m4xshen/autoclose.nvim",

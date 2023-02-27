@@ -14,3 +14,8 @@ autocmd({ "BufWritePre" }, {
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
+autocmd({ "BufRead,BufNewFile" }, {
+    group = EtioleGroup,
+    pattern = "*.nu",
+    command = "set filetype=nu",
+})
