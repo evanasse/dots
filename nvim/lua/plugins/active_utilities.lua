@@ -56,6 +56,10 @@ return {
                     -- `hidden = true` is not supported in text grep commands.
                     vimgrep_arguments = vimgrep_arguments,
                     color_devicons = false,
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.8
+                    },
                 },
                 pickers = {
                     find_files = {
@@ -63,6 +67,14 @@ return {
                         find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
                     },
                 },
+                extensions = {
+                    file_browser = {
+                        layout_strategy = "horizontal",
+                        layout_config = {
+                            preview_width = 0.6
+                        }
+                    },
+                }
             })
             telescope.load_extension("file_browser")
         end
