@@ -615,15 +615,7 @@ let-env PROMPT_COMMAND_RIGHT = {''}
 
 ####
 
-def nvim_alias [...args: string] {
-    if ($args | length) > 0 {
-        nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
-    } else {
-        nvim .
-    }
-}
-
-alias vim = nvim_alias
+alias vim = nvim
 alias dots = cd ~/git/dots
 alias tmux = tmux -u
 
@@ -640,11 +632,7 @@ def-env br_cmd [] {
 # Broot file manager
 alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
 
-def pde [...args: string] {
+def pde [] {
     clear
-    if ($args | length) > 0 {
-        tmux split-window -h -l 64% nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
-    } else {
-        tmux split-window -h -l 64% nvim -c 'lua require("telescope").extensions.file_browser.file_browser()'
-    }
+    zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde
 }

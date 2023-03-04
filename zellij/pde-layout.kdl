@@ -1,0 +1,22 @@
+layout {
+    pane split_direction="vertical" {
+        pane {
+            name ""
+        }
+        pane {
+            name "nvim"
+            command "nvim"
+            args "."
+            size "64%"
+            focus true
+            close_on_exit true
+        } 
+    }
+}
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
+keybinds clear-defaults=true {}
+mouse_mode false

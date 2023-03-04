@@ -1,0 +1,39 @@
+// If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
+keybinds clear-defaults=true {}
+
+themes {
+    farout {
+        fg "#E0CCAE"
+        bg "#0F0908"
+        red "#DF674C"
+        green "#8E947D"
+        yellow "#FFC786"
+        blue "#F49D69"
+        magenta "#AA6B73"
+        orange "#DF674C"
+        cyan "#C69478"
+        black "#1F1311"
+        white "#F2DDBC"
+    }
+    nord {
+        fg "#D8DEE9"
+        bg "#3B4252"
+        red "#BF616A"
+        green "#A3BE8C"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        orange "#D08770"
+        cyan "#88C0D0"
+        black "#3B4252"
+        white "#E5E9F0"
+    }
+}
+
+theme "farout"
+
+mouse_mode false
+
+copy_command "xclip -selection clipboard" // x11
+
+scrollback_editor "nvim --no-plugin"

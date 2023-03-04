@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship
+.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship zellij
 
 farout: THEME = farout
 farout: all
@@ -8,7 +8,7 @@ farout: all
 nord: THEME = nord
 nord: all
 
-all: alacritty nushell nvim rofi tmux X starship desktop
+all: alacritty nushell nvim rofi tmux X starship zellij desktop
 
 alacritty:
 	mkdir -p ~/.config/alacritty
@@ -75,3 +75,7 @@ tmux:
 X:
 	ln -snf ~/git/dots/X/.xinitrc ~/.xinitrc
 	ln -snf ~/git/dots/X/$(THEME)-Xresources ~/.Xresources
+
+zellij:
+	ln -snf ~/git/dots/zellij/base-config.kdl ~/.config/zellij/base-config.kdl
+	ln -snf ~/git/dots/zellij/pde-layout.kdl ~/.config/zellij/pde-layout.kdl
