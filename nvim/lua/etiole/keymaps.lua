@@ -39,7 +39,7 @@ Nmap("<leader>q", "<cmd>x<cr>")
 Nmap("<leader>Q", "<cmd>xa<cr>")
 
 -- Close Vim buffer
-Nmap("<leader>p", "<cmd>bd<cr>")
+Nmap("<leader>p", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
 
 -- Make backspace move back a word instead of a single char
 Nmap("<backspace>", "b")

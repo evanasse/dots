@@ -645,6 +645,6 @@ def pde [...args: string] {
     if ($args | length) > 0 {
         tmux split-window -h -l 64% nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
     } else {
-        tmux split-window -h -l 64% nvim .
+        tmux split-window -h -l 64% nvim -c 'lua require("telescope").extensions.file_browser.file_browser()'
     }
 }
