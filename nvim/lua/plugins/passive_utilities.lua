@@ -1,5 +1,8 @@
 return {
-    "ethanholz/nvim-lastplace",
+    {
+        "ethanholz/nvim-lastplace",
+        config = true,
+    },
     "airblade/vim-rooter",
     "RRethy/vim-illuminate",
     "lukas-reineke/indent-blankline.nvim",
@@ -8,12 +11,12 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter").setup()
             require("nvim-treesitter.configs").setup({
                 highlight = {
                     enable = true,
                 },
             })
+            require("nvim-treesitter").setup()
         end
     },
 }
