@@ -65,3 +65,6 @@ Nmap("<leader>Y", [["+Y]])
 
 -- Redo
 Nmap("<s-u>", "<c-r>")
+
+-- Add semi-colon at the EOL if not present
+Nmap(";;", "<cmd>s/;\\?$/;/<cr>$")

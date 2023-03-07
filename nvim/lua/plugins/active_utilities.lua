@@ -25,14 +25,16 @@ return {
     },
     {
         "nvim-telescope/telescope.nvim",
+        lazy = false,
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
             { "<leader><leader>f", "<cmd>Telescope find_files<cr>" },
             { "<leader><leader>g", "<cmd>Telescope live_grep<cr>" },
             { "<leader><leader>h", "<cmd>Telescope help_tags<cr>" },
-            { "<leader><leader>l", "<cmd>Telescope file_browser<cr>" }
+            { "<leader><leader>l",
+                "<cmd>lua require('telescope').extensions.file_browser.file_browser({git_status=false})<cr>" }
         },
-        config = function()
+        init = function()
             local telescope = require("telescope")
             local telescopeConfig = require("telescope.config")
 
@@ -69,10 +71,12 @@ return {
                 },
                 extensions = {
                     file_browser = {
+                        hijack_netrw = true,
                         layout_strategy = "horizontal",
                         layout_config = {
                             preview_width = 0.6
-                        }
+                        },
+                        git_status = false,
                     },
                 }
             })
@@ -82,5 +86,6 @@ return {
     {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim" },
+        lazy = false,
     }
 }
