@@ -77,5 +77,6 @@ X:
 	ln -snf ~/git/dots/X/$(THEME)-Xresources ~/.Xresources
 
 zellij:
+	mkdir -p ~/.config/zellij
 	ln -snf ~/git/dots/zellij/base-config.kdl ~/.config/zellij/base-config.kdl
 	ln -snf ~/git/dots/zellij/pde-layout.kdl ~/.config/zellij/pde-layout.kdl
