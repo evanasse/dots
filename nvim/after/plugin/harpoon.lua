@@ -1,5 +1,6 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
+local harpoon_utils = require("harpoon.utils")
 
 vim.keymap.set("n", "<leader>M", mark.add_file)
 vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu)
@@ -38,6 +39,30 @@ vim.api.nvim_create_autocmd(
 )
 vim.api.nvim_create_autocmd(
     { "VimEnter" },
+    {
+        group = augroup,
+        pattern = { "*" },
+        callback = function()
+            for b = 1, vim.fn.bufnr("$") do
+                local valid_buf_id, buf_name = pcall(vim.api.nvim_buf_get_name, b)
+
+                if valid_buf_id and buf_name ~= "" then
+                    local norm_buf_name = harpoon_utils.normalize_path(buf_name)
+
+                    local f = io.open(norm_buf_name, "r")
+                    if f ~= nil then
+                        io.close(f)
+                        if mark.get_length() < 4 then
+                            mark.add_file(norm_buf_name)
+                        end
+                    end
+                end
+            end
+        end
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "VimLeave" },
     {
         group = augroup,
         pattern = { "*" },
