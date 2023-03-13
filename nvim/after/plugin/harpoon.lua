@@ -50,10 +50,15 @@ vim.api.nvim_create_autocmd(
                     local norm_buf_name = harpoon_utils.normalize_path(buf_name)
 
                     local f = io.open(norm_buf_name, "r")
+
                     if f ~= nil then
-                        io.close(f)
-                        if mark.get_length() < 4 then
-                            mark.add_file(norm_buf_name)
+                        local is_dir = not f:read(0) and f:seek("end") ~= 0
+                        f:close()
+
+                        if not is_dir and norm_buf_name ~= "." then
+                            if mark.get_length() < 4 then
+                                mark.add_file(norm_buf_name)
+                            end
                         end
                     end
                 end
