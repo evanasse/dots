@@ -623,16 +623,10 @@ if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $en
   tmux
 }
 
-def-env br_cmd [] {
-    let cmd_file = (^mktemp | str trim);
-    ^broot --outcmd $cmd_file;
-    let-env cmd = ((open $cmd_file) | str trim);
-    ^rm $cmd_file;
-}
-# Broot file manager
-alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
-
-def pde [] {
-    clear
-    zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde
+def pde [...args: string] {
+    if ($args | length) > 0 {
+        with-env { NVIM_ARGS: ($args | reduce { |it, acc| $"($acc) ($it)" }) } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde }
+    } else {
+        with-env { NVIM_ARGS: "." } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde }
+    }
 }

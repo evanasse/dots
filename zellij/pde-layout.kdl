@@ -5,12 +5,12 @@ layout {
         }
         pane {
             name "nvim"
-            command "nvim"
-            args "."
+            command "nu"
+            args "-c" "nvim ($env.NVIM_ARGS | split row ' ')"
             size "64%"
             focus true
             close_on_exit true
-        } 
+        }
     }
 }
 ui {
