@@ -591,6 +591,9 @@ let light_theme = {
             }
         }
     ]
+    cursor_shape: {
+        emacs: block
+    }
   }
 
 #### STARTSHIP SETUP
@@ -617,9 +620,9 @@ let-env PROMPT_COMMAND_RIGHT = {''}
 
 alias vim = nvim
 alias dots = cd ~/git/dots
-alias tmux = tmux -u
+old-alias tmux = tmux -u
 
-if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in (env).name and "XDG_CURRENT_DESKTOP" in (env).name {
+if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in $env and "XDG_CURRENT_DESKTOP" in $env {
   tmux
 }
 
