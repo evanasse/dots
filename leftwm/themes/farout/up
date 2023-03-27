@@ -13,11 +13,27 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
+# start eww daemon
+~/sys-git/eww/target/release/eww daemon &
+
+# Boot picom or compton if it exists
+if [ -x "$(command -v picom)" ]; then
+  pkill picom || true
+  picom --config $SCRIPTPATH/picom.conf &> /dev/null &
+elif [ -x "$(command -v compton)" ]; then
+  compton &> /dev/null &
+fi
+
 # Set Keymap
 setxkbmap -rules evdev -model evdev -layout us -variant intl
 
 # Set brightness
 xbacklight=50
+
+# Disable screensaver
+xset s off
+xset s noblank
+xset -dpms
 
 # Set the theme.ron config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
@@ -26,9 +42,6 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 if [ -x "$(command -v feh)" ]; then
   feh --bg-fill $SCRIPTPATH/background.jpg
 fi
-
-# start eww daemon
-~/sys-git/eww/target/release/eww daemon &
 
 #open eww 'bar' windows
 #this is a bit of an uggly hack, a more elegant way will hopefully be possible with a future `eww` version
@@ -40,11 +53,3 @@ do
     ~/sys-git/eww/target/release/eww open bar$index
   let index=index+1
 done
-
-# Boot picom or compton if it exists
-if [ -x "$(command -v picom)" ]; then
-  picom --config $SCRIPTPATH/picom.conf &> /dev/null &
-  # picom &> /dev/null &
-elif [ -x "$(command -v compton)" ]; then
-  compton &> /dev/null &
-fi
