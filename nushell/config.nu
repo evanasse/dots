@@ -557,13 +557,13 @@ let light_theme = {
             mode: [emacs, vi_normal, vi_insert]
             event: { send: menu name: vars_menu }
         }
-        {
-            name: commands_with_description
-            modifier: control
-            keycode: char_s
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: menu name: commands_with_description }
-        }
+        # {
+        #     name: commands_with_description
+        #     modifier: control
+        #     keycode: char_s
+        #     mode: [emacs, vi_normal, vi_insert]
+        #     event: { send: menu name: commands_with_description }
+        # }
         {
             name: up_arrow
             modifier: alt
@@ -620,16 +620,11 @@ let-env PROMPT_COMMAND_RIGHT = {''}
 
 alias vim = nvim
 alias dots = cd ~/git/dots
-old-alias tmux = tmux -u
-
-if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in $env and "XDG_CURRENT_DESKTOP" in $env {
-  tmux
-}
 
 def pde [...args: string] {
     if ($args | length) > 0 {
-        with-env { NVIM_ARGS: ($args | reduce { |it, acc| $"($acc) ($it)" }) } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde }
+        with-env { NVIM_ARGS: ($args | reduce { |it, acc| $"($acc) ($it)" }) } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl }
     } else {
-        with-env { NVIM_ARGS: "." } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl --session pde }
+        with-env { NVIM_ARGS: "." } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl }
     }
 }
