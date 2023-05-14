@@ -1,18 +1,18 @@
 #!/bin/sh
 
-volume=$(pulseaudio-ctl full-status | awk '{print $1}')
-muted=$(pulseaudio-ctl full-status | awk '{print $2}')
+volume=$(amixer sget Master | awk '/Left:/ { print $5 }' | sed -e "s/[][%]//g")
+muted=$(amixer sget Master | awk '/Left:/ { print $6 }' | sed -e "s/[][%]//g")
 
 label() {
-    if [[ $muted == "yes" ]]; then
-        label="ﱝ"
-    else 
+    if [[ $muted == "off" ]]; then
+        label="󰝟"
+    else
         if [[ $volume -gt "60" ]]; then
-            label="墳"
+            label="󰕾"
         elif [[ $volume -gt "30" ]]; then
-            label="奔"
+            label="󰖀"
         else
-            label="奄"
+            label="󰕿"
         fi
     fi
 
