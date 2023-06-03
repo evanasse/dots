@@ -621,10 +621,11 @@ let-env PROMPT_COMMAND_RIGHT = {|| ''}
 alias vim = nvim
 alias dots = cd ~/git/dots
 
-def pde [...args: string] {
-    if ($args | length) > 0 {
-        with-env { NVIM_ARGS: ($args | reduce { |it, acc| $"($acc) ($it)" }) } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl }
-    } else {
-        with-env { NVIM_ARGS: "." } { zellij --config ~/.config/zellij/base-config.kdl --layout ~/.config/zellij/pde-layout.kdl }
-    }
+def pde [] {
+    zellij action new-tab --name PDE --layout ~/.config/zellij/pde-layout.kdl
+}
+
+# Start nushell with Zellij, if not already started
+if ($env | grep -i ZELLIJ | is-empty) {
+    zellij --config ~/.config/zellij/config.kdl --layout ~/.config/zellij/layout.kdl
 }

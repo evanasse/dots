@@ -1,66 +1,18 @@
 layout {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
     pane split_direction="vertical" {
         pane {
             name ""
         }
         pane {
             name "nvim"
-            command "nu"
-            args "-c" "nvim ($env.NVIM_ARGS | split row ' ')"
+            command "nvim"
+            args "."
             size "64%"
             focus true
             close_on_exit true
         }
     }
 }
-ui {
-    pane_frames {
-        rounded_corners true
-    }
-}
-keybinds clear-defaults=true {
-    normal {
-        // uncomment this and adjust key if using copy_on_select=false
-        // bind "Alt c" { Copy; }
-    }
-    locked {
-        bind "Ctrl g" { SwitchToMode "Normal"; }
-    }
-    scroll {
-        bind "q" "Esc" { SwitchToMode "Normal"; }
-        bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
-        bind "j" "Down" { ScrollDown; }
-        bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" { PageScrollUp; }
-        bind "Ctrl d" { HalfPageScrollDown; }
-        bind "Ctrl u" { HalfPageScrollUp; }
-    }
-    session {
-        bind "d" { Detach; }
-    }
-    shared_except "locked" {
-        bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt Right" { MoveFocusOrTab "Right"; }
-        bind "Alt Down" { MoveFocus "Down"; }
-        bind "Alt Up" { MoveFocus "Up"; }
-        bind "Alt =" "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt [" { SwitchToMode "Scroll"; }
-        bind "Alt ]" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
-        bind "Alt a" { FocusNextPane; SwitchToMode "Normal"; }
-        bind "Alt q" { Quit; }
-    }
-    shared_except "normal" "locked" {
-        bind "Enter" "Esc" { SwitchToMode "Normal"; }
-    }
-    shared_except "resize" "locked" {
-        bind "Ctrl n" { SwitchToMode "Resize"; }
-    }
-    shared_except "scroll" "locked" {
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-    }
-}
-mouse_mode false
