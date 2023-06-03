@@ -268,3 +268,15 @@ vim.api.nvim_create_autocmd(
     command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticInfo", tostring(colors.dark_white))
   }
 )
+
+-- =============
+--    General
+-- =============
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guibg=NONE ctermbg=NONE", "Normal")
+  }
+)
