@@ -26,12 +26,13 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         lazy = false,
+        tag = "0.1.2",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
             { "<leader><leader>f", "<cmd>Telescope find_files<cr>" },
             { "<leader><leader>g", "<cmd>Telescope live_grep<cr>" },
             { "<leader><leader>h", "<cmd>Telescope help_tags<cr>" },
-            { "<leader><leader>l",
+            { "<leader><leader>b",
                 "<cmd>lua require('telescope').extensions.file_browser.file_browser({git_status=false})<cr>" }
         },
         init = function()
