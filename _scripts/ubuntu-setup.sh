@@ -4,25 +4,23 @@ set -e
 
 echo "Starting points:"
 echo "[0] Upgrade system packages"
-echo "[1] Create user"
-echo "[2] Install 'sudo'"
+# echo "[1] Create user"
+# echo "[2] Install 'sudo'"
 echo "[3] Make Git directories"
 echo "[4] Install Rust"
-echo "[5] Install Paru"
-echo "[6] Install desktop environment stuff"
-echo "[7] Install terminal stuff"
-echo "[8] Install various system packages"
-echo "[9] Install Neovim"
-echo "[10] Install audio stuff"
-echo "[11] Install extra apps"
+echo "[5] Install desktop environment stuff"
+echo "[6] Install terminal stuff"
+echo "[7] Install various system packages"
+echo "[8] Install Neovim"
+# echo "[9] Install extra apps"
 read -p "Select starting point [0]: " start_point
-read -p "Select ending point [11]: " end_point
+read -p "Select ending point [9]: " end_point
 
 if [[ -z $start_point ]]; then
     start_point=0
 fi
 if [[ -z $end_point ]]; then
-    end_point=11
+    end_point=8
 fi
 
 
@@ -40,7 +38,7 @@ installation_header(){
     echo ""
 }
 
-read -p "Enter target username: " username
+# read -p "Enter target username: " username
 
 #######################################
 #
@@ -50,7 +48,8 @@ read -p "Enter target username: " username
 if [[ $start_point -eq 0 && $start_point -le $end_point ]]; then
     installation_header "Upgrading system packages"
 
-    pacman -Syu --noconfirm
+    as_user apt update
+    as_user apt upgrade -y
 
     increment_start_point
 fi
@@ -134,34 +133,12 @@ fi
 if [[ $start_point -eq 4 && $start_point -le $end_point ]]; then
     installation_header "Installing Rust"
 
-    pacman -Sy --noconfirm rustup
+    as_user apt install rustup
 
     as_user rustup toolchain install beta
     as_user rustup default beta
 
     echo "Rust installed."
-
-    increment_start_point
-fi
-
-
-#######################################
-#
-# INSTALL PARU
-#
-#######################################
-if [[ $start_point -eq 5 && $start_point -le $end_point ]]; then
-    installation_header "Installing Paru"
-
-    as_user sudo pacman -Sy --noconfirm --needed base-devel
-
-    as_user git clone https://aur.archlinux.org/paru.git /home/$username/sys-git/paru || true
-
-    cd /home/$username/sys-git/paru
-
-    as_user makepkg -si --noconfirm
-
-    echo "Paru installed."
 
     increment_start_point
 fi
@@ -175,7 +152,7 @@ fi
 if [[ $start_point -eq 6 && $start_point -le $end_point ]]; then
     installation_header "Installing desktop environment stuff"
 
-    as_user paru -Sy --noconfirm feh picom rofi ttf-ubuntumono-nerd xorg-server xorg-xinit gtk3 gtk-layer-shell pango gdk-pixbuf2 cairo glib2 gcc-libs glibc
+    as_user apt install -y feh picom rofi ttf-ubuntumono-nerd xorg-server xorg-xinit gtk3 gtk-layer-shell pango gdk-pixbuf2 cairo glib2 gcc-libs glibc
     as_user cargo install leftwm
 
     as_user git clone https://github.com/elkowar/eww /home/$username/sys-git/eww
@@ -200,9 +177,9 @@ fi
 if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     installation_header "Installing terminal stuff"
 
-    as_user paru -Sy --noconfirm alacritty tmux starship nushell
+    as_user apt install -y alacritty tmux starship nushell
 
-    usermod $username -s /usr/bin/nu
+    as_user usermod $username -s /usr/bin/nu
 
     echo "Terminal stuff installed."
 
@@ -218,7 +195,7 @@ fi
 if [[ $start_point -eq 8 && $start_point -le $end_point ]]; then
     installation_header "Installing various system packages"
 
-    as_user paru -Sy --noconfirm man ripgrep fd
+    as_user apt install -y man ripgrep fd
 
     echo "Various system packages installed."
 
@@ -234,7 +211,7 @@ fi
 if [[ $start_point -eq 9 && $start_point -le $end_point ]]; then
     installation_header "Installing Neovim"
 
-    as_user paru -Sy --noconfirm cmake unzip ninja tree-sitter curl npm
+    as_user apt install -y cmake unzip ninja tree-sitter curl npm
 
     as_user git clone https://github.com/neovim/neovim /home/$username/sys-git/neovim
 
