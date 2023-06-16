@@ -78,5 +78,7 @@ X:
 
 zellij:
 	mkdir -p ~/.config/zellij
-	ln -snf ~/git/dots/zellij/base-config.kdl ~/.config/zellij/base-config.kdl
+	ln -snf ~/git/dots/zellij/config.kdl ~/.config/zellij/config.kdl
+	ln -snf ~/git/dots/zellij/layout.kdl ~/.config/zellij/layout.kdl
 	ln -snf ~/git/dots/zellij/pde-layout.kdl ~/.config/zellij/pde-layout.kdl
+	sed -i -r --follow-symlink 's/(theme ").*"/\1$(THEME)"/' ~/.config/zellij/config.kdl
