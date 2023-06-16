@@ -626,6 +626,6 @@ def pde [] {
 }
 
 # Start nushell with Zellij, if not already started
-if ($env | grep -i ZELLIJ | is-empty) {
+if ($env | grep -i ZELLIJ | is-empty) and ($env.TERM != "linux") {
     zellij --config ~/.config/zellij/config.kdl --layout ~/.config/zellij/layout.kdl
 }
