@@ -5,10 +5,10 @@ local harpoon_utils = require("harpoon.utils")
 vim.keymap.set("n", "<leader>M", mark.add_file)
 vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu)
 
-vim.keymap.set("n", "<M-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<M-j>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<M-k>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<M-l>", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<leader>h", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<leader>j", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<leader>k", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<leader>l", function() ui.nav_file(4) end)
 
 local augroup = "etiole_harpoon"
 vim.api.nvim_create_augroup(augroup, { clear = true })
