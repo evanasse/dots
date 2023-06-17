@@ -41,7 +41,7 @@ copy_command "xclip -selection clipboard" // x11
 
 scrollback_editor "nvim --noplugin"
 
-keybinds {
+keybinds clear-defaults=true {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
@@ -74,14 +74,13 @@ keybinds {
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt Right" { MoveFocusOrTab "Right"; }
-        bind "Alt Down" { MoveFocus "Down"; }
-        bind "Alt Up" { MoveFocus "Up"; }
+        bind "Alt Left" "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt Right" "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt Down" "Alt j" { MoveFocus "Down"; }
+        bind "Alt Up" "Alt k" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
-        bind "Alt [" { SwitchToMode "Scroll"; }
-        bind "Alt ]" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "Alt z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "Alt a" { FocusNextPane; SwitchToMode "Normal"; }
         bind "Alt q" { Quit; }
         bind "Alt t" { NewTab; SwitchToMode "Normal"; }
