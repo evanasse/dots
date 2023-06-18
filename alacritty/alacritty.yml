@@ -203,7 +203,7 @@ farout: &farout
     cyan: '#C69478'
     white: '#F2DDBC'
   bright:
-    black: '#1F1311'
+    black: '#452A26'
     red: '#DF674C'
     green: '#DBE4C3'
     yellow: '#FFC786'
