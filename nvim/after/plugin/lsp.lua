@@ -11,7 +11,7 @@ lsp.preset("lsp-compe")
 local augroup = "lsp_custom_augroup"
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
--- vim.api.nvim_create_autocmd("CursorHold", { command = "lua vim.diagnostic.open_float()" })
+vim.api.nvim_create_autocmd("CursorHold", { command = "lua vim.diagnostic.open_float()" })
 vim.api.nvim_create_autocmd("BufWritePre", { command = "lua vim.lsp.buf.format({async = false})" })
 
 -- Set updatetime for CursorHold
@@ -24,8 +24,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "<c-]>", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<c-[>", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "<Down>", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<Up>", vim.diagnostic.goto_prev, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "grf", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
@@ -36,10 +36,10 @@ lsp.nvim_workspace()
 
 lsp.set_preferences({
   sign_icons = {
-    error = " ",
-    warn = " ",
-    hint = " ",
-    info = " "
+    error = "",
+    warn = "",
+    hint = "󰦤",
+    info = ""
   }
 })
 
