@@ -45,7 +45,7 @@ eww: leftwm
 desktop: eww
 
 nushell:
-	mkdir -p ~/.config
+	mkdir -p ~/.config/nushell
 	ln -snf ~/git/dots/nushell/env.nu ~/.config/nushell/env.nu
 	ln -snf ~/git/dots/nushell/config.nu ~/.config/nushell/config.nu
 	ln -snf ~/git/dots/nushell/.dir_colors_$(THEME) ~/.config/nushell/.dir_colors
