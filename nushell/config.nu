@@ -294,10 +294,10 @@ let light_theme = {
     show_banner: false # true or false to enable or disable the banner
 
     hooks: {
-        pre_prompt: [{
+        pre_prompt: [{ ||
             $nothing  # replace with source code to run before the prompt is shown
         }]
-        pre_execution: [{
+        pre_execution: [{ ||
             $nothing  # replace with source code to run before the repl input is run
         }]
         env_change: {
@@ -557,13 +557,13 @@ let light_theme = {
             mode: [emacs, vi_normal, vi_insert]
             event: { send: menu name: vars_menu }
         }
-        {
-            name: commands_with_description
-            modifier: control
-            keycode: char_s
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: menu name: commands_with_description }
-        }
+        # {
+        #     name: commands_with_description
+        #     modifier: control
+        #     keycode: char_s
+        #     mode: [emacs, vi_normal, vi_insert]
+        #     event: { send: menu name: commands_with_description }
+        # }
         {
             name: up_arrow
             modifier: alt
@@ -591,6 +591,9 @@ let light_theme = {
             }
         }
     ]
+    cursor_shape: {
+        emacs: block
+    }
   }
 
 #### STARTSHIP SETUP
@@ -602,7 +605,7 @@ let-env PROMPT_MULTILINE_INDICATOR = (^/usr/bin/starship prompt --continuation)
 # TODO: Also Use starship vi mode indicators?
 let-env PROMPT_INDICATOR = ""
 
-let-env PROMPT_COMMAND = {
+let-env PROMPT_COMMAND = { ||
     # jobs are not supported
     let width = ((term size).columns | into string)
     ^/usr/bin/starship prompt $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
@@ -611,40 +614,18 @@ let-env PROMPT_COMMAND = {
 # Not well-suited for `starship prompt --right`.
 # Built-in right prompt is equivalent to $fill$right_format in the first prompt line.
 # Thus does not play well with default `add_newline = True`.
-let-env PROMPT_COMMAND_RIGHT = {''}
+let-env PROMPT_COMMAND_RIGHT = {|| ''}
 
 ####
 
-def nvim_alias [...args: string] {
-    if ($args | length) > 0 {
-        nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
-    } else {
-        nvim .
-    }
-}
-
-alias vim = nvim_alias
+alias vim = nvim
 alias dots = cd ~/git/dots
-alias tmux = tmux -u
 
-if (^which tmux) != "" and $env.TERM !~ "screen" and $env.TERM !~ "tmux" and $env.TERM !~ "linux" and "TMUX" not-in (env).name and "XDG_CURRENT_DESKTOP" in (env).name {
-  tmux
+def pde [] {
+    zellij action new-tab --name PDE --layout ~/.config/zellij/pde-layout.kdl
 }
 
-def-env br_cmd [] {
-    let cmd_file = (^mktemp | str trim);
-    ^broot --outcmd $cmd_file;
-    let-env cmd = ((open $cmd_file) | str trim);
-    ^rm $cmd_file;
-}
-# Broot file manager
-alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
-
-def pde [...args: string] {
-    clear
-    if ($args | length) > 0 {
-        tmux split-window -h -l 64% nvim ($args | reduce { |it, acc| $"($acc) ($it)" })
-    } else {
-        tmux split-window -h -l 64% nvim -c 'lua require("telescope").extensions.file_browser.file_browser()'
-    }
+# Start nushell with Zellij, if not already started
+if ($env | grep -i ZELLIJ | is-empty) and ($env.TERM != "linux") {
+    zellij --config ~/.config/zellij/config.kdl --layout ~/.config/zellij/layout.kdl
 }

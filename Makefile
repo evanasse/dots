@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship
+.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship zellij
 
 farout: THEME = farout
 farout: all
@@ -8,7 +8,7 @@ farout: all
 nord: THEME = nord
 nord: all
 
-all: alacritty nushell nvim rofi tmux X starship desktop
+all: alacritty nushell nvim rofi tmux X starship zellij desktop
 
 alacritty:
 	mkdir -p ~/.config/alacritty
@@ -45,7 +45,7 @@ eww: leftwm
 desktop: eww
 
 nushell:
-	mkdir -p ~/.config
+	mkdir -p ~/.config/nushell
 	ln -snf ~/git/dots/nushell/env.nu ~/.config/nushell/env.nu
 	ln -snf ~/git/dots/nushell/config.nu ~/.config/nushell/config.nu
 	ln -snf ~/git/dots/nushell/.dir_colors_$(THEME) ~/.config/nushell/.dir_colors
@@ -75,3 +75,10 @@ tmux:
 X:
 	ln -snf ~/git/dots/X/.xinitrc ~/.xinitrc
 	ln -snf ~/git/dots/X/$(THEME)-Xresources ~/.Xresources
+
+zellij:
+	mkdir -p ~/.config/zellij
+	ln -snf ~/git/dots/zellij/config.kdl ~/.config/zellij/config.kdl
+	ln -snf ~/git/dots/zellij/layout.kdl ~/.config/zellij/layout.kdl
+	ln -snf ~/git/dots/zellij/pde-layout.kdl ~/.config/zellij/pde-layout.kdl
+	sed -i -r --follow-symlink 's/(theme ").*"/\1$(THEME)"/' ~/.config/zellij/config.kdl

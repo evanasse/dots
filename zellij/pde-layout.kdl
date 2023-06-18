@@ -1,0 +1,18 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane {
+            name ""
+        }
+        pane {
+            name "nvim"
+            command "nvim"
+            args "."
+            size "64%"
+            focus true
+            close_on_exit true
+        }
+    }
+}

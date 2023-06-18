@@ -46,6 +46,6 @@ let-env PATH = ($env.PATH | split row (char esep) | prepend '~/.cargo/bin/')
 let-env PATH = ($env.PATH | split row (char esep) | prepend '~/.local/bin/')
 let-env PATH = ($env.PATH | split row (char esep) | prepend '~/miniconda3/bin/')
 
-let-env LS_COLORS = (dircolors -b ~/.config/nushell/.dir_colors | lines | get 0 | str substring '10,')
+let-env LS_COLORS = (dircolors -b ~/.config/nushell/.dir_colors | lines | get 0 | str substring 10..)
 
 let-env EDITOR = "nvim"

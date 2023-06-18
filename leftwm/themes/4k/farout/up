@@ -18,6 +18,7 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 # Boot picom or compton if it exists
 if [ -x "$(command -v picom)" ]; then
+  pkill picom || true
   picom --config $SCRIPTPATH/picom.conf &> /dev/null &
 elif [ -x "$(command -v compton)" ]; then
   compton &> /dev/null &
