@@ -200,7 +200,7 @@ fi
 if [[ $start_point -eq 7 && $start_point -le $end_point ]]; then
     installation_header "Installing terminal stuff"
 
-    as_user paru -Sy --noconfirm alacritty tmux starship nushell
+    as_user paru -Sy --noconfirm wezterm starship nushell
 
     usermod $username -s /usr/bin/nu
 

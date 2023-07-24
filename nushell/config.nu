@@ -596,10 +596,6 @@ let light_theme = {
     }
   }
 
-#### STARTSHIP SETUP
-let-env STARSHIP_SHELL = "nu"
-let-env STARSHIP_SESSION_KEY = (random chars -l 16)
-let-env PROMPT_MULTILINE_INDICATOR = (^/usr/bin/starship prompt --continuation)
 
 # Does not play well with default character module.
 # TODO: Also Use starship vi mode indicators?
@@ -622,10 +618,7 @@ alias vim = nvim
 alias dots = cd ~/git/dots
 
 def pde [] {
-    zellij action new-tab --name PDE --layout ~/.config/zellij/pde-layout.kdl
+    wezterm cli split-pane --right --percent 64 -- nvim
 }
 
-# Start nushell with Zellij, if not already started
-if ($env | grep -i ZELLIJ | is-empty) and ($env.TERM != "linux") {
-    zellij --config ~/.config/zellij/config.kdl --layout ~/.config/zellij/layout.kdl
-}
+source ~/.cache/starship/init.nu
