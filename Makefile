@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all alacritty leftwm eww desktop nushell nvim rofi tmux X starship zellij
+.PHONY: all leftwm eww desktop nushell nvim rofi starship tmux wezterm X
 
 farout: THEME = farout
 farout: all
@@ -8,18 +8,7 @@ farout: all
 nord: THEME = nord
 nord: all
 
-all: alacritty nushell nvim rofi tmux X starship zellij desktop
-
-alacritty:
-	mkdir -p ~/.config/alacritty
-	ln -snf ~/git/dots/alacritty/* --target-directory ~/.config/alacritty
-	sed -i -r --follow-symlink 's/(colors:).*/\1 *$(THEME)/' ~/.config/alacritty/alacritty.yml
-	@if [[ $(is_4k) ]]; then\
-		sed -i -r --follow-symlink 's/(size:).*/\1 *size_4k/' ~/.config/alacritty/alacritty.yml;\
-	else\
-		sed -i -r --follow-symlink 's/(size:).*/\1 *size_regular/' ~/.config/alacritty/alacritty.yml;\
-	fi
-
+all: nushell nvim rofi tmux X starship desktop
 
 leftwm:
 	mkdir -p ~/.config/leftwm
@@ -72,13 +61,10 @@ starship:
 tmux:
 	ln -snf ~/git/dots/tmux/.tmux.conf ~/.tmux.conf
 
+wezterm:
+	mkdir -p ~/.config/wezterm/
+	ln -snf ~/git/dots/wezterm/* --target-directory ~/.config/wezterm
+
 X:
 	ln -snf ~/git/dots/X/.xinitrc ~/.xinitrc
 	ln -snf ~/git/dots/X/$(THEME)-Xresources ~/.Xresources
-
-zellij:
-	mkdir -p ~/.config/zellij
-	ln -snf ~/git/dots/zellij/config.kdl ~/.config/zellij/config.kdl
-	ln -snf ~/git/dots/zellij/layout.kdl ~/.config/zellij/layout.kdl
-	ln -snf ~/git/dots/zellij/pde-layout.kdl ~/.config/zellij/pde-layout.kdl
-	sed -i -r --follow-symlink 's/(theme ").*"/\1$(THEME)"/' ~/.config/zellij/config.kdl
