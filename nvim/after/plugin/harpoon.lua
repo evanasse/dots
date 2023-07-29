@@ -10,7 +10,7 @@ vim.keymap.set("n", "<leader>j", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<leader>k", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<leader>l", function() ui.nav_file(4) end)
 
-local augroup = "etiole_harpoon"
+local augroup = "evanasse_harpoon"
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
 vim.api.nvim_create_autocmd(

@@ -21,7 +21,14 @@ return {
     },
     {
         "m4xshen/autoclose.nvim",
-        opts = {}
+        opts = {
+            options = {
+                disable_when_touch = true
+            },
+            keys = {
+                ["'"] = { close = false },
+            }
+        }
     },
     {
         "nvim-telescope/telescope.nvim",

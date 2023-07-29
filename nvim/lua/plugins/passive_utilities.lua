@@ -19,4 +19,5 @@ return {
             require("nvim-treesitter").setup()
         end
     },
+    "nvim-treesitter/nvim-treesitter-context"
 }
