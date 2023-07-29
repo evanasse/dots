@@ -52,3 +52,6 @@ let-env EDITOR = "nvim"
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+
+# Prevent weird "re-prompt" behavior
+sleep 100ms
