@@ -139,6 +139,7 @@ config.keys = {
     { key = "k",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
     { key = "l",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
     { key = "d",      mods = "ALT",   action = wezterm.action.CloseCurrentPane { confirm = false } },
+    { key = "z",      mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
     { key = "Insert", mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
     { key = "Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
     { key = "L",      mods = "CTRL",  action = wezterm.action.ShowDebugOverlay },
