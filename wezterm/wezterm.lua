@@ -185,6 +185,8 @@ config.mouse_bindings = {
     },
 }
 
+config.window_close_confirmation = "NeverPrompt"
+
 wezterm.on("gui-startup", function(cmd)
     local tab, _, window = wezterm.mux.spawn_window(cmd or {})
 
