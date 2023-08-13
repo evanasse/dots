@@ -8,10 +8,10 @@ return {
         config = true,
     },
     {
-        "evanasse/alterego.nvim",
+        "evanasse/antonyms.nvim",
         dependencies = { "tpope/vim-repeat" },
         config = function()
-            require("alterego").setup()
+            require("antonyms").setup()
         end
     },
     {

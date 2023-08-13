@@ -23,7 +23,6 @@ lsp.on_attach(function(client, bufnr)
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "<Down>", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "<Up>", vim.diagnostic.goto_prev, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)

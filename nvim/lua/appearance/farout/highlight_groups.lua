@@ -280,3 +280,111 @@ vim.api.nvim_create_autocmd(
     command = string.format("hi! %s guibg=NONE ctermbg=NONE", "Normal")
   }
 )
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = "hi! link Conceal Comment",
+  }
+)
+-- ===========
+--    Mason
+-- ===========
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg=NONE", "MasonHighlight", tostring(colors.dark_red))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s' gui=bold", "MasonHighlightBlockBold", tostring(colors.black),
+      tostring(colors.red))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s' gui=bold", "MasonHeaderSecondary", tostring(colors.black),
+      tostring(colors.red))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s'", "MasonHighlightBlock", tostring(colors.black),
+      tostring(colors.red))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s' gui=bold", "MasonHighlightBlockBoldSecondary",
+      tostring(colors.black),
+      tostring(colors.dark_yellow))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s' gui=bold", "MasonHeader", tostring(colors.black),
+      tostring(colors.dark_yellow))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s'", "MasonHighlightBlockSecondary", tostring(colors.black),
+      tostring(colors.dark_yellow))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s'", "MasonHighlightSecondary", tostring(colors.dark_yellow))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = "hi! link MasonMuted LineNrAbove",
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s'", "MasonMutedBlock", tostring(colors.black),
+      tostring(colors.dark_cyan))
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s guifg='%s' guibg='%s' gui=bold", "MasonMutedBlockBold", tostring(colors.black),
+      tostring(colors.dark_cyan))
+  }
+)
