@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all leftwm eww desktop nushell nvim rofi starship tmux wezterm X
+.PHONY: all git leftwm eww desktop nushell nvim rofi starship tmux wezterm X
 
 farout: THEME = farout
 farout: all
@@ -8,7 +8,10 @@ farout: all
 nord: THEME = nord
 nord: all
 
-all: nushell nvim rofi tmux X starship desktop
+all: git nushell nvim rofi tmux X starship desktop
+
+git:
+	ln -snf ~/git/dots/git/.gitconfig ~/.gitconfig
 
 leftwm:
 	mkdir -p ~/.config/leftwm
