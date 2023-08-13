@@ -15,8 +15,8 @@
 #define lightgrey #E0CCAE
 #define white #F2DDBC
 
-*color0: black
-*color8: darkgrey
+*color0: darkgrey
+*color8: black
 *color1: darkred
 *color9: red
 *color2:  darkgreen
