@@ -243,7 +243,7 @@ let light_theme = {
 
 
 # The default config record. This is where much of your global configuration is setup.
-  let-env config = {
+  $env.config = {
     ls: {
         use_ls_colors: true
         clickable_links: false # true or false to enable or disable clickable links in the ls listing. your terminal has to support links.
@@ -599,9 +599,9 @@ let light_theme = {
 
 # Does not play well with default character module.
 # TODO: Also Use starship vi mode indicators?
-let-env PROMPT_INDICATOR = ""
+$env.PROMPT_INDICATOR = ""
 
-let-env PROMPT_COMMAND = { ||
+$env.PROMPT_COMMAND = { ||
     # jobs are not supported
     let width = ((term size).columns | into string)
     ^/usr/bin/starship prompt $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
@@ -610,7 +610,7 @@ let-env PROMPT_COMMAND = { ||
 # Not well-suited for `starship prompt --right`.
 # Built-in right prompt is equivalent to $fill$right_format in the first prompt line.
 # Thus does not play well with default `add_newline = True`.
-let-env PROMPT_COMMAND_RIGHT = {|| ''}
+$env.PROMPT_COMMAND_RIGHT = {|| ''}
 
 ####
 
@@ -618,7 +618,8 @@ alias vim = nvim
 alias dots = cd ~/git/dots
 
 def pde [] {
-    wezterm cli split-pane --right --percent 64 -- nvim
+    clear
+    wezterm cli split-pane --right --percent 64 -- bash -c 'nvim'
 }
 
 source ~/.cache/starship/init.nu
