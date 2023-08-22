@@ -142,8 +142,10 @@ config.keys = {
     { key = "z",      mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
     { key = "Insert", mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
     { key = "Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "Insert", mods = "ALT",   action = wezterm.action.PasteFrom("PrimarySelection") },
     { key = "L",      mods = "CTRL",  action = wezterm.action.ShowDebugOverlay },
 }
+
 
 config.mouse_bindings = {
     -- Use Ctrl/Shift + Insert to copy/paste with clipboard
