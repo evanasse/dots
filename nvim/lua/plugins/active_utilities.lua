@@ -85,6 +85,7 @@ return {
                             preview_width = 0.6
                         },
                         git_status = false,
+                        hidden = { file_browser = true, folder_browser = true },
                     },
                 }
             })
