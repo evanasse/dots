@@ -26,6 +26,10 @@ function Xmap(shortcut, command, options)
     map('x', shortcut, command, options)
 end
 
+function Omap(shortcut, command, options)
+    map('o', shortcut, command, options)
+end
+
 -- Set 'space' as the leader key
 vim.g.mapleader = " "
 Nmap("<space>", "<nop>")
@@ -43,6 +47,7 @@ Nmap("<leader>p", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get
 
 -- Make backspace move back a word instead of a single char
 Nmap("<backspace>", "b")
+Omap("<backspace>", "b")
 
 -- Center line of next search
 Nmap("n", "nzzzv")
@@ -67,4 +72,8 @@ Nmap("<leader>Y", [["+Y]])
 Nmap("<s-u>", "<c-r>")
 
 -- Add semi-colon at the EOL if not present
-Nmap(";;", "<cmd>s/;\\?$/;/<cr>$")
+Nmap("<leader>;", "<cmd>s/;\\?$/;/<cr>$")
+
+-- Add empty line above/below
+Nmap("<leader>O", "O<esc>j")
+Nmap("<leader>o", "o<esc>k")

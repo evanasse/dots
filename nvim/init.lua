@@ -18,4 +18,4 @@ require("lazy").setup("plugins", {
         border = "rounded"
     }
 })
-require("etiole")
+require("evanasse")

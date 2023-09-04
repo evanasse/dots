@@ -19,4 +19,18 @@ return {
             require("nvim-treesitter").setup()
         end
     },
+    "nvim-treesitter/nvim-treesitter-context",
+    {
+        "https://github.com/NvChad/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup({
+                user_default_options = {
+                    names = false,
+                    css = true,
+                    css_fn = false,
+                    mode = "virtualtext"
+                }
+            })
+        end
+    }
 }

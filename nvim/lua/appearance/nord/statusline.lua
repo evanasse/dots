@@ -134,7 +134,7 @@ require('lualine').setup {
     lualine_c = {
       '%=',
       {
-        require("etiole.lualine.custom_components.harpoon_buffers"),
+        require("evanasse.lualine.custom_components.harpoon_buffers"),
         mode = 0,
         icons_enabled = false,
         buffers_color = {
@@ -159,7 +159,7 @@ require('lualine').setup {
           component = '',
           progress = '',
         },
-        spinner_symbols = require("etiole.spinner").half_spinner_rev(),
+        spinner_symbols = require("evanasse.spinner").half_spinner_rev(),
         timer = {spinner=50}
       }
     },

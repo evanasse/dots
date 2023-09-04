@@ -142,8 +142,10 @@ config.keys = {
     { key = "z",      mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
     { key = "Insert", mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
     { key = "Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "Insert", mods = "ALT",   action = wezterm.action.PasteFrom("PrimarySelection") },
     { key = "L",      mods = "CTRL",  action = wezterm.action.ShowDebugOverlay },
 }
+
 
 config.mouse_bindings = {
     -- Use Ctrl/Shift + Insert to copy/paste with clipboard
@@ -185,11 +187,13 @@ config.mouse_bindings = {
     },
 }
 
+config.window_close_confirmation = "NeverPrompt"
+
 wezterm.on("gui-startup", function(cmd)
-    local tab, _, window = wezterm.mux.spawn_window(cmd or {})
+    local tab, _, window = wezterm.mux.spawn_window(cmd or { args = { '/bin/bash' } })
 
     for _ = 1, 3 do
-        window:spawn_tab {}
+        window:spawn_tab { args = { '/bin/bash' } }
     end
 
     tab:activate()

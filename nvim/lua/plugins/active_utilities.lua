@@ -8,10 +8,10 @@ return {
         config = true,
     },
     {
-        "evanasse/alterego.nvim",
+        "evanasse/antonyms.nvim",
         dependencies = { "tpope/vim-repeat" },
         config = function()
-            require("alterego").setup()
+            require("antonyms").setup()
         end
     },
     {
@@ -21,7 +21,14 @@ return {
     },
     {
         "m4xshen/autoclose.nvim",
-        opts = {}
+        opts = {
+            options = {
+                disable_when_touch = true
+            },
+            keys = {
+                ["'"] = { close = false },
+            }
+        }
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -78,6 +85,7 @@ return {
                             preview_width = 0.6
                         },
                         git_status = false,
+                        hidden = { file_browser = true, folder_browser = true },
                     },
                 }
             })
