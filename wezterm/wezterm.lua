@@ -190,10 +190,10 @@ config.mouse_bindings = {
 config.window_close_confirmation = "NeverPrompt"
 
 wezterm.on("gui-startup", function(cmd)
-    local tab, _, window = wezterm.mux.spawn_window(cmd or {})
+    local tab, _, window = wezterm.mux.spawn_window(cmd or { args = { '/bin/bash' } })
 
     for _ = 1, 3 do
-        window:spawn_tab {}
+        window:spawn_tab { args = { '/bin/bash' } }
     end
 
     tab:activate()

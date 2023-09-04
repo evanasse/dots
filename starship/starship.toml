@@ -1,4 +1,4 @@
-format = """${custom.time}$cmd_duration$username$hostname $directory$git_branch$git_status$git_state\n$character"""
+format = """$time$cmd_duration$username$hostname $directory$git_branch$git_status$git_state\n$character"""
 
 add_newline = false
 command_timeout = 800
@@ -52,9 +52,8 @@ format = "[(\\($duration\\)\n\n)]($style)"
 style = "bold red"
 disabled = false
 
-[custom.time]
-command = "date now | date format %H:%M:%S"
-when = "$env.CMD_DURATION_MS | into int | if $in > 2 { ^true } else { ^false }"
-format = "[(\\[$output\\])]($style) "
+[time]
+format = "[\\[$time\\]]($style) "
+time_format = "%H:%M:%S"
 style = "bold purple"
 disabled = false

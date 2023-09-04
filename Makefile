@@ -1,6 +1,6 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all git leftwm eww desktop nushell nvim rofi starship tmux wezterm X
+.PHONY: all git leftwm eww desktop bash nvim rofi starship tmux wezterm X
 
 farout: THEME = farout
 farout: all
@@ -8,7 +8,7 @@ farout: all
 nord: THEME = nord
 nord: all
 
-all: git nushell nvim rofi tmux X starship desktop
+all: git bash nvim rofi tmux X starship desktop
 
 git:
 	ln -snf ~/git/dots/git/.gitconfig ~/.gitconfig
@@ -36,11 +36,10 @@ eww: leftwm
 
 desktop: eww
 
-nushell:
-	mkdir -p ~/.config/nushell
-	ln -snf ~/git/dots/nushell/env.nu ~/.config/nushell/env.nu
-	ln -snf ~/git/dots/nushell/config.nu ~/.config/nushell/config.nu
-	ln -snf ~/git/dots/nushell/.dir_colors_$(THEME) ~/.config/nushell/.dir_colors
+bash:
+	mkdir -p ~/.config/bash
+	ln -sf ~/git/dots/bash/.bashrc ~/.bashrc
+	ln -sf ~/git/dots/bash/completions --target-directory ~/.config/bash
 
 nvim:
 	mkdir -p ~/.config/nvim
