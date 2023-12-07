@@ -8,6 +8,9 @@ local colors = require("appearance.farout.named_colors")
 
 vim.api.nvim_create_augroup(augroup, { clear = true })
 
+-- =====
+--  LSP
+-- =====
 vim.api.nvim_create_autocmd(
   { "VimEnter" },
   {
@@ -80,6 +83,14 @@ vim.api.nvim_create_autocmd(
     group = augroup,
     pattern = { "*" },
     command = "hi! link CursorLine Search",
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = "hi! link LspInfoBorder FloatBorder",
   }
 )
 -- ==============

@@ -77,3 +77,11 @@ Nmap("<leader>;", "<cmd>s/;\\?$/;/<cr>$")
 -- Add empty line above/below
 Nmap("<leader>O", "O<esc>j")
 Nmap("<leader>o", "o<esc>k")
+
+-- Add empty line above/below
+Nmap("<leader>O", "O<esc>j")
+Nmap("<leader>o", "o<esc>k")
+
+-- Move selected text up/down
+Vmap("J", ":m '>+1<CR>gv=gv")
+Vmap("K", ":m '<-2<CR>gv=gv")

@@ -34,7 +34,10 @@ return {
         "nvim-telescope/telescope.nvim",
         lazy = false,
         tag = "0.1.2",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+        },
         keys = {
             { "<leader><leader>f", "<cmd>Telescope find_files<cr>" },
             { "<leader><leader>g", "<cmd>Telescope live_grep<cr>" },
@@ -45,6 +48,7 @@ return {
         init = function()
             local telescope = require("telescope")
             local telescopeConfig = require("telescope.config")
+            local actions = require("telescope.actions")
 
             -- Clone the default Telescope configuration
             local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -59,8 +63,7 @@ return {
                 defaults = {
                     mappings = {
                         i = {
-                            ["<A-j>"] = "move_selection_next",
-                            ["<A-k>"] = "move_selection_previous"
+                            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                         }
                     },
                     -- `hidden = true` is not supported in text grep commands.
@@ -90,6 +93,7 @@ return {
                 }
             })
             telescope.load_extension("file_browser")
+            telescope.load_extension("fzf")
         end
     },
     {
