@@ -1,6 +1,6 @@
 #define black #0F0908
 #define darkgrey #1F1311
-#define darkred #BF472C
+#define darkred #A74D39
 #define red #DF674C
 #define darkgreen #A4896F
 #define green #C4A98F
