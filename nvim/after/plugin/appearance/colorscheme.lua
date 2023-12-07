@@ -1,4 +1,4 @@
-require("appearance.farout")
+require("appearance")
 
 vim.opt.termguicolors = true
 

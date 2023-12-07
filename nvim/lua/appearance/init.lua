@@ -1,4 +1,4 @@
-require("appearance.farout.statusline")
-require("appearance.farout.highlight_groups")
+require("appearance.statusline")
+require("appearance.highlight_groups")
 
 vim.cmd("colorscheme farout")

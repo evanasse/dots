@@ -43,7 +43,7 @@ Nmap("<leader>q", "<cmd>x<cr>")
 Nmap("<leader>Q", "<cmd>xa<cr>")
 
 -- Close Vim buffer
-Nmap("<leader>p", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
+Nmap("<leader>d", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
 
 -- Make backspace move back a word instead of a single char
 Nmap("<backspace>", "b")
@@ -52,7 +52,6 @@ Omap("<backspace>", "b")
 -- Center line of next search
 Nmap("n", "nzzzv")
 Nmap("N", "Nzzzv")
-
 -- Center cursor when half-page scrolling
 Nmap("<c-d>", "<c-d>zz")
 Nmap("<c-u>", "<c-u>zz")
@@ -70,15 +69,8 @@ Nmap("<leader>y", [["+y]])
 Vmap("<leader>y", [["+y]])
 Nmap("<leader>Y", [["+Y]])
 
--- Redo
-Nmap("<s-u>", "<c-r>")
-
 -- Add semi-colon at the EOL if not present
 Nmap("<leader>;", "<cmd>s/;\\?$/;/<cr>$")
-
--- Add empty line above/below
-Nmap("<leader>O", "O<esc>j")
-Nmap("<leader>o", "o<esc>k")
 
 -- Add empty line above/below
 Nmap("<leader>O", "O<esc>j")
