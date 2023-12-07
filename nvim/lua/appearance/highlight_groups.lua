@@ -156,8 +156,7 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = string.format("hi! %s guifg='%s' guibg='%s'", "CursorLine", tostring(colors.dark_black),
-      tostring(colors.blue))
+    command = string.format("hi! %s guifg='%s'", "CursorLine", tostring(colors.red))
   }
 )
 vim.api.nvim_create_autocmd(

@@ -59,6 +59,8 @@ Nmap("<c-u>", "<c-u>zz")
 -- Center cursor when travelling the jumplist
 Nmap("<c-o>", "<c-o>zz")
 Nmap("<c-i>", "<c-i>zz")
+-- Center cursor when jumping to end of file
+Nmap("G", "Gzz")
 
 -- Don't overwrite register when pasting on selected text
 Xmap("<leader>p", [["_dP]])

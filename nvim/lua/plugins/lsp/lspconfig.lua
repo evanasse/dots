@@ -23,9 +23,18 @@ return {
         local opts = { noremap = true, silent = true }
         local function on_attach(client, bufnr)
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            keymap.set("n", "<Down>", vim.diagnostic.goto_next, opts)
-            keymap.set("n", "<Up>", vim.diagnostic.goto_prev, opts)
-            keymap.set("n", "<leader>df", vim.lsp.buf.definition, opts)
+            keymap.set("n", "<Down>", function()
+                vim.diagnostic.goto_next()
+                vim.cmd("norm zz")
+            end, opts)
+            keymap.set("n", "<Up>", function()
+                vim.diagnostic.goto_prev()
+                vim.cmd("norm zz")
+            end, opts)
+            keymap.set("n", "<leader>df", function()
+                vim.lsp.buf.definition()
+                vim.cmd("norm zz")
+            end, opts)
             keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
             keymap.set("n", "<leader>rf", "<cmd>Telescope lsp_references<cr>", opts)
             keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -70,7 +79,7 @@ return {
                     border = "rounded"
                 }
             )
-
+        -- LSP configs
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -117,6 +126,10 @@ return {
             on_attach = on_attach,
         })
         lspconfig["yamlls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig["julials"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })

@@ -1,5 +1,4 @@
 return {
-    "shaunsingh/nord.nvim",
     "fcpg/vim-farout",
     "xiyaowong/nvim-transparent",
     "arkav/lualine-lsp-progress",
