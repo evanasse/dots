@@ -38,12 +38,8 @@ Vmap("<space>", "<nop>")
 -- Disable highlight search
 Nmap("<leader>H", "<cmd>set invhlsearch<cr>")
 
--- Close Vim window (and save if modified)
-Nmap("<leader>q", "<cmd>x<cr>")
-Nmap("<leader>Q", "<cmd>xa<cr>")
-
 -- Close Vim buffer
-Nmap("<leader>d", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
+Nmap("<leader>q", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
 
 -- Make backspace move back a word instead of a single char
 Nmap("<backspace>", "b")
