@@ -26,7 +26,7 @@ function pde {
     if [[ -f "pyproject.toml" ]]; then
         env_vars="VIRTUAL_ENV=.venv"
     fi
-    wezterm cli split-pane --right --percent 64 --cwd $(pwd) -- bash -c "$env_vars nvim"
+    wezterm cli split-pane --right --percent 60 --cwd $(pwd) -- bash -c "$env_vars nvim"
 }
 
 # PATH
@@ -36,3 +36,20 @@ export PATH=$PATH:'~/.local/bin/'
 export PATH=$PATH:'~/miniconda3/bin/'
 
 export EDITOR="nvim"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/etiole/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/etiole/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
+
+export HISTCONTROL=ignoredups
