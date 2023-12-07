@@ -17,68 +17,69 @@ config.color_scheme = "farout"
 config.color_schemes = {
     ["farout"] = {
         background = "#0F0908",
-        foreground = "#E0CCAE",
-        ansi = {
-            "#1f1311",
-            "#df674c",
-            "#8e947d",
-            "#ffc786",
-            "#f49d69",
-            "#aa6b73",
-            "#c69478",
-            "#f2ddbc",
-        },
+        foreground = "#F2DDBC",
         brights = {
-            "#452a26",
-            "#df674c",
-            "#dbe4c3",
-            "#ffc786",
-            "#f49d69",
-            "#aa6b73",
-            "#c69478",
+            "#1F1311",
+            "#DF674C",
+            "#8E947D",
+            "#FFC786",
+            "#F49D69",
+            "#AA6B73",
+            "#C69478",
             "#F2DDBC",
         },
-    }
+        ansi = {
+            "#0F0908",
+            "#A74D39",
+            "#616655",
+            "#F2A766",
+            "#D47D49",
+            "#8A4B53",
+            "#A67458",
+            "#E0CCAE",
+        },
+    },
 }
 
+-- farout
 config.colors = {
     tab_bar = {
-        background = "#1f1311",
+        background = "#1F1311",
 
         active_tab = {
-            bg_color = "#1f1311",
-            fg_color = "#BF472C",
+            bg_color = "#1F1311",
+            fg_color = "#A74D39",
         },
 
         inactive_tab = {
-            bg_color = "#1f1311",
+            bg_color = "#1F1311",
             fg_color = "#A67458",
         },
 
         inactive_tab_hover = {
-            bg_color = "#1f1311",
+            bg_color = "#1F1311",
             fg_color = "#A67458",
             italic = false,
             intensity = "Bold",
         },
 
         new_tab = {
-            bg_color = "#1f1311",
+            bg_color = "#1F1311",
             fg_color = "#A67458",
         },
 
         new_tab_hover = {
-            bg_color = "#1f1311",
+            bg_color = "#1F1311",
             fg_color = "#A67458",
             italic = false,
             intensity = "Bold",
         },
     },
-    selection_bg = "#c69478",
-    selection_fg = "#1f1311",
-    cursor_bg = "#1f1311",
-    cursor_fg = "#1f1311",
-    cursor_border = "#1f1311",
+    selection_bg = "#A67458",
+    selection_fg = "#1F1311",
+    cursor_bg = "#1F1311",
+    cursor_fg = "#1F1311",
+    cursor_border = "#1F1311",
 }
 config.inactive_pane_hsb = {
     saturation = 0.9,
@@ -92,7 +93,7 @@ config.background = {
         source = { Color = "#0F0908" },
         height = "100%",
         width = "100%",
-        opacity = 0.9
+        opacity = 0.91
     }
 }
 
@@ -129,21 +130,31 @@ config.disable_default_key_bindings = true
 
 config.keys = {
     -- Tabs
-    { key = "1",      mods = "ALT",   action = wezterm.action.ActivateTab(0) },
-    { key = "2",      mods = "ALT",   action = wezterm.action.ActivateTab(1) },
-    { key = "3",      mods = "ALT",   action = wezterm.action.ActivateTab(2) },
-    { key = "4",      mods = "ALT",   action = wezterm.action.ActivateTab(3) },
-    { key = "Space",  mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Prev") },
-    { key = "h",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
-    { key = "j",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
-    { key = "k",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
-    { key = "l",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
-    { key = "d",      mods = "ALT",   action = wezterm.action.CloseCurrentPane { confirm = false } },
-    { key = "z",      mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
-    { key = "Insert", mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
-    { key = "Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
-    { key = "Insert", mods = "ALT",   action = wezterm.action.PasteFrom("PrimarySelection") },
-    { key = "L",      mods = "CTRL",  action = wezterm.action.ShowDebugOverlay },
+    { key = "1",          mods = "ALT",   action = wezterm.action.ActivateTab(0) },
+    { key = "2",          mods = "ALT",   action = wezterm.action.ActivateTab(1) },
+    { key = "3",          mods = "ALT",   action = wezterm.action.ActivateTab(2) },
+    { key = "4",          mods = "ALT",   action = wezterm.action.ActivateTab(3) },
+    -- Panes
+    { key = "Space",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Prev") },
+    { key = "h",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
+    { key = "j",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
+    { key = "k",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
+    { key = "l",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
+    { key = "d",          mods = "ALT",   action = wezterm.action.CloseCurrentPane { confirm = false } },
+    { key = "z",          mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
+    { key = "LeftArrow",  mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Left", 1 } },
+    { key = "RightArrow", mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Right", 1 } },
+    { key = "UpArrow",    mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Up", 1 } },
+    { key = "DownArrow",  mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Down", 1 } },
+    -- Clipboard
+    { key = "Insert",     mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
+    { key = "Insert",     mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "Insert",     mods = "ALT",   action = wezterm.action.PasteFrom("PrimarySelection") },
+    -- Debug
+    { key = "B",          mods = "ALT",   action = wezterm.action.ShowDebugOverlay },
+    -- Font size
+    { key = "=",          mods = "ALT",   action = wezterm.action.IncreaseFontSize },
+    { key = "-",          mods = "ALT",   action = wezterm.action.DecreaseFontSize },
 }
 
 
@@ -190,10 +201,11 @@ config.mouse_bindings = {
 config.window_close_confirmation = "NeverPrompt"
 
 wezterm.on("gui-startup", function(cmd)
-    local tab, _, window = wezterm.mux.spawn_window(cmd or { args = { '/bin/bash' } })
+    local shell_bin = "/bin/bash"
+    local tab, _, window = wezterm.mux.spawn_window(cmd or { args = { shell_bin } })
 
     for _ = 1, 3 do
-        window:spawn_tab { args = { '/bin/bash' } }
+        window:spawn_tab { args = { shell_bin } }
     end
 
     tab:activate()
