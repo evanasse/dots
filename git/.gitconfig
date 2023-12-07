@@ -14,9 +14,9 @@
 [delta]
     light = false
     syntax-theme = none
-    minus-style = "#BF472C" normal
-    minus-emph-style = black "#BF472C" bold
-    line-numbers-minus-style = "#BF472C"
+    minus-style = "#A74D39" normal
+    minus-emph-style = black "#A74D39" bold
+    line-numbers-minus-style = "#A74D39"
     plus-style = "#616655" normal
     plus-emph-style = white "#616655" bold
     line-numbers-plus-style = "#616655"
@@ -31,3 +31,5 @@
 
 [diff]
     colorMoved = default
+[init]
+	defaultBranch = main
