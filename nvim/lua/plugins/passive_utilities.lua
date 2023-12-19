@@ -4,7 +4,10 @@ return {
         config = true,
     },
     "airblade/vim-rooter",
-    "RRethy/vim-illuminate",
+    {
+        "echasnovski/mini.cursorword",
+        config = true,
+    },
     "lukas-reineke/indent-blankline.nvim",
     "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
     {

@@ -1,10 +1,10 @@
 return {
     {
-        "kylechui/nvim-surround",
+        "echasnovski/mini.surround",
         config = true,
     },
     {
-        "numToStr/Comment.nvim",
+        "echasnovski/mini.comment",
         config = true,
     },
     {
@@ -20,15 +20,8 @@ return {
         config = true,
     },
     {
-        "m4xshen/autoclose.nvim",
-        opts = {
-            options = {
-                disable_when_touch = true
-            },
-            keys = {
-                ["'"] = { close = false },
-            }
-        }
+        "echasnovski/mini.pairs",
+        config = true,
     },
     {
         "nvim-telescope/telescope.nvim",
