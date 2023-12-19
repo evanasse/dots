@@ -85,6 +85,3 @@ Nmap("<a-space>", "<c-w><c-w>")
 Imap("<a-space>", "<esc><c-w><c-w>")
 Tmap("<a-space>", "<c-\\><c-n><c-w><c-w>")
 Tmap("<esc>", "<c-\\><c-n>")
-
-Imap("<c-e>", "<end>")
-Imap("<c-a>", "<home>")

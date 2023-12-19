@@ -62,9 +62,11 @@ return {
                     -- `hidden = true` is not supported in text grep commands.
                     vimgrep_arguments = vimgrep_arguments,
                     color_devicons = false,
-                    layout_strategy = "vertical",
+                    layout_strategy = "horizontal",
                     layout_config = {
-                        width = 0.8
+                        width = 0.7,
+                        mirror = true,
+                        preview_width = 0.6
                     },
                 },
                 pickers = {
@@ -78,7 +80,6 @@ return {
                         hijack_netrw = true,
                         layout_strategy = "horizontal",
                         layout_config = {
-                            preview_width = 0.6
                         },
                         git_status = false,
                         hidden = { file_browser = true, folder_browser = true },
