@@ -19,3 +19,12 @@ require("lazy").setup({ { import = "plugins" }, { import = "plugins/lsp" } }, {
     }
 })
 require("evanasse")
+
+vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+vim.cmd("autocmd BufLeave term://* stopinsert")
+
+local width = vim.api.nvim_win_get_width(0)
+local cmd = string.format(
+    "leftabove vnew | vertical resize -%d | setlocal nonumber norelativenumber signcolumn=no laststatus=3 | call termopen(&shell)",
+    width * 0.1)
+vim.cmd(cmd)

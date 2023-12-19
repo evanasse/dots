@@ -135,7 +135,7 @@ config.keys = {
     { key = "3",          mods = "ALT",   action = wezterm.action.ActivateTab(2) },
     { key = "4",          mods = "ALT",   action = wezterm.action.ActivateTab(3) },
     -- Panes
-    { key = "Space",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Prev") },
+    -- { key = "Space",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Prev") },
     { key = "h",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
     { key = "j",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
     { key = "k",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Up") },

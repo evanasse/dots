@@ -30,6 +30,10 @@ function Omap(shortcut, command, options)
     map('o', shortcut, command, options)
 end
 
+function Tmap(shortcut, command, options)
+    map('t', shortcut, command, options)
+end
+
 -- Set 'space' as the leader key
 vim.g.mapleader = " "
 Nmap("<space>", "<nop>")
@@ -75,3 +79,12 @@ Nmap("<leader>o", "o<esc>k")
 -- Move selected text up/down
 Vmap("J", ":m '>+1<CR>gv=gv")
 Vmap("K", ":m '<-2<CR>gv=gv")
+
+-- Terminal mappings
+Nmap("<a-space>", "<c-w><c-w>")
+Imap("<a-space>", "<esc><c-w><c-w>")
+Tmap("<a-space>", "<c-\\><c-n><c-w><c-w>")
+Tmap("<esc>", "<c-\\><c-n>")
+
+Imap("<c-e>", "<end>")
+Imap("<c-a>", "<home>")
