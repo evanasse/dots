@@ -29,9 +29,9 @@ return {
                             -- You can use the capture groups defined in textobjects.scm
                             ["af"] = "@function.outer",
                             ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
                             ["as"] = { query = "@scope", query_group = "locals" },
+                            ["ib"] = "@block.inner",
+                            ["ab"] = "@block.outer"
                         },
                         -- You can choose the select mode (default is charwise 'v')
                         --

@@ -43,7 +43,9 @@ Vmap("<space>", "<nop>")
 Nmap("<leader>H", "<cmd>set invhlsearch<cr>")
 
 -- Close Vim buffer
-Nmap("<leader>q", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bd<cr>")
+Nmap("<leader>q", "<cmd>lua require('harpoon.mark').rm_file(vim.api.nvim_buf_get_name(0))<cr><cmd>bp | bd #<cr>")
+-- Exit and close everyting
+Nmap("<leader>x", "<cmd>qa<cr>")
 
 -- Make backspace move back a word instead of a single char
 Nmap("<backspace>", "b")
@@ -81,7 +83,7 @@ Vmap("J", ":m '>+1<CR>gv=gv")
 Vmap("K", ":m '<-2<CR>gv=gv")
 
 -- Terminal mappings
-Nmap("<a-space>", "<c-w><c-w>")
-Imap("<a-space>", "<esc><c-w><c-w>")
-Tmap("<a-space>", "<c-\\><c-n><c-w><c-w>")
+Nmap("<a-a>", "<c-w><c-w>")
+Imap("<a-a>", "<esc><c-w><c-w>")
+Tmap("<a-a>", "<c-\\><c-n><c-w><c-w>")
 Tmap("<esc>", "<c-\\><c-n>")

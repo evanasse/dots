@@ -33,7 +33,7 @@ vim.cmd(cmd)
 local function on_start()
     vim.cmd("wincmd w")
     if vim.api.nvim_buf_get_name(0) == "" then
-        require("telescope").extensions.file_browser.file_browser({ git_status = false })
+        require("telescope.builtin").find_files()
     end
 end
 
