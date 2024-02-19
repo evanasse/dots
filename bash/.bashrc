@@ -24,7 +24,7 @@ export PATH=$PATH:'~/sys-git/eww/target/release/'
 export PATH=$PATH:'~/.cargo/bin/'
 export PATH=$PATH:'~/.local/bin/'
 
-export EDITOR="nvim"
+export EDITOR="nvim --clean"
 
 # >>> juliaup initialize >>>
 
