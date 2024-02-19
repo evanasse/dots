@@ -2,6 +2,14 @@ local function set_highlight_command(hl_group, fg_string)
   return string.format("hi! %s guifg='%s'", hl_group, fg_string)
 end
 
+local function set_highlight_command_virtual_text(hl_group, fg_string)
+  return string.format("hi! %s cterm=italic gui=italic guifg='%s'", hl_group, fg_string)
+end
+
+local function hfie()
+
+end
+
 local augroup = "custom_hl_augroup"
 
 local colors = require("appearance.named_colors")
@@ -11,12 +19,62 @@ vim.api.nvim_create_augroup(augroup, { clear = true })
 -- =====
 --  LSP
 -- =====
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command("LspDiagnosticsDefaultWarning", tostring(colors.yellow)),
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command_virtual_text("LspDiagnosticsVirtualTextWarning", tostring(colors.yellow)),
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command("LspDiagnosticsFloatingWarning", tostring(colors.yellow)),
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command("LspDiagnosticsSignWarning", tostring(colors.yellow)),
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command("LspDiagnosticsWarning", tostring(colors.yellow)),
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = set_highlight_command("healthWarning", tostring(colors.yellow)),
+--   }
+-- )
+
+-- Diagnostic
 vim.api.nvim_create_autocmd(
   { "VimEnter" },
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("LspDiagnosticsDefaultWarning", tostring(colors.yellow)),
+    command = set_highlight_command("DiagnosticInfo", tostring(colors.dark_white)),
   }
 )
 vim.api.nvim_create_autocmd(
@@ -24,7 +82,7 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("LspDiagnosticsVirtualTextWarning", tostring(colors.yellow)),
+    command = set_highlight_command_virtual_text("DiagnosticVirtualTextInfo", tostring(colors.dark_white)),
   }
 )
 vim.api.nvim_create_autocmd(
@@ -32,7 +90,7 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("LspDiagnosticsFloatingWarning", tostring(colors.yellow)),
+    command = set_highlight_command("DiagnosticError", tostring(colors.red)),
   }
 )
 vim.api.nvim_create_autocmd(
@@ -40,7 +98,7 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("LspDiagnosticsSignWarning", tostring(colors.yellow)),
+    command = set_highlight_command_virtual_text("DiagnosticVirtualTextError", tostring(colors.red)),
   }
 )
 vim.api.nvim_create_autocmd(
@@ -48,7 +106,7 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("LspDiagnosticsWarning", tostring(colors.yellow)),
+    command = set_highlight_command("DiagnosticWarn", tostring(colors.yellow)),
   }
 )
 vim.api.nvim_create_autocmd(
@@ -56,7 +114,39 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = set_highlight_command("healthWarning", tostring(colors.yellow)),
+    command = set_highlight_command_virtual_text("DiagnosticVirtualTextWarn", tostring(colors.yellow)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = set_highlight_command("DiagnosticHint", tostring(colors.dark_blue)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = set_highlight_command_virtual_text("DiagnosticVirtualTextHint", tostring(colors.dark_blue)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = set_highlight_command("DiagnosticOk", tostring(colors.green)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = set_highlight_command_virtual_text("DiagnosticVirtualTextOk", tostring(colors.green)),
   }
 )
 
@@ -262,14 +352,14 @@ vim.api.nvim_create_autocmd(
     command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticWarn", tostring(colors.yellow))
   }
 )
-vim.api.nvim_create_autocmd(
-  { "VimEnter" },
-  {
-    group = augroup,
-    pattern = { "*" },
-    command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticInfo", tostring(colors.cyan))
-  }
-)
+-- vim.api.nvim_create_autocmd(
+--   { "VimEnter" },
+--   {
+--     group = augroup,
+--     pattern = { "*" },
+--     command = string.format("hi! %s guifg='%s' guibg=NONE", "DiagnosticInfo", tostring(colors.cyan))
+--   }
+-- )
 vim.api.nvim_create_autocmd(
   { "VimEnter" },
   {

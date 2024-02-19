@@ -67,7 +67,7 @@ require('lualine').setup {
     globalstatus = false,
     refresh = {
       statusline = 1000,
-      tabline = 1000,
+      tabline = 100,
       winbar = 1000,
     }
   },
@@ -121,6 +121,10 @@ require('lualine').setup {
   },
   tabline = {
     lualine_a = {
+      -- {
+      --   require("noice").api.statusline.mode.get,
+      --   cond = require("noice").api.statusline.mode.has,
+      -- }
     },
     lualine_b = {
     },
