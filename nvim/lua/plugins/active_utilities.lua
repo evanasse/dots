@@ -4,10 +4,6 @@ return {
         config = true,
     },
     {
-        "echasnovski/mini.comment",
-        config = true,
-    },
-    {
         "evanasse/antonyms.nvim",
         dependencies = { "tpope/vim-repeat" },
         config = function()
