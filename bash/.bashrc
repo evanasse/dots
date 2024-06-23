@@ -42,3 +42,13 @@ esac
 # <<< juliaup initialize <<<
 
 export HISTCONTROL=ignoredups
+
+# FZF
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#E0CCAE,fg+:#C69478,bg:-1,bg+:-1
+  --color=hl:#A74D39,hl+:#DF674C,info:#8A4B53,marker:#616655
+  --color=prompt:#DF674C,spinner:#F2A766,pointer:#AA6B73,header:#8A4B53
+  --color=border:#F2DDBC,label:#F2DDBC,query:#E0CCAE
+  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt=" "
+  --marker="->" --pointer="*" --separator="─" --scrollbar="│"
+  --info="right"'
