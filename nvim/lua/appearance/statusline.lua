@@ -90,6 +90,7 @@ require('lualine').setup {
           info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
           hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
         },
+        symbols = { error = " ", warn = " ", info = " ", hint = "󰦤 " }
       },
     },
     lualine_c = {

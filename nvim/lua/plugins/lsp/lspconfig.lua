@@ -43,21 +43,24 @@ return {
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
-        local sign_icons = {
-            Error = "",
-            Warn = "",
-            Hint = "󰦤",
-            Info = "",
-        }
-
-        for type, icon in pairs(sign_icons) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
 
         vim.diagnostic.config({
             virtual_text = true,
-            float = { border = "rounded" }
+            float = { border = "rounded" },
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.HINT] = "󰦤",
+                    [vim.diagnostic.severity.INFO] = "",
+                },
+                texthl = {
+                    [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                    [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                    [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                    [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                }
+            }
         })
 
         require("lspconfig.ui.windows").default_options = {
@@ -130,6 +133,10 @@ return {
             on_attach = on_attach,
         })
         lspconfig["julials"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig.gleam.setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
