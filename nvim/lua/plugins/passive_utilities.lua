@@ -8,7 +8,6 @@ return {
         "echasnovski/mini.cursorword",
         config = true,
     },
-    "lukas-reineke/indent-blankline.nvim",
     "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
     {
         "nvim-treesitter/nvim-treesitter",
@@ -17,6 +16,9 @@ return {
             require("nvim-treesitter.configs").setup({
                 highlight = {
                     enable = true,
+                },
+                indent = {
+                    enable = false,
                 },
                 textobjects = {
                     select = {
