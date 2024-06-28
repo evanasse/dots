@@ -101,7 +101,44 @@ vim.api.nvim_create_autocmd(
   {
     group = augroup,
     pattern = { "*" },
-    command = string.format("hi clear %s", "DiagnosticUnderlineInfo", tostring(colors.green)),
+    command = string.format("hi! %s cterm=underline gui=underline guisp=%s", "DiagnosticUnderlineInfo",
+      tostring(colors.dark_white)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s cterm=underline gui=underline guisp=%s", "DiagnosticUnderlineHint",
+      tostring(colors.dark_blue)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s cterm=underline gui=underline guisp=%s", "DiagnosticUnderlineError",
+      tostring(colors.red)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s cterm=underline gui=underline guisp=%s", "DiagnosticUnderlineWarn",
+      tostring(colors.yellow)),
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = string.format("hi! %s cterm=underline gui=underline guisp=%s", "DiagnosticUnderlineOk",
+      tostring(colors.green)),
   }
 )
 
