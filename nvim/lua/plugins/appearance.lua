@@ -3,8 +3,16 @@ return {
     "xiyaowong/nvim-transparent",
     "arkav/lualine-lsp-progress",
     {
+        "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("nvim-web-devicons").setup({
+                color_icons = false,
+            })
+        end
+    },
+    {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons", opt = true }
+        dependencies = { "nvim-tree/nvim-web-devicons", opt = true }
     },
     {
         "folke/noice.nvim",

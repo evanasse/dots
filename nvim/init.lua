@@ -16,6 +16,9 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 require("lazy").setup({ { import = "plugins" }, { import = "plugins/lsp" } }, {
     ui = {
         border = "rounded"
+    },
+    change_detection = {
+        notify = false
     }
 })
 require("evanasse")
@@ -32,9 +35,6 @@ vim.cmd(cmd)
 
 local function on_start()
     vim.cmd("wincmd w")
-    if vim.api.nvim_buf_get_name(0) == "" then
-        require("telescope.builtin").find_files()
-    end
 end
 
 if vim.v.vim_did_enter == 1 then

@@ -396,6 +396,14 @@ vim.api.nvim_create_autocmd(
     command = "hi! link QuickFixLine CursorLine",
   }
 )
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    group = augroup,
+    pattern = { "*" },
+    command = "hi! clear DevIconDefault ",
+  }
+)
 -- ===========
 --    Mason
 -- ===========

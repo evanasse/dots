@@ -90,3 +90,6 @@ Nmap("<a-t>", "<cmd>ToggleTerm<cr>")
 Imap("<a-t>", "<esc><cmd>ToggleTerm<cr>")
 Tmap("<a-t>", "<c-\\><c-n><cmd>ToggleTerm<cr>")
 Tmap("<esc>", "<c-\\><c-n>")
+
+-- Open mini.files
+Nmap("<leader><leader>e", "<cmd>lua MiniFiles.open()<cr>")

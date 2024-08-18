@@ -4,6 +4,11 @@ return {
         config = true,
     },
     {
+        "echasnovski/mini.files",
+        version = "*",
+        config = true,
+    },
+    {
         "evanasse/antonyms.nvim",
         dependencies = { "tpope/vim-repeat" },
         config = function()
@@ -41,8 +46,7 @@ return {
             { "<leader><leader>f", "<cmd>Telescope find_files<cr>" },
             { "<leader><leader>g", "<cmd>Telescope live_grep<cr>" },
             { "<leader><leader>h", "<cmd>Telescope help_tags<cr>" },
-            { "<leader><leader>b",
-                "<cmd>lua require('telescope').extensions.file_browser.file_browser({git_status=false})<cr>" }
+            { "<leader><leader>b", "<cmd>Telescope buffers<cr>" },
         },
         init = function()
             local telescope = require("telescope")
@@ -117,26 +121,5 @@ return {
                 },
             })
         end
-    },
-    {
-        "stevearc/oil.nvim",
-        opts = {
-            view_options = {
-                -- Show files and directories that start with "."
-                show_hidden = true,
-                -- Sort file names in a more intuitive order for humans. Is less performant,
-                -- so you may want to set to false if you work with large directories.
-                natural_order = false,
-            },
-            float = {
-                -- Padding around the floating window
-                padding = 16,
-                max_width = 60,
-                max_height = 60,
-            }
-        },
-        -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = true
     }
 }
