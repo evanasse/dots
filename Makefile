@@ -1,14 +1,11 @@
 is_4k=$$(xrandr | grep "current 3840")
 
-.PHONY: all git leftwm eww desktop bash nvim rofi starship tmux wezterm X
+.PHONY: all git leftwm eww desktop bash nvim rofi starship wezterm X
 
 farout: THEME = farout
 farout: all
 
-nord: THEME = nord
-nord: all
-
-all: git bash nvim rofi tmux X starship desktop
+all: git bash nvim rofi X starship desktop
 
 git:
 	ln -snf ~/git/dots/git/.gitconfig ~/.gitconfig
@@ -44,7 +41,6 @@ bash:
 nvim:
 	mkdir -p ~/.config/nvim
 	ln -snf ~/git/dots/nvim/* --target-directory ~/.config/nvim
-	sed -i -r --follow-symlink 's/(require\("appearance.).*/\1$(THEME)"\)/' ~/.config/nvim/after/plugin/appearance/colorscheme.lua
 
 rofi:
 	mkdir -p ~/.config/rofi
@@ -59,9 +55,6 @@ rofi:
 starship:
 	mkdir -p ~/.config
 	ln -snf ~/git/dots/starship/starship.toml ~/.config/starship.toml
-
-tmux:
-	ln -snf ~/git/dots/tmux/.tmux.conf ~/.tmux.conf
 
 wezterm:
 	mkdir -p ~/.config/wezterm/
