@@ -93,13 +93,13 @@ config.background = {
         source = { Color = "#0F0908" },
         height = "100%",
         width = "100%",
-        opacity = 1.0
+        opacity = 0.9
     }
 }
 
 -- Font
 config.font = wezterm.font("UbuntuMono Nerd Font")
-config.font_size = 20
+config.font_size = 17
 
 -- Tab bar
 config.hide_tab_bar_if_only_one_tab = false
