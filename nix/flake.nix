@@ -43,7 +43,6 @@
 	  "wezterm"
         ];
 	masApps = {
-	  "1Password" = 1333542190;
 	};
         onActivation.cleanup = "zap";
         onActivation.autoUpdate = true;
