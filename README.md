@@ -21,3 +21,9 @@ brew reinstall librewolf --no-quarantine
 ```
 stow .
 ```
+- Download colorscheme
+```
+cd ~
+mkdir git && cd git
+git clone https://github.com/evanasse/chalet.git
+```
