@@ -30,7 +30,7 @@ return {
                     view_error = "cmdline",
                     view_warn = "cmdline",
                     view_history = "cmdline",
-                    view_search = "virtualtext",
+                    view_search = "cmdline",
                 },
                 popupmenu = {
                     backend = "nui",
@@ -48,7 +48,7 @@ return {
                     enabled = false
                 },
                 redirect = {
-                    view = "cmdline"
+                    view = "messages"
                 },
                 lsp = {
                     message = {

@@ -62,8 +62,9 @@ return {
                     },
                 },
                 ghost_text = {
-                    enabled = true,
+                    enabled = false,
                 },
+                trigger = { prefetch_on_insert = false },
             },
 
             appearance = {
@@ -72,7 +73,7 @@ return {
             },
 
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" }
+                default = { "lsp", "path", "snippets", "buffer" },
             },
 
             signature = {

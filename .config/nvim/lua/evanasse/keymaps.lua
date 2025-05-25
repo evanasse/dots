@@ -39,7 +39,7 @@ vim.g.mapleader = " "
 Nmap("<space>", "<nop>")
 Vmap("<space>", "<nop>")
 
--- Disable highlight search
+-- To disable highlight search
 Nmap("<leader>H", "<cmd>set invhlsearch<cr>")
 
 -- Close Vim buffer
