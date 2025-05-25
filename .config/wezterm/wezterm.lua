@@ -13,73 +13,75 @@ end
 -- This is where you actually apply your config choices
 
 -- Colors
-config.color_scheme = "farout"
+local colors = require("chalet_colors")
+
+config.color_scheme = "chalet"
 config.color_schemes = {
-    ["farout"] = {
-        background = "#0F0908",
-        foreground = "#F2DDBC",
+    ["chalet"] = {
+        background = colors.bg,
+        foreground = colors.fg,
         brights = {
-            "#1F1311",
-            "#DF674C",
-            "#8E947D",
-            "#FFC786",
-            "#F49D69",
-            "#AA6B73",
-            "#C69478",
-            "#F2DDBC",
+            colors.ansi.bright_black,
+            colors.ansi.bright_red,
+            colors.ansi.bright_green,
+            colors.ansi.bright_yellow,
+            colors.ansi.bright_blue,
+            colors.ansi.bright_magenta,
+            colors.ansi.bright_cyan,
+            colors.ansi.bright_white,
         },
         ansi = {
-            "#0F0908",
-            "#A74D39",
-            "#616655",
-            "#F2A766",
-            "#D47D49",
-            "#8A4B53",
-            "#A67458",
-            "#E0CCAE",
+            colors.ansi.black,
+            colors.ansi.red,
+            colors.ansi.green,
+            colors.ansi.yellow,
+            colors.ansi.blue,
+            colors.ansi.magenta,
+            colors.ansi.cyan,
+            colors.ansi.white,
         },
     },
 }
 
--- farout
+-- chalet
 config.colors = {
     tab_bar = {
-        background = "#1F1311",
+        background = colors.bg,
 
         active_tab = {
-            bg_color = "#1F1311",
-            fg_color = "#A74D39",
+            bg_color = colors.bg,
+            fg_color = colors.dark_red,
         },
 
         inactive_tab = {
-            bg_color = "#1F1311",
-            fg_color = "#A67458",
+            bg_color = colors.bg,
+            fg_color = colors.light_brown,
         },
 
         inactive_tab_hover = {
-            bg_color = "#1F1311",
-            fg_color = "#A67458",
+            bg_color = colors.bg,
+            fg_color = colors.light_brown,
             italic = false,
             intensity = "Bold",
         },
 
         new_tab = {
-            bg_color = "#1F1311",
-            fg_color = "#A67458",
+            bg_color = colors.bg,
+            fg_color = colors.light_brown,
         },
 
         new_tab_hover = {
-            bg_color = "#1F1311",
-            fg_color = "#A67458",
+            bg_color = colors.bg,
+            fg_color = colors.light_brown,
             italic = false,
             intensity = "Bold",
         },
     },
-    selection_bg = "#A67458",
-    selection_fg = "#1F1311",
-    cursor_bg = "#1F1311",
-    cursor_fg = "#1F1311",
-    cursor_border = "#1F1311",
+    selection_bg = colors.light_brown,
+    selection_fg = colors.bg,
+    cursor_bg = colors.bg,
+    cursor_fg = colors.bg,
+    cursor_border = colors.bg,
 }
 config.inactive_pane_hsb = {
     saturation = 0.9,
@@ -90,10 +92,10 @@ config.inactive_pane_hsb = {
 -- Background
 config.background = {
     {
-        source = { Color = "#0F0908" },
+        source = { Color = colors.bg },
         height = "100%",
         width = "100%",
-        opacity = 0.9
+        opacity = 0.91
     }
 }
 
@@ -124,6 +126,7 @@ config.window_padding = {
     top = "0.5cell",
     bottom = "0.5cell",
 }
+config.window_decorations = "RESIZE"
 
 -- Keybindings
 config.disable_default_key_bindings = true
