@@ -17,6 +17,7 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
+	  pkgs.bottom
 	  pkgs.delta
 	  pkgs.discord
 	  pkgs.fzf
@@ -25,17 +26,21 @@
 	  pkgs.starship
 	  pkgs.stow
           pkgs.neovim
-          pkgs.wezterm
+	  pkgs.neofetch
         ];
 
       homebrew = {
         enable = true;
 	brews = [
 	  "mas"
+	  "erlang"
 	];
         casks = [
+	  "nikitabobko/tap/aerospace"
 	  "librewolf"
           "steam"
+	  "ollama"
+	  "wezterm"
         ];
 	masApps = {
 	  "1Password" = 1333542190;
@@ -63,10 +68,6 @@
 	NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
       };
 
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -86,7 +87,7 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
+    # $ darwin-rebuild build --flake .#etiole
     darwinConfigurations."etiole" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration

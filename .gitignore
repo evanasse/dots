@@ -1,9 +1,6 @@
 ### NEOVIM
 packer_compiled.lua
 
-### LEFTWM
-leftwm/themes/current
-
 ### VIM FILES
 # Swap
 [._]*.s[a-v][a-z]

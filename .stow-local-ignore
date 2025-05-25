@@ -1,0 +1,8 @@
+# Stow default ignores
+\.git
+\.gitignore
+^/README.*
+^/LICENSE.*
+
+# Additional ignores
+nix
