@@ -9,16 +9,19 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [
+      pkgs.aider-chat
       pkgs.bottom
       pkgs.delta
       pkgs.discord
+      pkgs.fd
       pkgs.fzf
       pkgs.gleam
+      pkgs.neofetch
+      pkgs.neovim
       pkgs.ripgrep
       pkgs.starship
       pkgs.stow
-      pkgs.neovim
-      pkgs.neofetch
+      pkgs.uv
     ];
   environment.variables.HOMEBREW_NO_ANALYTICS = "1";
 
@@ -32,11 +35,12 @@
       "nikitabobko/tap"
     ];
     casks = [
+      "1password"
       "aerospace"
       "desktoppr"
       "librewolf"
-      "steam"
       "ollama"
+      "steam"
       "wezterm"
     ];
     masApps = {
@@ -89,10 +93,9 @@
   system.activationScripts.postActivation.text = let
     username = system.primaryUser;
     wallpaper_filepath = ./wallpaper.jpg;
-    # wallpaper_filepath = "/Users/${username}/dots/nix/wallpaper.jpg";
   in
   ''
-    sudo -u ${username} echo >&2 "Switching wallpapers... ${wallpaper_filepath}"
+    sudo -u ${username} echo >&2 "Setting wallpaper..."
     sudo -u ${username} /usr/local/bin/desktoppr ${wallpaper_filepath}
   '';
 }
