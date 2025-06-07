@@ -56,4 +56,7 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
 -- Gutter space
-vim.opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
+
+-- Default window border
+opt.winborder = "rounded"

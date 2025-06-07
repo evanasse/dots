@@ -64,6 +64,7 @@ return {
 
             telescope.setup({
                 defaults = {
+                    border = false,
                     mappings = {
                         i = {
                             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,

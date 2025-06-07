@@ -46,7 +46,6 @@ return {
                     },
                 },
                 menu = {
-                    border = "rounded",
                     draw = {
                         columns = {
                             { "label", "label_description", gap = 1 }, { "kind" }
@@ -56,7 +55,6 @@ return {
                 documentation = {
                     auto_show = true,
                     window = {
-                        border = "rounded",
                         max_width = 120,
                         max_height = 60,
                     },
@@ -78,9 +76,6 @@ return {
 
             signature = {
                 enabled = true,
-                window = {
-                    border = "rounded"
-                },
             },
         }
     }
