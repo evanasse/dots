@@ -1,3 +1,5 @@
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -11,17 +13,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
-
-require("lazy").setup({ { import = "plugins" }, { import = "plugins/lsp" } }, {
+require("lazy").setup({ { import = "plugins" }, }, {
     ui = {
-        border = "rounded"
+        border = "rounded",
     },
     change_detection = {
         notify = false
     }
 })
+
 require("evanasse")
+require("lsp")
 
 vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
 vim.cmd("autocmd BufLeave term://* stopinsert")
