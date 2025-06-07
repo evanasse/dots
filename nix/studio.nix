@@ -5,23 +5,25 @@
 
   system.primaryUser = "evanasse";
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [
-      pkgs.aider-chat
+      # CLI tools
       pkgs.bottom
       pkgs.delta
-      pkgs.discord
       pkgs.fd
       pkgs.fzf
-      pkgs.gleam
-      pkgs.neofetch
-      pkgs.neovim
       pkgs.ripgrep
       pkgs.starship
       pkgs.stow
+      # Programming
+      pkgs.aider-chat
+      pkgs.gleam
+      pkgs.lua-language-server
+      pkgs.neovim
+      pkgs.nil
       pkgs.uv
+      # GUI apps
+      pkgs.discord
     ];
   environment.variables.HOMEBREW_NO_ANALYTICS = "1";
 
@@ -41,6 +43,7 @@
       "librewolf"
       "ollama"
       "steam"
+      "vial"
       "wezterm"
     ];
     masApps = {
