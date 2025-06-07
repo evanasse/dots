@@ -101,7 +101,7 @@ config.background = {
 
 -- Font
 config.font = wezterm.font("UbuntuMono Nerd Font")
-config.font_size = 17
+config.font_size = 16
 
 -- Tab bar
 config.hide_tab_bar_if_only_one_tab = false
