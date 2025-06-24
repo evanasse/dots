@@ -5,8 +5,15 @@
 # focused application in the $INFO variable:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
+alias aerospace=/run/current-system/sw/bin/aerospace
 alias sketchybar=/run/current-system/sw/bin/sketchybar
 
 if [ "$SENDER" = "front_app_switched" ]; then
   sketchybar --set "$NAME" label="$INFO"
+elif [ "$SENDER" = "aerospace_workspace_change" ]; then
+  if [ $(aerospace list-workspaces --monitor focused --empty | grep $FOCUSED_WORKSPACE) ]; then
+    sketchybar --set "$NAME" label.drawing=off
+  else
+    sketchybar --set "$NAME" label.drawing=on
+  fi
 fi

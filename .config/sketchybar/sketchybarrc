@@ -4,6 +4,7 @@
 # https://github.com/FelixKratz/dotfiles
 #
 alias sketchybar=/run/current-system/sw/bin/sketchybar
+alias aerospace=/run/current-system/sw/bin/aerospace
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
@@ -18,7 +19,7 @@ sketchybar --bar position=top height=20 color=0xCF1E140D corner_radius=12 margin
 
 # Not quite the same color as chalet white because the color rendering of the bar
 # looks different than WezTerm/Neovim
-custom_white="0xFFF7E6CF"
+custom_white=0xFFF7E6CF
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -39,13 +40,16 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-##### Adding Center Items #####
-# We add some regular items to the center of the bar, where
+# Add the aerospace_workspace_change event we specified in aerospace.toml
+sketchybar --add event aerospace_workspace_change
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item front_app center \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+sketchybar --add item front_app left \
+           --set front_app label.padding_left=0 script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched aerospace_workspace_change
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
