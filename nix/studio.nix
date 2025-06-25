@@ -44,7 +44,6 @@
       "1password"
       "desktoppr"
       "librewolf"
-      "ollama"
       "steam"
       "vial"
     ];
@@ -98,18 +97,13 @@
   system.activationScripts.postActivation.text = let
     username = system.primaryUser;
     path_wallpaper = ./wallpaper.jpg;
-    path_aerospace = pkgs.aerospace;
     path_aerospace_plist = ../resources/launch-agents/bobko.aerospace.plist;
-    path_sketchybar = pkgs.sketchybar;
-    path_sketchybar_plist = ../resources/launch-agents/sketchybar.plist;
   in
   ''
     sudo -u ${username} echo >&2 "Setting wallpaper..."
     sudo -u ${username} /usr/local/bin/desktoppr ${path_wallpaper}
 
     sudo -u ${username} echo >&2 "Writing launch agents..."
-    sudo -u ${username} sh -c 'PATH_APP=${path_aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace; cat ${path_aerospace_plist} | sed "s%\$PATH_APP%$PATH_APP%" > /Users/${username}/Library/LaunchAgents/bobko.aerospace.plist'
-    sudo -u ${username} sh -c 'PATH_APP=${path_sketchybar}/bin/sketchybar; cat ${path_sketchybar_plist} | sed "s%\$PATH_APP%$PATH_APP%" > /Users/${username}/Library/LaunchAgents/sketchybar.plist'
-
+    sudo -u ${username} sh -c 'PATH_APP=${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace; cat ${path_aerospace_plist} | sed "s%\$PATH_APP%$PATH_APP%" > /Users/${username}/Library/LaunchAgents/bobko.aerospace.plist'
   '';
 }

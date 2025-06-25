@@ -41,7 +41,9 @@ default=(
 sketchybar --default "${default[@]}"
 
 # Add the aerospace_workspace_change event we specified in aerospace.toml
-sketchybar --add event aerospace_workspace_change
+sketchybar \
+  --add event aerospace_workspace_change \
+  --add event mlx_update_list
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where
@@ -69,7 +71,10 @@ sketchybar --add item clock right \
            --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+           --add item mlx_servers right \
+           --set mlx_servers script="$PLUGIN_DIR/mlx_servers.sh" \
+           --subscribe mlx_servers mlx_update_list
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
