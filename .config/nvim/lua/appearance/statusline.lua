@@ -122,13 +122,23 @@ require('lualine').setup {
   },
   tabline = {
     lualine_a = {
-      -- {
-      --   require("noice").api.statusline.mode.get,
-      --   cond = require("noice").api.statusline.mode.has,
-      -- }
     },
     lualine_b = {
+      {
+        require("minuet.lualine"),
+        display_name = "model",
+        display_on_idle = true,
+        fmt = function(str)
+          if str == "" then
+            return ""
+          else
+            return '[' .. str .. ']'
+          end
+        end
+      },
     },
+    -- Inspiration to truly center the buffers:
+    -- https://github.com/leonasdev/.dotfiles/blob/master/.config/nvim/lua/util/statusline.lua
     lualine_c = {
       '%=',
       {
@@ -149,6 +159,8 @@ require('lualine').setup {
       },
     },
     lualine_x = {
+    },
+    lualine_y = {
       {
         'lsp_progress',
         display_components = { 'spinner', {} },
@@ -159,10 +171,8 @@ require('lualine').setup {
         },
         spinner_symbols = require("evanasse.spinner").half_spinner_rev(),
         timer = { spinner = 50 }
-      }
-    },
-    lualine_y = {
-      lsp_client_names
+      },
+      lsp_client_names,
     },
     lualine_z = {
     }

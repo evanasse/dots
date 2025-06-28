@@ -126,51 +126,13 @@ return {
         end
     },
     {
-        "huggingface/llm.nvim",
-        enabled = false,
-        opts = {
-            model = "starcoder2:3b",
-            backend = "ollama",
-            url = "http://localhost:11434", -- llm-ls uses "/api/generate"
-            -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
-
-            request_body = {
-                -- Modelfile options for the model you use
-                options = {
-                    num_predict = 64,
-                    temperature = 0.2,
-                    top_p = 0.95,
-                }
-            },
-            tokens_to_clear = { "<|endoftext|>" },
-            fim = {
-                enabled = true,
-                prefix = "<fim_prefix>",
-                middle = "<fim_middle>",
-                suffix = "<fim_suffix>",
-            },
-            context_window = 512,
-            tokenizer = {
-                repository = "bigcode/starcoder2-3b",
-            },
-            lsp = {
-                bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls",
-            },
-            enable_suggestions_on_startup = true,
-            enable_suggestions_on_files = { "*.lua", ".zshrc", "*.nix", "*.gleam" },
-            debounce_ms = 400,
-            accept_keymap = "<a-.>",
-            dismiss_keymap = "<a-,>",
-        }
-    },
-    {
         'milanglacier/minuet-ai.nvim',
         enabled = true,
         config = function()
             require('minuet').setup {
-                -- blink = {
-                --     enable_auto_complete = true,
-                -- },
+                blink = {
+                    enable_auto_complete = true,
+                },
                 provider = 'openai_fim_compatible',
                 n_completions = 1, -- recommend for local model for resource saving
                 -- I recommend beginning with a small context window size and incrementally
@@ -178,37 +140,25 @@ return {
                 -- of 512, serves as an good starting point to estimate your computing
                 -- power. Once you have a reliable estimate of your local computing power,
                 -- you should adjust the context window to a larger value.
-                context_window = 400,
+                context_window = 1024,
                 provider_options = {
                     openai_fim_compatible = {
-                        api_key = 'TERM',
-                        name = 'Ollama',
-                        end_point = 'http://localhost:11434/v1/completions',
-                        model = 'qwen2.5-coder:3b',
+                        api_key = 'TERM', -- Using the value of the TERM env var because it needs a value to work
+                        name = 'mlx_lm',
+                        end_point = 'http://localhost:8123/v1/completions',
+                        model = 'mlx-community/Qwen2.5-Coder-1.5B-8bit',
                         optional = {
-                            max_tokens = 100,
+                            stop = { "<|im_end|>", "\n\n" },
+                            max_tokens = 256,
                             top_p = 0.9,
                         },
                     },
                 },
-                -- Your configuration options here
-                virtualtext = {
-                    auto_trigger_ft = { "lua" },
-                    keymap = {
-                        -- accept whole completion
-                        accept = '<A-l>',
-                        -- accept one line
-                        accept_line = '<A-L>',
-                        -- accept n lines (prompts for number)
-                        -- e.g. "A-z 2 CR" will accept 2 lines
-                        accept_n_lines = '<A-z>',
-                        -- Cycle to prev completion item, or manually invoke completion
-                        prev = '<A-k>',
-                        -- Cycle to next completion item, or manually invoke completion
-                        next = '<A-j>',
-                        dismiss = '<A-h>',
-                    },
-                },
+                after_cursor_filter_length = 15,
+                -- If completion item has multiple lines, create another completion item
+                -- only containing its first line. This option only has impact for cmp and
+                -- blink. For virtualtext, no single line entry will be added.
+                add_single_line_entry = false,
             }
         end,
     },
