@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 alias sketchybar=/run/current-system/sw/bin/sketchybar
 

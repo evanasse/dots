@@ -1,3 +1,4 @@
+#!/bin/zsh
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
@@ -73,7 +74,7 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
            --add item mlx_servers right \
-           --set mlx_servers script="$PLUGIN_DIR/mlx_servers.sh" \
+           --set mlx_servers update_freq=60 script="$PLUGIN_DIR/mlx_servers.sh" \
            --subscribe mlx_servers mlx_update_list
 
 ##### Force all scripts to run the first time (never do this in a script) #####
