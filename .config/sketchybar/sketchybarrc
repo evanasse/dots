@@ -3,9 +3,7 @@
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
 # https://github.com/FelixKratz/dotfiles
-#
-alias sketchybar=/run/current-system/sw/bin/sketchybar
-alias aerospace=/run/current-system/sw/bin/aerospace
+
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
@@ -21,6 +19,8 @@ sketchybar --bar position=top height=20 color=0xCF1E140D corner_radius=12 margin
 # Not quite the same color as chalet white because the color rendering of the bar
 # looks different than WezTerm/Neovim
 custom_white=0xFFF7E6CF
+chalet_light_brown=0xFFC69478
+chalet_black=0xFF2E201E
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -30,14 +30,17 @@ custom_white=0xFFF7E6CF
 default=(
   padding_left=0
   padding_right=0
-  icon.font="UbuntuMono Nerd Font:Regular:16.0"
+  icon.font="UbuntuMono Nerd Font:Regular:15.0"
   label.font="UbuntuMono Nerd Font:Bold:15.0"
-  icon.color=$custom_white
+  icon.color=$chalet_black
+  icon.background.color=$chalet_light_brown
+  icon.background.height=16
+  icon.background.corner_radius=8
   label.color=$custom_white
-  icon.padding_left=2
-  icon.padding_right=2
-  label.padding_left=2
-  label.padding_right=2
+  icon.padding_left=8
+  icon.padding_right=8
+  label.padding_left=8
+  label.padding_right=8
 )
 sketchybar --default "${default[@]}"
 
@@ -51,7 +54,7 @@ sketchybar \
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add item front_app left \
-           --set front_app label.padding_left=0 script="$PLUGIN_DIR/front_app.sh" \
+           --set front_app icon="APP" script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched aerospace_workspace_change
 
 ##### Adding Right Items #####
@@ -67,13 +70,22 @@ sketchybar --add item front_app left \
 
 sketchybar --add item clock right \
            --set clock update_freq=10 icon="" script="$PLUGIN_DIR/clock.sh" \
+\
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
+\
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
-           --add item mlx_servers right \
+\
+           --add item cpu_percent right \
+           --set cpu_percent update_freq=10 script="$PLUGIN_DIR/cpu.sh" \
+\
+           --add item memory_percent right \
+           --set memory_percent update_freq=10 script="$PLUGIN_DIR/memory.sh"
+
+sketchybar --add item mlx_servers e \
            --set mlx_servers update_freq=60 script="$PLUGIN_DIR/mlx_servers.sh" \
            --subscribe mlx_servers mlx_update_list
 
