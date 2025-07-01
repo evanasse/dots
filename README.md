@@ -9,6 +9,10 @@ git clone https://github.com/evanasse/dots.git && cd dots
 ```
 curl -sSf -L https://install.lix.systems/lix | sh -s -- install
 ```
+- Change computer name
+```
+NAME=newname; sudo scutil --set ComputerName $NAME && sudo scutil LocalHostName $NAME
+```
 - Install flake
 ```
 sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ./nix

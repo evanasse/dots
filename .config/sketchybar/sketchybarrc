@@ -7,6 +7,15 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+COMPUTER_NAME=$(scutil --get ComputerName)
+
+# Not quite the same color as chalet white because the color rendering of the bar
+# looks different than WezTerm/Neovim
+custom_white="F7E6CF"
+chalet_light_brown="C69478"
+chalet_dark_brown="1E140D"
+chalet_black="2E201E"
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
 # These are only some of the options available. For all options see:
@@ -14,34 +23,52 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=20 color=0xCF1E140D corner_radius=12 margin=4 y_offset=4
+if [ $COMPUTER_NAME = "macbook" ]; then
+  BAR_HEIGHT=25
+elif [ $COMPUTER_NAME = "studio" ]; then
+  BAR_HEIGHT=20
+fi
 
-# Not quite the same color as chalet white because the color rendering of the bar
-# looks different than WezTerm/Neovim
-custom_white=0xFFF7E6CF
-chalet_light_brown=0xFFC69478
-chalet_black=0xFF2E201E
+sketchybar --bar position=top height=$BAR_HEIGHT color=0xCF$chalet_dark_brown corner_radius=12 margin=4 y_offset=4
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-default=(
-  padding_left=0
-  padding_right=0
-  icon.font="UbuntuMono Nerd Font:Regular:15.0"
-  label.font="UbuntuMono Nerd Font:Bold:15.0"
-  icon.color=$chalet_black
-  icon.background.color=$chalet_light_brown
-  icon.background.height=16
-  icon.background.corner_radius=8
-  label.color=$custom_white
-  icon.padding_left=8
-  icon.padding_right=8
-  label.padding_left=8
-  label.padding_right=8
-)
+if [ $COMPUTER_NAME = "macbook" ]; then
+  default=(
+    padding_left=0
+    padding_right=0
+    icon.font="UbuntuMono Nerd Font:Regular:15.0"
+    icon.color=0xFF$chalet_black
+    icon.background.color=0xFF$chalet_light_brown
+    icon.background.height=16
+    icon.background.corner_radius=8
+    icon.padding_left=8
+    icon.padding_right=8
+    label.font="UbuntuMono Nerd Font:Bold:15.0"
+    label.color=0xFF$custom_white
+    label.padding_left=8
+    label.padding_right=8
+  )
+elif [ $COMPUTER_NAME = "studio" ]; then
+  default=(
+    padding_left=0
+    padding_right=0
+    icon.font="UbuntuMono Nerd Font:Regular:15.0"
+    icon.color=0xFF$chalet_black
+    icon.background.color=0xFF$chalet_light_brown
+    icon.background.height=16
+    icon.background.corner_radius=8
+    icon.padding_left=8
+    icon.padding_right=8
+    label.font="UbuntuMono Nerd Font:Bold:15.0"
+    label.color=0xFF$custom_white
+    label.padding_left=8
+    label.padding_right=8
+  )
+fi
 sketchybar --default "${default[@]}"
 
 # Add the aerospace_workspace_change event we specified in aerospace.toml

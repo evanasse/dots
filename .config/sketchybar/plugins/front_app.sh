@@ -9,8 +9,8 @@ if [ "$SENDER" = "front_app_switched" ]; then
   sketchybar --set "$NAME" label="$INFO"
 elif [ "$SENDER" = "aerospace_workspace_change" ]; then
   if [ $(aerospace list-workspaces --monitor focused --empty | grep $FOCUSED_WORKSPACE) ]; then
-    sketchybar --set "$NAME" label.drawing=off
+    sketchybar --set "$NAME" icon.drawing=off label.drawing=off
   else
-    sketchybar --set "$NAME" label.drawing=on
+    sketchybar --set "$NAME" icon.drawing=on label.drawing=on
   fi
 fi

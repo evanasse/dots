@@ -11,7 +11,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
   let
     username_studio = "evanasse";
-    username_macbook = "etiole";
+    username_macbook = "evanasse";
   in
   {
     # Build darwin flake using:

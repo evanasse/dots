@@ -34,11 +34,7 @@
   homebrew = {
     enable = true;
     brews = [
-      "mas"
       "erlang"
-    ];
-    taps = [
-      "nikitabobko/tap"
     ];
     casks = [
       "1password"
@@ -47,8 +43,6 @@
       "steam"
       "vial"
     ];
-    masApps = {
-    };
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
@@ -74,6 +68,7 @@
     NSGlobalDomain."com.apple.sound.beep.feedback" = 0; # No sound feedback on volume change
     NSGlobalDomain."com.apple.sound.beep.volume" = 0.0; # No bell
     ".GlobalPreferences"."com.apple.mouse.scaling" = 0.85; # Mouse speed
+    NSGlobalDomain._HIHideMenuBar = true;
   };
 
   system.startup.chime = false;
@@ -105,5 +100,8 @@
 
     sudo -u ${username} echo >&2 "Writing launch agents..."
     sudo -u ${username} sh -c 'PATH_APP=${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace; cat ${path_aerospace_plist} | sed "s%\$PATH_APP%$PATH_APP%" > /Users/${username}/Library/LaunchAgents/bobko.aerospace.plist'
+
+    sudo -u ${username} echo >&2 "Linking AeroSpace config..."
+    sudo -u ${username} sh -c 'ln -s /Users/${username}/.config/aerospace/aerospace-studio.toml /Users/${username}/.config/aerospace/aerospace.toml'
   '';
 }

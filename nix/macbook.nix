@@ -1,41 +1,50 @@
 # studio system config
 
-{ pkgs, ... }: {
+{ self, pkgs, ... }: rec {
   nixpkgs.config.allowUnfree = true;
 
-  system.primaryUser = "etiole";
+  system.primaryUser = "evanasse";
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [
+      # CLI tools
       pkgs.bottom
       pkgs.delta
-      pkgs.discord
+      pkgs.fd
       pkgs.fzf
-      pkgs.gleam
       pkgs.ripgrep
       pkgs.starship
       pkgs.stow
+      # Programming
+      pkgs.aider-chat
+      pkgs.gleam
+      pkgs.lua-language-server
       pkgs.neovim
-      pkgs.neofetch
+      pkgs.nil
+      pkgs.uv
+      # GUI apps
+      pkgs.discord
+      pkgs.wezterm
+      # OS appearance
+      pkgs.aerospace
+      pkgs.sketchybar
     ];
 
   homebrew = {
     enable = true;
     brews = [
-      "mas"
       "erlang"
     ];
     casks = [
-      "nikitabobko/tap/aerospace"
+      "1password"
+      "desktoppr"
+      "epic-games"
       "librewolf"
       "steam"
-      "ollama"
-      "wezterm"
+      "vial"
     ];
-    masApps = {
-    };
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
@@ -81,4 +90,21 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  system.activationScripts.postActivation.text = let
+    username = system.primaryUser;
+    path_wallpaper = ./wallpaper.jpg;
+    path_aerospace_plist = ../resources/launch-agents/bobko.aerospace.plist;
+  in
+  ''
+    sudo -u ${username} echo >&2 "Setting wallpaper... (${path_wallpaper})"
+    sudo -u ${username} /usr/local/bin/desktoppr ${path_wallpaper}
+
+    sudo -u ${username} echo >&2 "Writing launch agents..."
+    sudo -u ${username} sh -c 'mkdir -p /Users/${username}/Library/LaunchAgents'
+    sudo -u ${username} sh -c 'PATH_APP=${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace; cat ${path_aerospace_plist} | sed "s%\$PATH_APP%$PATH_APP%" > /Users/${username}/Library/LaunchAgents/bobko.aerospace.plist'
+
+    sudo -u ${username} echo >&2 "Linking AeroSpace config..."
+    sudo -u ${username} sh -c 'ln -s /Users/${username}/.config/aerospace/aerospace-macbook.toml /Users/${username}/.config/aerospace/aerospace.toml'
+  '';
 }

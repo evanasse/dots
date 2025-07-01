@@ -4,17 +4,6 @@
 # the item invoking this script:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
-add_popup_item() {
-  parent_name=$1
-  child_name=$2
-
-  split=( ${(s/:/)child_name} )
-  model_name=$split[1]
-  port_number=$split[2]
-
-
-}
-
 bin_path_sketchybar="/run/current-system/sw/bin/sketchybar"
 
 running_models=$(ps -x | grep -e 'uvx.*mlx_lm.server' | grep -v 'grep' | sed 's/.*--model \([^ ]*\).*--port \([^ ]*\).*$/\1:\2/' | sed 's,^mlx-community/,,')
