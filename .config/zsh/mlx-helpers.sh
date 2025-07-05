@@ -16,6 +16,8 @@ _mlx-serve() {
     uvx --python 3.12 --isolated --from mlx-lm mlx_lm.server \
         --model $model \
         --port $port \
+        --log-level DEBUG \
+        --trust-remote-code \
         --max-tokens 4096
 }
 

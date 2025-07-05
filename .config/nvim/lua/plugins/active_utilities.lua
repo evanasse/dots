@@ -140,21 +140,21 @@ return {
                 -- of 512, serves as an good starting point to estimate your computing
                 -- power. Once you have a reliable estimate of your local computing power,
                 -- you should adjust the context window to a larger value.
-                context_window = 1024,
+                context_window = 512,
                 provider_options = {
                     openai_fim_compatible = {
                         api_key = 'TERM', -- Using the value of the TERM env var because it needs a value to work
                         name = 'mlx_lm',
                         end_point = 'http://localhost:8123/v1/completions',
-                        model = 'mlx-community/Qwen2.5-Coder-1.5B-8bit',
+                        model = 'mlx-community/zed-industries-zeta-4bit',
                         optional = {
-                            stop = { "<|im_end|>", "\n\n" },
+                            -- stop = { "<|im_end|>" },
                             max_tokens = 256,
                             top_p = 0.9,
                         },
                     },
                 },
-                after_cursor_filter_length = 15,
+                after_cursor_filter_length = 4,
                 -- If completion item has multiple lines, create another completion item
                 -- only containing its first line. This option only has impact for cmp and
                 -- blink. For virtualtext, no single line entry will be added.
