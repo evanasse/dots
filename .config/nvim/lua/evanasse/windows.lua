@@ -36,6 +36,7 @@ M.open_float_terminal = function()
     M.windows.float_terminal.row = math.ceil(vim.o.lines - M.windows.float_terminal.height) * 0.5 - 1
     M.windows.float_terminal.col = math.ceil(vim.o.columns - M.windows.float_terminal.width) * 0.5 - 1
 
+    M.windows.float_terminal.previous_win_id = vim.api.nvim_get_current_win()
     M.windows.float_terminal.win_id = vim.api.nvim_open_win(0, false, {
       relative = "editor",
       row = M.windows.float_terminal.row,
@@ -81,8 +82,6 @@ M.toggle_float_terminal = function()
 
   if current_win_id == M.windows.float_terminal.win_id then
     M.close_float_terminal()
-  elseif current_win_id == M.windows.side_terminal.win_id then
-    M.open_float_terminal()
   else
     M.open_float_terminal()
   end
