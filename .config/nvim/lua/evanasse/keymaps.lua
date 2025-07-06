@@ -83,12 +83,15 @@ Vmap("J", ":m '>+1<CR>gv=gv")
 Vmap("K", ":m '<-2<CR>gv=gv")
 
 -- Terminal mappings
-Nmap("<a-a>", "<c-w><c-w>")
-Imap("<a-a>", "<esc><c-w><c-w>")
-Tmap("<a-a>", "<c-\\><c-n><c-w><c-w>")
-Nmap("<a-t>", "<cmd>ToggleTerm<cr>")
-Imap("<a-t>", "<esc><cmd>ToggleTerm<cr>")
-Tmap("<a-t>", "<c-\\><c-n><cmd>ToggleTerm<cr>")
+local focus_main_editor_or_term = require("evanasse.windows").focus_main_editor_or_term
+local toggle_float_terminal = require("evanasse.windows").toggle_float_terminal
+
+Nmap("<a-.>", focus_main_editor_or_term)
+Imap("<a-.>", focus_main_editor_or_term)
+Tmap("<a-.>", focus_main_editor_or_term)
+Nmap("<a-t>", toggle_float_terminal)
+Imap("<a-t>", toggle_float_terminal)
+Tmap("<a-t>", toggle_float_terminal)
 Tmap("<esc>", "<c-\\><c-n>")
 
 -- Open mini.files

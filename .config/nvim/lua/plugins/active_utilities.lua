@@ -109,23 +109,6 @@ return {
         lazy = false,
     },
     {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        config = function()
-            require("toggleterm").setup({
-                autochdir = true,      -- when neovim changes it current directory the terminal will change it's own when next it's opened
-                direction = "float",
-                close_on_exit = false, -- close the terminal window when the process exits
-                auto_scroll = true,    -- automatically scroll to the bottom on terminal output
-                -- This field is only relevant if direction is set to 'float'
-                float_opts = {
-                    border = "curved",
-                    title_pos = "center"
-                },
-            })
-        end
-    },
-    {
         'milanglacier/minuet-ai.nvim',
         enabled = true,
         config = function()

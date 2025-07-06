@@ -60,3 +60,6 @@ opt.signcolumn = "yes"
 
 -- Default window border
 opt.winborder = "rounded"
+
+-- Cursor styling
+opt.guicursor = "n-v-c-sm:block,i-ci-ve-t:ver25,r-cr-o:hor20"
