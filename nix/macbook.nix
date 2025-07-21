@@ -41,6 +41,7 @@
       "1password"
       "desktoppr"
       "epic-games"
+      "firefox"
       "librewolf"
       "steam"
       "vial"
