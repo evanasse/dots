@@ -1,8 +1,0 @@
-* {
-    background: #1F1311;
-    foreground: #E0CCAE;
-
-    background-color: @background;
-    text-color: @foreground;
-    line-style: "none";
-}

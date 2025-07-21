@@ -1,7 +1,0 @@
-(
-    border_width: Some(2),
-    margin: Some(7),
-    default_border_color: Some("#1F1311"),
-    floating_border_color: Some("#A67458"),
-    focused_border_color: Some("#A67458"),
-)
