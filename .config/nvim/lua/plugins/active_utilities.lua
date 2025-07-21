@@ -129,9 +129,8 @@ return {
                         api_key = 'TERM', -- Using the value of the TERM env var because it needs a value to work
                         name = 'mlx_lm',
                         end_point = 'http://localhost:8123/v1/completions',
-                        model = 'mlx-community/zed-industries-zeta-4bit',
+                        model = 'mlx-community/Qwen2.5-Coder-3B-8bit',
                         optional = {
-                            -- stop = { "<|im_end|>" },
                             max_tokens = 256,
                             top_p = 0.9,
                         },
