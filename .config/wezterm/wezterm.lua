@@ -118,6 +118,7 @@ end)
 
 -- Cursor & Selection
 config.force_reverse_video_cursor = true
+config.default_cursor_style = "SteadyBar"
 
 -- Window
 config.window_padding = {
