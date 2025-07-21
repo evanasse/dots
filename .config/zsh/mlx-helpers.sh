@@ -42,7 +42,7 @@ mlx-serve() {
 }
 
 mlx-stop() {
-    running_models=$(ps -x | grep -e 'uvx.*mlx_lm.server' | grep -v 'grep' | sed 's/^\([0-9]*\).*--model \([^ ]*\).*--port \([^ ]*\).*$/\2 \3 \1/')
+    running_models=$(ps -x | grep -e 'uvx.*mlx_lm.server' | grep -v 'grep' | sed 's/^[ ]*\([0-9]*\).*--model \([^ ]*\).*--port \([^ ]*\).*$/\2 \3 \1/')
     if [ -z $running_models ]; then
         echo "No model running. Exiting."
     else
