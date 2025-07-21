@@ -38,7 +38,9 @@
     ];
     casks = [
       "1password"
+      "bitwig-studio"
       "desktoppr"
+      "firefox"
       "librewolf"
       "steam"
       "vial"
