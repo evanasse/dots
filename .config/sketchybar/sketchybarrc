@@ -27,6 +27,8 @@ if [ $COMPUTER_NAME = "macbook" ]; then
   BAR_HEIGHT=25
 elif [ $COMPUTER_NAME = "studio" ]; then
   BAR_HEIGHT=20
+else
+  echo "unknown computer name: $COMPUTER_NAME" >> /tmp/sketchybar.log
 fi
 
 sketchybar --bar position=top height=$BAR_HEIGHT color=0xCF$chalet_dark_brown corner_radius=12 margin=4 y_offset=4

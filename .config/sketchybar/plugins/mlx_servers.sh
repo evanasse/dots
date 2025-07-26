@@ -26,6 +26,6 @@ else
     sketchybar --query $NAME | jq '.popup.items' | grep '"' | sed 's/[", ]//g' | xargs -I % sketchybar --remove popup.%
 
     for model in ${=running_models}; do
-        sketchybar --add item $NAME.% popup.$NAME --set $NAME.% label="$(echo $model | cut -d: -f1)" icon="$(echo $model | cut -d: -f2)"
+        sketchybar --add item $NAME.$model popup.$NAME --set $NAME.$model label="$(echo $model | cut -d: -f1)" icon="$(echo $model | cut -d: -f2)"
     done
 fi
