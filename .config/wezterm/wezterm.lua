@@ -101,7 +101,7 @@ config.background = {
 
 -- Font
 config.font = wezterm.font("UbuntuMono Nerd Font")
-config.font_size = 15
+config.font_size = 17
 
 -- Tab bar
 config.hide_tab_bar_if_only_one_tab = false
@@ -134,31 +134,31 @@ config.disable_default_key_bindings = true
 
 config.keys = {
     -- Tabs
-    { key = "1",          mods = "ALT",   action = wezterm.action.ActivateTab(0) },
-    { key = "2",          mods = "ALT",   action = wezterm.action.ActivateTab(1) },
-    { key = "3",          mods = "ALT",   action = wezterm.action.ActivateTab(2) },
-    { key = "4",          mods = "ALT",   action = wezterm.action.ActivateTab(3) },
+    { key = "1",          mods = "ALT",      action = wezterm.action.ActivateTab(0) },
+    { key = "2",          mods = "ALT",      action = wezterm.action.ActivateTab(1) },
+    { key = "3",          mods = "ALT",      action = wezterm.action.ActivateTab(2) },
+    { key = "4",          mods = "ALT",      action = wezterm.action.ActivateTab(3) },
     -- Panes
     -- { key = "Space",      mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Prev") },
-    { key = "h",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
-    { key = "j",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
-    { key = "k",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
-    { key = "l",          mods = "ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
-    { key = "d",          mods = "ALT",   action = wezterm.action.CloseCurrentPane { confirm = false } },
-    { key = "z",          mods = "ALT",   action = wezterm.action.TogglePaneZoomState },
-    { key = "LeftArrow",  mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Left", 1 } },
-    { key = "RightArrow", mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Right", 1 } },
-    { key = "UpArrow",    mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Up", 1 } },
-    { key = "DownArrow",  mods = "ALT",   action = wezterm.action.AdjustPaneSize { "Down", 1 } },
+    { key = "h",          mods = "ALT",      action = wezterm.action.ActivatePaneDirection("Left") },
+    { key = "j",          mods = "ALT",      action = wezterm.action.ActivatePaneDirection("Down") },
+    { key = "k",          mods = "ALT",      action = wezterm.action.ActivatePaneDirection("Up") },
+    { key = "l",          mods = "ALT",      action = wezterm.action.ActivatePaneDirection("Right") },
+    { key = "d",          mods = "ALT",      action = wezterm.action.CloseCurrentPane { confirm = false } },
+    { key = "z",          mods = "ALT",      action = wezterm.action.TogglePaneZoomState },
+    { key = "LeftArrow",  mods = "ALT",      action = wezterm.action.AdjustPaneSize { "Left", 1 } },
+    { key = "RightArrow", mods = "ALT",      action = wezterm.action.AdjustPaneSize { "Right", 1 } },
+    { key = "UpArrow",    mods = "ALT",      action = wezterm.action.AdjustPaneSize { "Up", 1 } },
+    { key = "DownArrow",  mods = "ALT",      action = wezterm.action.AdjustPaneSize { "Down", 1 } },
     -- Clipboard
-    { key = "Insert",     mods = "CTRL",  action = wezterm.action.CopyTo("Clipboard") },
-    { key = "Insert",     mods = "SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
-    { key = "Insert",     mods = "ALT",   action = wezterm.action.PasteFrom("PrimarySelection") },
+    { key = "c",          mods = "CMD",      action = wezterm.action.CopyTo("Clipboard") },
+    { key = "v",          mods = "CMD",      action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "v",          mods = "CMD|CTRL", action = wezterm.action.PasteFrom("PrimarySelection") },
     -- Debug
-    { key = "B",          mods = "ALT",   action = wezterm.action.ShowDebugOverlay },
+    { key = "B",          mods = "ALT",      action = wezterm.action.ShowDebugOverlay },
     -- Font size
-    { key = "=",          mods = "ALT",   action = wezterm.action.IncreaseFontSize },
-    { key = "-",          mods = "ALT",   action = wezterm.action.DecreaseFontSize },
+    { key = "=",          mods = "ALT",      action = wezterm.action.IncreaseFontSize },
+    { key = "-",          mods = "ALT",      action = wezterm.action.DecreaseFontSize },
 }
 
 
