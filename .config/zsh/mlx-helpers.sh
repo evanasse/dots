@@ -70,7 +70,10 @@ mlx-download() {
     if [ -z $1 ]; then
         echo "Missing expected model name, e.g. 'mlx-download MODEL_NAME'"
     else
-        uvx --python 3.12 --isolated --from huggingface_hub huggingface-cli download mlx-community/$1
+        prefix="mlx-community/"
+        model_name=${1#$prefix} # remove prefix if exists
+        model_name=$prefix$model_name
+        uvx --python 3.12 --isolated --from huggingface_hub hf download $model_name
     fi
 }
 
